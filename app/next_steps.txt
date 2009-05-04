@@ -1,7 +1,0 @@
-.grid_6.alpha
-  =image_tag "question_logo.png"
-.grid_8.prefix_2.omega
-  -if logged_in?
-    =render :partial => "shared/header_info_box"
-  -else
-    =render :partial => "sessions/new"              

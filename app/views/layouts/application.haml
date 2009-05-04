@@ -1,6 +1,6 @@
 !!! XML
 !!! Strict
-%html{html_attrs("en")}
+%html{html_attrs("es")}
   %head
     %meta{content_type_attrs("text/html")}
     %title=yield(:title)
@@ -10,16 +10,19 @@
     #content
       .container_16
         .grid_16#header
-          .grid_6.alpha
-            =image_tag "que-puta-mierda-logo.gif"
-          .grid_8.prefix_2.omega
+          =image_tag "que-puta-mierda-logo.gif"
+        .grid_16#navigation
+          =tabnav :main
           
-        .grid_16
+        .grid_16#main
           = yield
         .clear
               
-    %br.clear
-    = render :partial => "shared/footer"
+
+
+        %br.clear
+        .grid_16#footer
+          =render :partial => "shared/footer"
 
     = yield :javascript
     
