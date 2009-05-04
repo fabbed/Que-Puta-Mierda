@@ -4,12 +4,84 @@
 #footer {
   margin-top: 40px; }
 
-.round_section {
+.top_round_section {
   background-color: #565247;
-  padding: 15px; }
+  padding: 10px;
+  height: 17px; }
+  .top_round_section h1 {
+    font-size: 140%; }
+
+.round_section {
+  margin-bottom: 10px;
+  background-color: #565247;
+  padding: 10px; }
   .round_section h1 {
     font-size: 140%; }
 
 .story_body_text_area {
   width: 610px;
   height: 200px; }
+
+.sidebar {
+  color: white; }
+  .sidebar h2 {
+    font-size: 120%;
+    color: white; }
+  .sidebar .round_section {
+    margin-bottom: 20px;
+    background-color: #565247;
+    padding: 10px; }
+    .sidebar .round_section h2 {
+      color: white; }
+  .sidebar a {
+    color: #ceff00; }
+  .sidebar a:hover {
+    color: white; }
+
+#top_navigation ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none; }
+#top_navigation li {
+  float: left; }
+  #top_navigation li a {
+    display: block;
+    width: 80px;
+    height: 50px;
+    padding: 56px 0 0 0px;
+    text-align: center;
+    color: #ceff00; }
+  #top_navigation li a.active {
+    color: white; }
+  #top_navigation li a:hover {
+    color: white; }
+#top_navigation a#welcome {
+  background: transparent url(/images/icon_home.png) no-repeat scroll center top; }
+#top_navigation a#welcome.active {
+  background: transparent url(/images/icon_home_active.png) no-repeat scroll center top; }
+#top_navigation a#new_history {
+  background: transparent url(/images/icon_new.png) no-repeat scroll center top; }
+#top_navigation a#top {
+  background: transparent url(/images/icon_top.png) no-repeat scroll center top; }
+#top_navigation a#flop {
+  background: transparent url(/images/icon_flop.png) no-repeat scroll center top; }
+#top_navigation a#moderate {
+  background: transparent url(/images/icon_moderate.png) no-repeat scroll center top; }
+#top_navigation a#new_history.active {
+  background: transparent url(/images/icon_new_active.png) no-repeat scroll center top; }
+#top_navigation a#top.active {
+  background: transparent url(/images/icon_top_active.png) no-repeat scroll center top; }
+#top_navigation a#flop.active {
+  background: transparent url(/images/icon_flop_active.png) no-repeat scroll center top; }
+#top_navigation a#moderate.active {
+  background: transparent url(/images/icon_moderate_active.png) no-repeat scroll center top; }
+
+.story_wrapper .body {
+  background-color: white;
+  padding: 5px; }
+  .story_wrapper .body a {
+    color: black; }
+.story_wrapper .footer {
+  background-color: #dfd8c6;
+  height: 20px;
+  padding: 5px 10px; }

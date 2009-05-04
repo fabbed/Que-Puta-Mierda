@@ -4,6 +4,18 @@ class StoriesController < ApplicationController
 
   layout "application"
 
+  def tops
+    @stories = Story.tops
+  end
+
+  def flops
+    @stories = Story.flops
+  end
+
+  def to_moderate
+    @stories = Story.to_moderate    
+  end
+
   def index
     @stories = Story.all
 

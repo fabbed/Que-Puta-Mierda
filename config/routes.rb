@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :stories
 
+  map.resources :stories, :collection => { :tops => :get, :flops => :get, :to_moderate => :get}
+
+  map.resources :categories
   map.resources :users
   map.resource :session
 

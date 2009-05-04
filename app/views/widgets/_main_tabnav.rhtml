@@ -11,14 +11,43 @@
 #   :generate_css => true|false #=> generates a default inline css for the tabnav, defaults to false
 #   :html => aHash #=> sets html options for the tabnav's div (es :html => {:class=> 'myCssClass', :id=>'myCssId'}) 
 #     
-render_tabnav :main, 
-              :generate_css => false do 
+render_tabnav :main, :html => { :id=>'top_navigation'}, 
+              :generate_css => false   do 
     
      
   add_tab do |t|
-   t.named ''
+   t.named 'Inicio'
    t.titled 'Página Principal'
    t.links_to :controller => 'welcome'
+   t.html = {:id => 'welcome'}
+  end 
+
+  add_tab do |t|
+   t.named 'Contar nueva historia'
+   t.titled 'Contar nueva historia'
+   t.links_to :controller => 'stories', :action => "new"
+   t.html = {:id => 'new_history'}
+  end 
+
+  add_tab do |t|
+   t.named 'Tops'
+   t.titled 'Las mejores historias'
+   t.links_to :controller => 'stories', :action => "tops"
+   t.html = {:id => 'top'}
+  end 
+
+  add_tab do |t|
+   t.named 'Flops'
+   t.titled 'Las peores historias'
+   t.links_to :controller => 'stories', :action => "flops"
+   t.html = {:id => 'flop'}
+  end 
+
+  add_tab do |t|
+   t.named 'Moderar'
+   t.titled 'Moderar historias'
+   t.links_to :controller => 'stories', :action => "to_moderate"
+   t.html = {:id => 'moderate'}   
   end 
 
 

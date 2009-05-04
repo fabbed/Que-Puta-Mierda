@@ -1,4 +1,6 @@
 !section_background = #565247
+!tab_link_color = #CEFF00
+!story_footer_color = #DFD8C6
 
 #main
   :margin-top 20px
@@ -7,12 +9,87 @@
   :margin-top 40px
 
 
-.round_section
+.top_round_section
   :background-color = !section_background
-  :padding 15px
+  :padding 10px
+  :height 17px
+  h1
+    :font-size 140%
+
+.round_section
+  :margin-bottom 10px
+  :background-color = !section_background
+  :padding 10px
   h1
     :font-size 140%
 
 .story_body_text_area
   :width 610px
   :height 200px
+
+.sidebar
+  :color white
+  h2
+    :font-size 120%
+    :color white
+  .round_section
+    :margin-bottom 20px
+    :background-color = !section_background
+    :padding 10px
+    h2
+      :color white
+  a
+    :color = !tab_link_color
+  a:hover
+    :color white
+
+#top_navigation
+  ul
+    :list-style-image none
+    :list-style-position outside
+    :list-style-type none
+  li
+    :float left
+    a
+      :display block
+      :width 80px
+      :height 50px
+      :padding 56px 0 0 0px
+      :text-align center
+      :color = !tab_link_color
+    a.active
+      :color white    
+    a:hover
+      :color white
+
+  a#welcome
+    :background transparent url(/images/icon_home.png) no-repeat scroll center top
+  a#welcome.active
+    :background transparent url(/images/icon_home_active.png) no-repeat scroll center top
+  a#new_history
+    :background transparent url(/images/icon_new.png) no-repeat scroll center top
+  a#top
+    :background transparent url(/images/icon_top.png) no-repeat scroll center top
+  a#flop
+    :background transparent url(/images/icon_flop.png) no-repeat scroll center top
+  a#moderate
+    :background transparent url(/images/icon_moderate.png) no-repeat scroll center top
+  a#new_history.active
+    :background transparent url(/images/icon_new_active.png) no-repeat scroll center top
+  a#top.active
+    :background transparent url(/images/icon_top_active.png) no-repeat scroll center top
+  a#flop.active
+    :background transparent url(/images/icon_flop_active.png) no-repeat scroll center top
+  a#moderate.active
+    :background transparent url(/images/icon_moderate_active.png) no-repeat scroll center top
+
+.story_wrapper
+  .body
+    :background-color white
+    :padding 5px
+    a
+      :color black
+  .footer
+    :background-color = !story_footer_color
+    :height 20px
+    :padding 5px 10px

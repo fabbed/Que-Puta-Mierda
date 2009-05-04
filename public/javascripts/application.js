@@ -29,4 +29,8 @@ $(document).ready(function() {
   
   $(".round_section").corners();
 
+  $('.top_round_section').corners("top 10px");
+  $('.story_wrapper .footer').corners("bottom 10px");
+
+
 }); 
