@@ -1,0 +1,5 @@
+.story_wrapper{:id => dom_id(story)}
+  .body
+    =link_to(truncate(story.body, 400), story_path(story))
+  .footer
+    Blabla 
