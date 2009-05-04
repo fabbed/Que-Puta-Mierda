@@ -1,0 +1,21 @@
+- form_tag session_path do
+
+  .grid_2.prefix_1.alpha
+    %h3 Connectar
+  
+  = label_tag "email", "E-Mail", :class => "grid_2 prefix_0 alpha"
+  .grid_2.omega
+    = text_field_tag "email", @email
+
+  = label_tag "password", "Contraseña", :class => "grid_2 prefix_0 alpha"
+  .grid_2.omega
+    = password_field_tag "password", ""
+
+  .grid_3.prefix_2.alpha
+    = check_box_tag "remember_me", "1", @remember_me
+    = label_tag "remember_me", "Quedar connectado?"
+  .grid_3.prefix_2.alpha
+    =# link_to "Passwort vergessen ?", forgotten_password_path
+    = submit_tag "Connectar"
+
+.clear

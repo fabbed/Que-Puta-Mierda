@@ -1,0 +1,76 @@
+div.fieldWithErrors {
+  border: solid 1px red; }
+
+.bottom-margin-20 {
+  margin-bottom: 30px; }
+
+.top-margin-20 {
+  margin-top: 30px; }
+
+.small_input {
+  width: 40px; }
+
+.h_5 {
+  height: 5px; }
+
+.h_10 {
+  height: 10px; }
+
+.h_15 {
+  height: 15px; }
+
+.h_20 {
+  height: 20px; }
+
+.h_25 {
+  height: 25px;
+  width: 10px; }
+
+.h_50 {
+  height: 50px; }
+
+.bold {
+  font-weight: bold; }
+
+.c {
+  clear: both; }
+
+.cl {
+  clear: left; }
+
+.cr {
+  clear: right; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.hidden {
+  display: none; }
+
+.red {
+  color: red; }
+
+.clear {
+  clear: left; }
+
+.mt_10 {
+  margin-top: 10px; }
+
+.capitalize {
+  text-transform: capitalize; }
+
+.oh {
+  overflow: hidden; }
+
+.center, td.center {
+  text-align: center; }
+
+.black {
+  color: black; }
+
+label.error {
+  color: red;
+  font-size: 11px; }

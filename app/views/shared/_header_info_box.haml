@@ -1,0 +1,27 @@
+.prefix_2
+  #header_info_box
+    .content
+      .picture
+        = image_tag current_user.avatar.url(:small)
+      .top
+        .name
+          = current_user.name
+        .links
+          =link_to_home_area
+          |
+          =link_to "Cerrar sessión", logout_path                
+    
+      .bottom
+        .inbox
+          %span
+            =link_to_function "3", "alert('implement messaging')"
+          -if current_user.is_distributor? or current_user.is_author?
+            .money
+              %span#users_current_account_money
+                = formated_money(current_user.cuenta, current_user.currency)
+        
+        .select
+          =link_to  "Mi perfil", account_avatar_path
+
+
+    

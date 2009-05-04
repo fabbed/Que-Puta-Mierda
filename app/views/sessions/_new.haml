@@ -1,0 +1,23 @@
+#header_info_box
+  .content
+    - form_tag session_path do
+      .top
+        .field
+          = label_tag "email", "E-Mail:", :class => ""
+          %br
+          = text_field_tag "email", @email
+        .field
+          = label_tag "password", "Contraseña:", :class => ""
+          %br
+          = password_field_tag "password", ""  
+
+        .submit_button
+          = submit_tag "Connectar"
+        
+        .clear
+        / = check_box_tag "remember_me", "1", @remember_me
+        / = label_tag "remember_me", "Quedar connectado?"
+
+
+.clear
+
