@@ -11,7 +11,7 @@ def self.up
     t.column :user_id, :integer, :default => 0, :null => false
   end
 
-  add_index :comments, ["user_id"], :name => "fk_comments_user"
+  # add_index :comments, ["user_id"], :name => "fk_comments_user"
 end
 
 def self.down
