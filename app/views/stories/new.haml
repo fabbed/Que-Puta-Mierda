@@ -1,0 +1,33 @@
+.grid_16
+  .grid_11.alpha
+    .round_section
+      %h1 Contar nueva historia
+      
+      - form_for(@story) do |f|
+        = f.error_messages
+        %p
+          Texto
+          %br
+          =f.text_area :body, :class => "story_body_text_area"
+        %p
+          Categoria
+          %br
+          =select("story", "category_id", Category.for_select_box, { :include_blank => true })
+        %p
+          E-Mail
+          %br
+          =f.text_field :email, :class => "story_email_text_field"
+
+
+
+        %p
+          = f.submit 'Contar la historia'
+
+
+      = link_to 'Back', stories_path
+
+      
+  .grid_5.omega
+    .round_section
+      Test
+

@@ -1,0 +1,18 @@
+<h1>Listing stories</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @stories.each do |story| %>
+  <tr>
+    <td><%= link_to 'Show', story %></td>
+    <td><%= link_to 'Edit', edit_story_path(story) %></td>
+    <td><%= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New story', new_story_path %>
