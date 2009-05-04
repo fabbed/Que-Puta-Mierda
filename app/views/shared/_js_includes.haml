@@ -1,0 +1,15 @@
+= javascript_include_tag :defaults
+= javascript_include_tag 'jquery.autocomplete.js'
+= javascript_include_tag 'jquery-dom.js'
+= javascript_include_tag 'jquery.form.js'  # for ajaxSubmit & ajaxForm
+= javascript_include_tag 'jquery.validate.js'  # for Form Validation
+= javascript_include_tag 'ui.datepicker.js'
+= javascript_include_tag 'facebox.js'
+= javascript_include_tag 'jquery.tipsy.js'
+ 
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      $('a[rel*=facebox]').facebox()
+      $('img[title]').tipsy({ gravity: 'n', fade: true });
+    });
