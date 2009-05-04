@@ -1,0 +1,215 @@
+# http://www.kissnofrog.com/user/friend_request
+# id 98358
+
+# http://www.kissnofrog.com/user/nudge
+# id  50983
+# message Würde dich gerne kennen lernen! Lust zu chatten?
+# nudge_id
+
+
+
+iconv -f UTF-16LE -t UTF-8 estimates.csv > estimates_utf16.csv
+
+alter table `keys` modify keyword varchar(255) character set utf8 collate utf8_bin;
+
+select * from keywords where keyword =  'dieta calorias'
+&
+select * from keywords where keyword =  'dieta calorías'
+geben das gleiche zurück!
+
+
+
+MAX CPC: 80€
+Daily Budget: 150000€
+
+
+
+
+
+
+Wiki:
+  Database: gringos
+  suffix: oletextos_
+  www.4gringos.com/oletextos
+
+Shortcuts Concept Draw
+  -CMD + 0   Zoom to whole page
+  -Cmd + Opt + B	Send to Back
+  -Cmd + Opt + F	Bring to Front
+  -Cmd + Left/Right
+  -Cmd + G	Group the selected shapes into one
+  -Cmd + U	Ungroup
+
+
+  -Ctrl + 1	Activate Select tool
+  
+  Cmd + Opt + "="	Increase font
+Cmd + Opt + "-"	Decrease font
+CMD + D  Duplicate Shape
+
+
+
+Transactions
+  Transaction.author_increase_cuenta(money, user)
+  Transaction.author_order_payment(money, author)  
+
+Commands:
+  reload!; Transaction.author_increase_cuenta(Money.new(400000), User.find_by_login("johnny"))
+  reload!; Transaction.author_order_payment(Money.new(300000), User.find_by_login("johnny"))
+
+Git reset --hard
+
+
+
+
+production:                                                                                                                              
+  adapter: mysql
+  encoding: utf8
+  database: escribir_y_ganar
+  username: fabbed
+  password: f4b8ed
+  socket: /var/run/mysqld/mysqld.sock
+
+
+
+
+
+
+
+
+ 1 # Be sure to restart your server when you modify this file                                                                              
+ 2 
+ 3 # Specifies gem version of Rails to use when vendor/rails is not present
+ 4 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
+ 5 RAILS_ENV='production'
+ 6 # Bootstrap the Rails environment, frameworks, and default configuration
+ 7 require File.join(File.dirname(__FILE__), 'boot')
+ 8 
+ 9 
+10 Rails::Initializer.run do |config|
+11   config.active_record.observers = :user_observer
+12 
+13   config.gem 'ryanb-scope-builder', :lib => 'scope_builder'
+14   config.gem 'fastercsv'
+15   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
+16   config.gem 'RedCloth', :lib => 'redcloth'
+17   # Settings in config/environments/* take precedence over those specified here.
+18   # Application configuration should go into files in config/initializers
+19   # -- all .rb files in that directory are automatically loaded.
+20 
+21   # Add additional load paths for your own custom dirs
+22   # config.load_paths += %W( #{RAILS_ROOT}/extras )
+23 
+24   # Specify gems that this application depends on and have them installed with rake gems:install
+25   # config.gem "bj"
+26   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
+27   # config.gem "sqlite3-ruby", :lib => "sqlite3"
+28   # config.gem "aws-s3", :lib => "aws/s3"
+29 
+30   # Only load the plugins named here, in the order given (default is alphabetical).
+31   # :all can be used as a placeholder for all plugins not explicitly named
+32   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+33 
+34   # Skip frameworks you're not going to use. To use Rails without a database,
+35   # you must remove the Active Record framework.
+36   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
+37 
+38   # Activate observers that should always be running
+config/environment.rb [Rails-config]                                                                                     1,1-1          Top
+"config/environment.rb" 48L, 2277C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= javascript_include_tag :defaults
+= stylesheet_link_tag "kissnofrog"
+= javascript_include_tag 'jquery.form.js'  # for ajaxSubmit & ajaxForm
+= javascript_include_tag 'kissnofrog.js'  # for ajaxSubmit & ajaxForm
+=stylesheet_link_tag "kissnofrog"
+=stylesheet_link_tag "generic"
+
+
+.hidden
+  #message1="Hey {login}, echt cool deine Tittel"
+  #message2="Hey {login}, ¿hablas español? Tienes ganas de chatear un poco conmigo?"
+  #message3="Hey {login}, parlez-vous francais?"
+  #message4="Hey {login}, du kommst aus {city}? Ich habe da auch mal kurz gewohnt, bin jetzt aber nach Berlin gezogen. Lass uns Chatten wenn du dich traust ;-)! Bin auch grade neu hier.."
+
+
+
+:erb
+  <form method="post" action="http://www.kissnofrog.com/user/login" target="mainFrame">
+  <input class="knf_loginfield" type="text" onfocus="removeLoginValue(this,'E-Mail');" value="fabian.dittrich@gmail.com" name="email"/>
+  <div class="knf_clr"/>
+  <input class="knf_loginfield" type="password" onfocus="removeLoginValue(this,'Passwort');" value="red098" name="password"/>
+  <input id="knf_loginsubmit" width="52" type="image" height="24" alt="Login" src="http://static.kissnofrog.com/images/evolution/buttons/login_small.png"/>
+  <div class="knf_clr"/>
+  </form>
+  
+%hr
+
+
+:javascript
+
+  function send_flirt(object, kiss_id) {
+    message = $(object).parent().find("#message").val()
+    $(object).parent().submit();
+    $.post("create_flirt", { receiver_id: kiss_id, message: message } );
+  }  
+
+  function create_notice(object, kiss_id) {
+    notice = $(object).parent().find("#notice").val()
+
+    $(object).parent().find("#notice").val("")
+    $.post("create_notice", { kissnofrog_id: kiss_id, notice: notice } );
+  }  
+
+  function paste_message(object, message_number){
+    city = $(object).parent().find("#user_city").html()
+    login = $(object).parent().find("#user_name").html()
+    
+    message = $(object).parent().find("#message").val("").val($("#message"+message_number).html().replace(/{login}/g, login).replace(/{city}/g, city))
+  }
+
+.kissnofrog
+
+  %h1 Test user
+  -Kissnofrog.find(:all, :conditions => ['login = ?', "gringababy"], :limit => 10).each do |user|
+    =render :partial => "small_profile", :locals => {:user => user}
+
+
+  %h1 New users, not flirted to
+  -Kissnofrog.find(:all, :conditions => ['profile_scraped = ? and gender = ? and status = ? and user_type = ?', true, "weiblich","nothing", "new_user"]).each do |user|
+    -if user.received_flirts.size == 0
+      .not_flirted_to{:style => "background-color: #ffff33"}
+        =render :partial => "small_profile", :locals => {:user => user}
+    -if user.received_flirts.size > 0
+      =render :partial => "small_profile", :locals => {:user => user}
+
+  %hr
+  
+  %h2 Standard Users
+  
+  -Kissnofrog.find(:all, :conditions => ['profile_scraped = ? and age BETWEEN ? AND ? and city = ?', true, 16, 19, "Berlin"], :limit => 100).each do |user|
+    -if user.received_flirts.size == 0
+      .not_flirted_to{:style => "background-color: #ffff33"}
+        =render :partial => "small_profile", :locals => {:user => user}
+    -if user.received_flirts.size > 0
+      =render :partial => "small_profile", :locals => {:user => user}
+
+
