@@ -1,0 +1,2 @@
+module TerminosHelper
+end
