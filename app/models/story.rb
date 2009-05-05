@@ -21,5 +21,11 @@ class Story < ActiveRecord::Base
   
 
 
+  def to_param
+    "#{id}-#{body[0..60].gsub(/[^a-z0-9]+/i, '-')}"
+  end
+
+
+
 
 end
