@@ -1,4 +1,2 @@
--Validation messages mit elena überfliegen
-
--in user_mailer und in mial.rb auf queputamierda.com umstellen (Phillip), Mail empfangen
--auch URL
+-comments with owner
+-story single with owner

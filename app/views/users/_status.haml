@@ -1,0 +1,7 @@
+-if logged_in?
+  .round_section
+    %h2="¡Hola #{current_user.login}!"
+    Estás conectado
+    %br
+    %br
+    =link_to "Cerrar sesión", logout_path

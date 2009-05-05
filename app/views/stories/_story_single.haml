@@ -1,5 +1,9 @@
 .story_wrapper.round{:id => dom_id(story)}
   .body.round
+    -if story.user and !story.anonymous
+      ="(de #{story.user.login})"
+    -else
+      (de anónimo) 
     =h story.body
   .footer
     .category.fl
@@ -21,7 +25,7 @@
       
     .clear.h_20
     .h_10
-    %h2 Escribir respuesta
+    %h2 Escribir comentario
     .h_5
     Tu respuesta:
     %br

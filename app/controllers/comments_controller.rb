@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @story = Story.find_by_id(params[:story])
     @story.add_comment(comment)
 
-    flash[:notice] = "Comentario mandado"
+    flash[:notice] = "Comentario enviado."
     
     respond_to do |wants|
         wants.html { redirect_to story_path(@story) }
