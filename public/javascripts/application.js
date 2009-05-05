@@ -62,8 +62,15 @@ $(document).ready(function() {
   
     $.timer(2000, function (timer) {
       var fade_time = 200;
-      $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.5}, fade_time, function() {
-        $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.5}, fade_time)
+      $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.1}, fade_time, function() {
+        $("#new_history").animate({opacity: 0.1}, fade_time).animate({opacity: 1.0}, fade_time)
+      })
+      timer.stop();
+    });  
+    $.timer(5000, function (timer) {
+      var fade_time = 200;
+      $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.1}, fade_time, function() {
+        $("#new_history").animate({opacity: 0.1}, fade_time).animate({opacity: 1.0}, fade_time)
       })
       timer.stop();
     });  

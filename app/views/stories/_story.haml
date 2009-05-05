@@ -12,9 +12,9 @@
     .vote_top.fl
       %span
         -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)
-          =link_to_function "Qué puta mierda!(#{story.rated_top})", "vote_story(#{story.id}, 'top', 'collection')"
+          =link_to_function "¡Qué puta mierda!(#{story.rated_top})", "vote_story(#{story.id}, 'top', 'collection')"
         -else
-          =link_to_function "Qué puta mierda!(#{story.rated_top})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
+          =link_to_function "¡Qué puta mierda!(#{story.rated_top})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
     .vote_flop.fl
       %span
         -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)

@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
 
   def prepare_stuff
     @story = Story.find_by_id(params[:id])    
-    @stories = Story.moderated.newest_first
+    @stories = Story.newest_first
     @mode = params[:mode]
     flash[:notice] = "Gracias por el voto!"
   end
