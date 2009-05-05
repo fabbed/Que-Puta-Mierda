@@ -11,7 +11,7 @@
           .white Texto
           =f.text_area :body, :class => "story_body_text_area"
         %p
-          .white Categoria
+          .white Categoría
           =select("story", "category_id", Category.for_select_box, { :include_blank => true })
         
         %p
@@ -28,11 +28,11 @@
         -else
           %br
           =f.check_box :anonymous, :checked => "checked"
-          %span.white Escribir como anonymo
+          %span.white Escribir como anónimo
           
           
         %p
-          .white Tags (etiquetas), separadas por comas
+          .white Tags (etiquetas) separadas por comas
           =text_field_tag "story[tag_list]"
 
         %p

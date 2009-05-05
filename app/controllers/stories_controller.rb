@@ -94,8 +94,8 @@ class StoriesController < ApplicationController
     @story.user = current_user if current_user
     respond_to do |format|
       if @story.save
-        flash[:notice] = 'Story was successfully created.'
-        format.html { redirect_to(@story) }
+        flash[:notice] = '¡Muy bien!<br/> Ahora tu historia se encuentra en la página de inicio donde también puedes votar otras historias.'
+        format.html { redirect_to root_path }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
         format.html { render :action => "new" }
