@@ -4,6 +4,9 @@ a {
 a.green {
   color: #ceff00; }
 
+a.white {
+  color: white; }
+
 a.inactive {
   color: black;
   font-weight: normal; }

@@ -1,5 +1,10 @@
 .story_wrapper{:id => dom_id(story)}
   .body{:class => ((story_counter+1) != 1) ? "round" : ""}
+    
+    -if story.user and !story.anonymous
+      ="(de #{story.user.login})"
+    -else
+      (de anónimo)
     =link_to(truncate(story.body, 400), story_path(story))
   .footer
     .category.fl

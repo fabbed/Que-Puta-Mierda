@@ -15,7 +15,7 @@
         %p
           %br
           =check_box_tag "terms[accepted]", "", :checked => "checked"
-          %span.white Aceptar las condiciones de uso 
+          %span.white= link_to "Aceptar los Términos del Servicio", terms_path, :target => "blank", :class => "white"
 
 
         %h3 Los datos siguientes son voluntarios

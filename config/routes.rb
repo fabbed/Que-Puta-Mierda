@@ -9,6 +9,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resource :comments  
 
+  map.terms      '/terminos-del-servicio', :controller => 'terminos', :action => 'terms'
+  map.privacidad  '/politica-de-privacidad', :controller => 'terminos', :action => 'privacidad'
+
+
+
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
