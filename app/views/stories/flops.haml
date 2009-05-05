@@ -7,11 +7,8 @@
   
   .sidebar    
     .grid_5
-      -if logged_in?
-        .round_section
-          %h2="¡Hola #{current_user.login}!"
-          Estas connectado
-
+      =render :partial => 'users/status'
+      
       .round_section
         =render :partial => "/categories/categories"
 

@@ -7,10 +7,7 @@
 
   .sidebar    
     .grid_5
-      -if logged_in?
-        .round_section
-          %h2="¡Hola #{current_user.login}!"
-          Estas connectado
+      =render :partial => 'users/status'
 
       .round_section
         =render :partial => "/categories/categories"
@@ -27,7 +24,7 @@
           = password_field_tag "password", ""
           %br
           %br          
-          = submit_tag "Connectar"
+          = submit_tag "Conectar"
           %br
           %br
           =link_to "Regsitrar como nuevo Usuario", signup_path

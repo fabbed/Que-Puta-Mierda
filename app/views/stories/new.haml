@@ -44,10 +44,7 @@
 
       
   .grid_5.omega.sidebar
-    -if logged_in?
-      .round_section
-        %h2="¡Hola #{current_user.login}!"
-        Estas connectado
+    =render :partial => 'users/status'
 
     .round_section
       %h2 ¿Cómo funciona?
