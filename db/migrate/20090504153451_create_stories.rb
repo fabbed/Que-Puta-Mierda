@@ -6,7 +6,7 @@ class CreateStories < ActiveRecord::Migration
       t.integer :rated_top, :default => 0
       t.integer :rated_flop, :default => 0
 
-      t.boolean :anonymous, :default => false      
+      t.boolean :anonymous, :default => true
 
       t.boolean :on_startpage, :default => false
       t.integer :rated_top, :default => 0
