@@ -1,8 +1,14 @@
-Your account has been created.
+Hola <%= @user.login %>,
+Te has registrado en www.queputamierda.com.
 
-  Username: <%= @user.login %>
-  Password: <%= @user.password %>
+Tu nombre de Usuario: <%= @user.login %>
+Tu Contraseña: <%= @user.password %>
 
-Visit this url to activate your account:
+Para confirmar tu registro, haz click en el siguiente link:
+<%= @url %>
 
-  <%= @url %>
+
+¡Vuelve para leer o valorar mierda ajena y también para compartir la tuya!
+
+Saludos,
+Tus amigos de queputamierda.com ;-)

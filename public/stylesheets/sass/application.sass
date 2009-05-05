@@ -2,6 +2,17 @@
 !tab_link_color = #CEFF00
 !story_footer_color = #DFD8C6
 
+a
+  :color = !tab_link_color
+
+a.green
+  :color = !tab_link_color
+
+
+a.inactive
+  :color black
+  :font-weight normal
+
 #main
   :margin-top 20px
 
@@ -84,12 +95,42 @@
     :background transparent url(/images/icon_moderate_active.png) no-repeat scroll center top
 
 .story_wrapper
+  textarea
+    :width 560px
+    :height 100px
+  :margin-bottom 10px
   .body
     :background-color white
-    :padding 5px
+    :padding 10px
     a
       :color black
   .footer
     :background-color = !story_footer_color
-    :height 20px
-    :padding 5px 10px
+    :padding 5px 5px
+
+  .vote_top, .vote_flop
+    :margin-left 8px  
+
+  .comments
+    a
+      :margin-left 10px  
+
+  .vote_top
+    :background transparent url(/images/icon_vote_top.png) no-repeat scroll 0 0.1em
+    span
+      a
+        :display block
+        :padding-left 17px
+
+  .vote_flop
+    :background transparent url(/images/icon_vote_flop.png) no-repeat scroll 0 0.1em
+    span
+      a
+        :display block
+        :padding-left 17px
+
+
+.story_comment
+  :border-bottom 1px black dashed
+  :margin 10px 0px
+  

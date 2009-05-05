@@ -1,1 +1,4 @@
--Text von Elena bei new hostory rein
+-Validation messages mit elena überfliegen
+
+-in user_mailer und in mial.rb auf queputamierda.com umstellen (Phillip), Mail empfangen
+-auch URL

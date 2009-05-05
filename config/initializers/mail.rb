@@ -1,7 +1,7 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
  :address => "mail.authsmtp.com",
- :domain => "conoceos.com",
+ :domain => "queputamierda.com",
  :port => 23,
  :authentication => :login,
  :user_name => "ac36117",

@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
 
 
   def self.for_select_box
-    find(:all, :order => "name asc").collect {|p| [ p.name[0..30], p.id ] }
+    find(:all, :order => "id asc").collect {|p| [ p.name[0..30], p.id ] }
   end
 
 

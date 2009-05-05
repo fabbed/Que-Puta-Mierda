@@ -6,26 +6,47 @@
       - form_for(@story) do |f|
         = f.error_messages
         %p
-          Texto
-          %br
+          .white Texto
           =f.text_area :body, :class => "story_body_text_area"
         %p
-          Categoria
-          %br
+          .white Categoria
           =select("story", "category_id", Category.for_select_box, { :include_blank => true })
+        
         %p
-          E-Mail
           %br
+          =check_box_tag "terms[accepted]", "", :checked => "checked"
+          %span.white Aceptar las condiciones de uso 
+
+
+        %h3 Los datos siguientes son voluntarios
+        %br
+        -unless logged_in?
+          .white E-Mail
           =f.text_field :email, :class => "story_email_text_field"
+        -else
+          %br
+          =f.check_box :anonymous, :checked => "checked"
+          %span.white Escribir como anonymo
+          
+          
+        %p
+          .white Tags (etiquetas), separadas por comas
+          =text_field_tag "story[tag_list]"
 
         %p
+          %br
           = f.submit '¡Soltar la mierda!'
 
 
-      = link_to 'Back', stories_path
+      =# link_to 'Back', stories_path
 
       
   .grid_5.omega.sidebar
+    -if logged_in?
+      .round_section
+        %h2="¡Hola #{current_user.login}!"
+        Estas connectado
+
     .round_section
       %h2 ¿Cómo funciona?
       %p
@@ -38,3 +59,5 @@
       %h2 ¿Debo registrarme?
       %p
         No. Para publicar o valorar historias no es necesario estar registrado. Tampoco para moderarlas.
+
+=render :partial => "js_validation", :locals => { :form_id => "new_story" }

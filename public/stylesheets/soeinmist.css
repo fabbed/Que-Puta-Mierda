@@ -1019,7 +1019,8 @@ table.big
   clear:both;
  }
 
- a {color : #0c749f;
+ a {
+   color : #0c749f;
   font-weight : bold;
   text-decoration : none;
   }

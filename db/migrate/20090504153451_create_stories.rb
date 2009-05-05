@@ -3,7 +3,14 @@ class CreateStories < ActiveRecord::Migration
     create_table :stories do |t|
       t.text :body
       t.string :email
+      t.integer :rated_top, :default => 0
+      t.integer :rated_flop, :default => 0
+
+      t.boolean :anonymous, :default => false      
+
       t.boolean :on_startpage, :default => false
+      t.integer :rated_top, :default => 0
+      t.integer :rated_flop, :default => 0
       
       t.belongs_to :category
       t.belongs_to :user

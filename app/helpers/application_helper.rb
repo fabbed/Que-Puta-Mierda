@@ -1,6 +1,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  include TagsHelper
+
   def link_to_facebox(name, options = {}, html_options = {})
     link_to(name, options, html_options.merge({ :rel=> "facebox" }))
   end
@@ -39,11 +41,8 @@ module ApplicationHelper
   end
 
 
-
-
-
   def my_date(date)
-    date.strftime("%d.%m.%y")
+    date.strftime("%d.%m.%Y a las %H:%Mh")
   end
 
 

@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include AuthenticatedSystem
+  
+  before_filter :create_session
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  
+  def create_session
+    session[:top_votes] = Array.new if !session[:top_votes]
+    session[:flop_votes] = Array.new if !session[:flop_votes]
+  end
+
 end

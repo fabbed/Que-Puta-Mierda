@@ -1,3 +1,13 @@
+a {
+  color: #ceff00; }
+
+a.green {
+  color: #ceff00; }
+
+a.inactive {
+  color: black;
+  font-weight: normal; }
+
 #main {
   margin-top: 20px; }
 
@@ -76,12 +86,34 @@
 #top_navigation a#moderate.active {
   background: transparent url(/images/icon_moderate_active.png) no-repeat scroll center top; }
 
-.story_wrapper .body {
-  background-color: white;
-  padding: 5px; }
-  .story_wrapper .body a {
-    color: black; }
-.story_wrapper .footer {
-  background-color: #dfd8c6;
-  height: 20px;
-  padding: 5px 10px; }
+.story_wrapper {
+  margin-bottom: 10px; }
+  .story_wrapper textarea {
+    width: 560px;
+    height: 100px; }
+  .story_wrapper .body {
+    background-color: white;
+    padding: 10px; }
+    .story_wrapper .body a {
+      color: black; }
+  .story_wrapper .footer {
+    background-color: #dfd8c6;
+    padding: 5px 5px; }
+  .story_wrapper .vote_top, .story_wrapper .vote_flop {
+    margin-left: 8px; }
+  .story_wrapper .comments a {
+    margin-left: 10px; }
+  .story_wrapper .vote_top {
+    background: transparent url(/images/icon_vote_top.png) no-repeat scroll 0 0.1em; }
+    .story_wrapper .vote_top span a {
+      display: block;
+      padding-left: 17px; }
+  .story_wrapper .vote_flop {
+    background: transparent url(/images/icon_vote_flop.png) no-repeat scroll 0 0.1em; }
+    .story_wrapper .vote_flop span a {
+      display: block;
+      padding-left: 17px; }
+
+.story_comment {
+  border-bottom: 1px black dashed;
+  margin: 10px 0px; }

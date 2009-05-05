@@ -2,18 +2,52 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.xml
 
+  protect_from_forgery :only => [:create, :update, :destroy] 
+  before_filter :prepare_stuff, :only => [:vote_top, :vote_flop] 
+  
   layout "application"
 
+  def prepare_stuff
+    @story = Story.find_by_id(params[:id])    
+    @stories = Story.moderated.newest_first
+    @mode = params[:mode]
+    flash[:notice] = "Gracias por el voto!"
+  end
+
+  def vote_top
+    session[:top_votes] << params[:id].to_i
+    flash[:notice] = "Gracias por el voto!"
+
+    @story.rated_top = @story.rated_top + 1
+    @story.save    
+    
+    respond_to do |wants|
+      wants.html {  }
+      wants.js do
+        render :partial => "mark_as_voted"
+      end
+    end
+  end
+
+  def vote_flop
+    session[:flop_votes] << params[:id].to_i
+    @story.rated_flop = @story.rated_flop + 1
+    @story.save
+    
+    respond_to do |wants|
+      wants.html {  }
+      wants.js do
+        render :partial => "mark_as_voted"
+      end
+    end
+  end
+
   def tops
-    @stories = Story.tops
+    @stories = Story.moderated.tops
   end
 
   def flops
-    @stories = Story.flops
-  end
-
-  def to_moderate
-    @stories = Story.to_moderate    
+    @stories = Story.moderated.flops
   end
 
   def index
@@ -56,7 +90,8 @@ class StoriesController < ApplicationController
   # POST /stories.xml
   def create
     @story = Story.new(params[:story])
-
+    @story.tag_list = params[:story][:tag_list]
+    @story.user = current_user if current_user
     respond_to do |format|
       if @story.save
         flash[:notice] = 'Story was successfully created.'

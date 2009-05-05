@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(:version => 20090504154415) do
     t.integer  "user_id",                        :default => 0,  :null => false
   end
 
-  add_index "comments", ["user_id"], :name => "fk_comments_user"
-
   create_table "stories", :force => true do |t|
     t.text     "body"
     t.string   "email"
+    t.integer  "rated_top",    :default => 0
+    t.integer  "rated_flop",   :default => 0
+    t.boolean  "anonymous",    :default => false
     t.boolean  "on_startpage", :default => false
     t.integer  "category_id"
     t.integer  "user_id"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20090504154415) do
     t.datetime "remember_token_expires_at"
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
+    t.boolean  "wants_newsletter",                        :default => true
     t.integer  "country_id"
   end
 

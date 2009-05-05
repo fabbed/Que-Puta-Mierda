@@ -1,3 +1,32 @@
-= link_to 'Edit', edit_story_path(@story)
-|
-= link_to 'Back', stories_path
+.grid_16
+  .grid_10.alpha
+    .single_start
+    =render :partial => "story_single", :locals => {:story => @story}
+
+  .sidebar    
+    .grid_5
+      -if logged_in?
+        .round_section
+          %h2="¡Hola #{current_user.login}!"
+          Estas connectado
+
+      .round_section
+        =render :partial => "/categories/categories"
+
+      .round_section
+        %h2 Login
+        - form_tag session_path do
+          = label_tag "email", "E-Mail", :class => "grid_2 prefix_0 alpha"
+          %br
+          = text_field_tag "email", @email
+          %br 
+          = label_tag "password", "Contraseña", :class => "grid_2 prefix_0 alpha"
+          %br
+          = password_field_tag "password", ""
+          %br
+          %br          
+          = submit_tag "Connectar"
+          %br
+          %br
+          =link_to "Regsitrar como nuevo Usuario", signup_path
+        .clear
