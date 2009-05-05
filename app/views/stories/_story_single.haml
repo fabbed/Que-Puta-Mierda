@@ -1,0 +1,41 @@
+.story_wrapper.round{:id => dom_id(story)}
+  .body.round
+    =h story.body
+  .footer
+    .category.fl
+      ="#{link_to(story.category.name, category_path(story.category))}/#{my_date(story.created_at)}"
+    .vote_top.fl
+      %span
+        -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)
+          =link_to_function "Qué puta mierda!(#{story.rated_top})", "vote_story(#{story.id}, 'top', 'single')"
+        -else
+          =link_to_function "Qué puta mierda!(#{story.rated_top})", "alert('Ya voteaste')", :class => "inactive"
+    .vote_flop.fl
+      %span
+        -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)
+          =link_to_function "Te lo buscaste(#{story.rated_flop})", "vote_story(#{story.id}, 'flop', 'single')"
+        -else
+          =link_to_function "Te lo buscaste(#{story.rated_flop})", "alert('Ya voteaste')", :class => "inactive"
+    .comments.fl{:style => "padding-left: 17px;"}
+      ="Comentarios(#{story.comments.size})"
+      
+    .clear.h_20
+    .h_10
+    %h2 Escribir respuesta
+    .h_5
+    Tu respuesta:
+    %br
+    -form_for :comment, :url => comments_path(:story => story.id), :html => {:id => "comment_form"} do |f|
+      =text_area_tag "comment[comment]", "", :id => "story_comment_field"
+      .fr{:style => "margin-top: 10px;"}
+        =submit_tag "Mandar comentario"  
+      .clear
+
+    %h2 Comentarios
+    -story.comments.reverse.each do |comment|
+      .story_comment
+        ="Respuesta del #{my_date(comment.created_at)}:"
+        %br
+        =comment.comment
+
+=render :partial => "comments/js_validation", :locals => { :form_id => "comment_form" }

@@ -1,0 +1,22 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var validator = $("##{form_id}").validate({
+        rules: {
+          "comment[comment]": {
+            required: true,
+            minlength: 2
+          }
+        },
+        messages: {
+
+          "comment[comment]": {
+            required: "¿Y donde esta tu comentario?",
+            minlength: "Vamos! Un poco más!"
+          }
+          
+        }
+        
+        
+      });
+    });

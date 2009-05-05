@@ -1,0 +1,10 @@
+$.jGrowl("<%= escape_javascript(flash.delete(:notice)) %>", { life: 5000 });
+$(".story_wrapper").remove();
+
+<% if @mode == "collection" %>
+  $(".top_round_section").after("<%= escape_javascript(   render :partial => 'stories/story', :collection => @stories, :locals => {:type => 'payed'} ) %>").appear("slow")
+<% else %>
+  $(".single_start").after("<%= escape_javascript(   render :partial => 'stories/story_single', :locals => {:story => @story} ) %>").appear("slow")
+<% end %>
+
+round_corners();

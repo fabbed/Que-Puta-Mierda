@@ -1,0 +1,56 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var validator = $("##{form_id}").validate({
+        rules: {
+          "user[login]": {
+            required: true,
+            minlength: 5,
+            maxlength: 100
+          },
+          "user[country_id]": {
+            required: true
+          },
+          "user[password]": {
+            required: true,
+            minlength: 5
+          },
+          "user[password_confirmation]": {
+            required: true,
+            minlength: 4,
+            equalTo: "#user_password"
+          },
+          "user[email]": {
+            required: true,
+            email: true,
+            minlength: 4,
+            //remote: $("#author_validation_link").attr('value')
+          }
+        
+        },
+        messages: {
+          "user[login]": {
+            required: "Rellena este campo",
+            minlength: "Min",
+            maxlength: "Max"
+          },
+        "user[password]": {
+          required: "Pon tu contraseña",
+          rangelength: jQuery.format("Enter at least {0} characters")
+        },
+        "user[password_confirmation]": {
+          required: "Pon la misma contraseña que arriba.",
+          equalTo: "Pon la misma contraseña que arriba."
+        },
+        "user[email]": {
+          required: "Pon tu correo",
+          email: "Pon un correo valido.",
+          remote: jQuery.format("{0} ya esta regsitrado, toma otro email")
+        },
+        "user[country_id]": {
+          required: "En que Pais vives?"
+        }}
+        
+        
+      });
+    });

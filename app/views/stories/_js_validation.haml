@@ -1,0 +1,41 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var validator = $("##{form_id}").validate({
+        rules: {
+          "story[body]": {
+            required: true,
+            minlength: 100
+          },
+          "story[category_id]": {
+            required: true
+          },
+          "story[email]": {
+            email: true
+          },
+          "terms[accepted]": {
+            required: true
+          }
+          
+        
+        },
+        messages: {
+          "story[body]": {
+            required: "¡Suelta una historia!",
+            minlength: "¡Enróllate un poco más, al menos 100 letras por favor!"
+          },
+        "story[category_id]": {
+          required: "Seleciona una categoria"
+          },
+        "story[email]": {
+          email: "Este email no es valido"
+          },
+        "terms[accepted]": {
+          required: "Debes aceptar las condiciones de uso"
+        }
+          
+        }
+        
+        
+      });
+    });

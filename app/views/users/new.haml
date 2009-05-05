@@ -1,0 +1,43 @@
+.grid_16
+  .grid_10.alpha
+    .round_section
+      %h2 Registrar nuevo Usuario
+      
+      
+      - form_for :user, :url => users_path, :html => {:id => "new_user_form"} do |f|
+        = error_messages_for :user
+        %p
+          %label{ :for => "login" }
+            Nombre de Usuario: 
+          %br
+          = f.text_field :login
+        %p
+          %label{ :for => "email" }
+            E-mail:
+          %br
+          = f.text_field :email
+        %p
+          %label{ :for => "password" }
+            Contraseña:
+          %br
+          = f.password_field :password
+        %p
+          %label{ :for => "password_confirmation" }
+            Repetir Contraseña: 
+          %br
+          = f.password_field :password_confirmation
+        %p
+          %label{ :for => "wants_newsletter" }
+            = f.check_box :wants_newsletter, :checked => "checked"
+          Suscribirse al Newsletter de queputamierda.com: 
+        %p
+          = submit_tag 'Sign up'
+  
+  .sidebar    
+    .grid_6.omega
+      .round_section
+        %h2 Ayuda
+        Registrate en solo 20 secundos y empieza a soltar mierda en www.queputamierda.com
+
+
+=render :partial => "js_validation", :locals => { :form_id => "new_user_form" }
