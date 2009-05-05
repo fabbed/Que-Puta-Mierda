@@ -6,7 +6,7 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-ANALYTICS=FALSE
+ANALYTICS=TRUE
 
 Rails::Initializer.run do |config|
   config.gem 'ryanb-scope-builder', :lib => 'scope_builder'
