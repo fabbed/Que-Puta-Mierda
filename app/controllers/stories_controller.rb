@@ -43,11 +43,11 @@ class StoriesController < ApplicationController
   end
 
   def tops
-    @stories = Story.moderated.tops
+    @stories = Story.tops
   end
 
   def flops
-    @stories = Story.moderated.flops
+    @stories = Story.flops
   end
 
   def index
