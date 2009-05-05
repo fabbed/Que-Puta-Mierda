@@ -10,10 +10,10 @@
       -if logged_in?
         .round_section
           %h2="¡Hola #{current_user.login}!"
-          Estas connectado
+          Estas conectado
           %br
           %br
-          =link_to "Cerrar sessión", logout_path
+          =link_to "Cerrar sesión", logout_path
 
       .round_section
         =render :partial => "/categories/categories"

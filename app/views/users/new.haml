@@ -8,7 +8,7 @@
         = error_messages_for :user
         %p
           %label{ :for => "login" }
-            Nombre de Usuario: 
+            Nombre de usuario: 
           %br
           = f.text_field :login
         %p
@@ -23,21 +23,21 @@
           = f.password_field :password
         %p
           %label{ :for => "password_confirmation" }
-            Repetir Contraseña: 
+            Repetir contraseña: 
           %br
           = f.password_field :password_confirmation
         %p
           %label{ :for => "wants_newsletter" }
             = f.check_box :wants_newsletter, :checked => "checked"
-          Suscribirse al Newsletter de queputamierda.com: 
+          Suscribirse al Newsletter de queputamierda.com y recibir el TOP 10: 
         %p
-          = submit_tag 'Sign up'
+          = submit_tag 'Registrarse'
   
   .sidebar    
     .grid_6.omega
       .round_section
         %h2 Ayuda
-        Registrate en solo 20 secundos y empieza a soltar mierda en www.queputamierda.com
+        Regístrate en solo 20 segundos y cuenta qué te pasó.
 
 
 =render :partial => "js_validation", :locals => { :form_id => "new_user_form" }
