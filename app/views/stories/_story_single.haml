@@ -38,7 +38,11 @@
     %h2 Comentarios
     -story.comments.reverse.each do |comment|
       .story_comment
-        ="Respuesta del #{my_date(comment.created_at)}:"
+        ="Comentario del #{my_date(comment.created_at)} escrito por "
+        -if comment.user
+          =User.find_by_id(comment.user_id).login
+        -else
+          ="anónimo:"
         %br
         =comment.comment
 
