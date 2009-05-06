@@ -6,6 +6,7 @@
     -else
       (de anónimo)
     =link_to(truncate(story.body, 400), story_path(story))
+    =link_to("(Leer mas)", story_path(story), :class => "blue")
   .footer
     .category.fl
       ="#{link_to(story.category.name, category_path(story.category))}/#{my_date(story.created_at)}"

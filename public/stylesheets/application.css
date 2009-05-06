@@ -99,6 +99,8 @@ a.inactive {
     padding: 10px; }
     .story_wrapper .body a {
       color: black; }
+    .story_wrapper .body a.blue {
+      color: #0c749f; }
   .story_wrapper .footer {
     background-color: #dfd8c6;
     padding: 5px 5px; }
