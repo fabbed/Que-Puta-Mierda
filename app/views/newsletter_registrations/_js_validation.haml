@@ -1,0 +1,22 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var validator = $("##{form_id}").validate({
+        rules: {
+          "newsletter_registration[email]": {
+            email: true,
+            required: true
+          }
+        },
+        messages: {
+
+          "newsletter_registration[email]": {
+            required: "¿Y donde esta tu email?",
+            email: "Este email no es válido",
+          }
+          
+        }
+        
+        
+      });
+    });
