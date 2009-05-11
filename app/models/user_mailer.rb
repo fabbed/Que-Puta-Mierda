@@ -11,6 +11,20 @@ class UserMailer < ActionMailer::Base
     @subject    += 'Registro en www.queputamierda.com'
     @body[:url]  = "http://www.queputamierda.com/"
   end
+
+  def new_comment(story)
+    if story.user.present?
+      @recipients = story.user.email
+    elsif
+      @recipients = story.email      
+    end
+    
+    @from        = "queputamierda.com <admin@queputamierda.com>"    
+    @subject    += 'queputamierda.com - Nuevo comentario.'
+
+    @body[:story]  = story
+  end
+
   
   protected
     def setup_email(user)

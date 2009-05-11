@@ -4,7 +4,7 @@
   .grid_10.alpha
     .top_round_section
       .my_pagination
-        = will_paginate @stories, :prev_label => '« Anteriores', :next_label => 'Proximos »'
+        = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguient »'
     =render :partial => 'stories/story', :collection => @stories
   
   .sidebar    

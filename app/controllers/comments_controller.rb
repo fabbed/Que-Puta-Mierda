@@ -8,6 +8,10 @@ class CommentsController < ApplicationController
     @story = Story.find_by_id(params[:story])
     @story.add_comment(comment)
 
+    if @story.email or @story.user_id
+      UserMailer.deliver_new_comment(@story)
+    else
+
     flash[:notice] = "Comentario enviado."
     
     respond_to do |wants|
