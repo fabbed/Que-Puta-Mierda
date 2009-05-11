@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
     end
     
     @from        = "queputamierda.com <admin@queputamierda.com>"    
-    @subject    += 'queputamierda.com - Nuevo comentario.'
+    @subject = 'queputamierda.com - Nuevo comentario.'
 
     @body[:story]  = story
   end
