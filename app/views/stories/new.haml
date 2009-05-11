@@ -8,31 +8,32 @@
       - form_for(@story) do |f|
         = f.error_messages
         %p
-          .white Texto
+          .white.label Texto
           =f.text_area :body, :class => "story_body_text_area"
         %p
-          .white Categoría
+          .white.label Categoría
           =select("story", "category_id", Category.for_select_box, { :include_blank => true })
         
-        %p
-          %br
-          =check_box_tag "terms[accepted]", "", :checked => "checked"
-          %span.white= link_to "Aceptar los Términos del Servicio", terms_path, :target => "blank", :class => "white"
-
-
-        %h3 Los datos siguientes son voluntarios
-        %br
+        
         -unless logged_in?
-          .white E-Mail
+
+          %br
+          %br          
+          .white.label E-Mail
+          .white.label_description ¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!
           =f.text_field :email, :class => "story_email_text_field"
         -else
           %br
           =f.check_box :anonymous
-          %span.white Escribir como anónimo
-          
-          
+          %span.white.label Escribir como anónimo
+
         %p
-          .white Tags (etiquetas) separadas por comas
+          %br
+          =check_box_tag "terms[accepted]", "", :checked => "checked"
+          %span.white.label= link_to "Aceptar los Términos del Servicio", terms_path, :target => "blank", :class => "white"
+
+        %p
+          .white.label Tags (etiquetas) separadas por comas (Ejemplo: autobus, fiesta, mascota, amigo)
           =text_field_tag "story[tag_list]"
 
         %p
@@ -52,6 +53,6 @@
         Muy sencillo, basta con escribir un pequeño texto y después pulsar el botón “¡Soltar la mierda!". Entonces el texto aparecerá en la página principal y podrá ser valorado como cagada o putada por otros usuarios.             
       %h2 ¿Debo registrarme?
       %p
-        No. Para publicar o valorar historias no es necesario estar registrado.
+        No. Para publicar o valorar historias no es necesario estar registrado. Pero si lo haces podremos informarte cuando alguien comente lo que escribiste.
 
 =render :partial => "js_validation", :locals => { :form_id => "new_story" }
