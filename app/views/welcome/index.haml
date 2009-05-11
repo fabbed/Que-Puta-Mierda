@@ -1,8 +1,10 @@
 -title("No estás solo - A otros también les pasan mierdas - queputamierda.com")
 
-.grid_16
+.grid_16    
   .grid_10.alpha
     .top_round_section
+      .my_pagination
+        = will_paginate @stories, :prev_label => '« Anteriores', :next_label => 'Proximos »'
     =render :partial => 'stories/story', :collection => @stories
   
   .sidebar    
@@ -11,6 +13,11 @@
 
       .round_section
         =render :partial => "/categories/categories"
+
+      .round_section
+        =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
+
+
 
       -unless logged_in?
         .round_section

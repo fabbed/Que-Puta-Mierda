@@ -6,7 +6,13 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-ANALYTICS=TRUE
+STORIES_PER_PAGE = 6
+
+if RAILS_ENV == "development"
+  ANALYTICS=FALSE
+else
+  ANALYTICS=TRUE
+end
 
 Rails::Initializer.run do |config|
   config.gem 'ryanb-scope-builder', :lib => 'scope_builder'

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090504154415) do
+ActiveRecord::Schema.define(:version => 20090511185000) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -27,12 +27,19 @@ ActiveRecord::Schema.define(:version => 20090504154415) do
     t.integer  "user_id",                        :default => 0,  :null => false
   end
 
+  create_table "newsletter_registrations", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stories", :force => true do |t|
     t.text     "body"
     t.string   "email"
     t.integer  "rated_top",    :default => 0
     t.integer  "rated_flop",   :default => 0
-    t.boolean  "anonymous",    :default => false
+    t.boolean  "anonymous",    :default => true
     t.boolean  "on_startpage", :default => false
     t.integer  "category_id"
     t.integer  "user_id"

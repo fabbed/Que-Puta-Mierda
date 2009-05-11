@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :newsletter_registrations
+
 
   map.resources :stories, 
                 :collection => { :tops => :get, :flops => :get, :to_moderate => :get},
