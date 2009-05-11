@@ -1,8 +1,8 @@
 ¡Hola!
 
-Tu historia <%= @story.body[0..60] %> ha recibido un nuevo comentario.
+Tu historia "<%= @story.body[0..40] %>" ha recibido un nuevo comentario.
 
-http://www.queputamierda.com/<%= @story.to_param %>
+http://www.queputamierda.com/stories/<%= @story.to_param %>
  
 Vuelve para leer y valorar mierda ajena. ¡Y también para compartir la tuya!
 
