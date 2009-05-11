@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
     if @story.email or @story.user_id
       UserMailer.deliver_new_comment(@story)
-    else
+    end
 
     flash[:notice] = "Comentario enviado."
     
