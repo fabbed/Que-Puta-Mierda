@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @story = Story.find_by_id(params[:story])
     @story.add_comment(comment)
 
-    if @story.email or @story.user_id
+    if (@story.email.length > 2 or @story.user_id > 0)
       UserMailer.deliver_new_comment(@story)
     end
 
