@@ -19,6 +19,8 @@ class UserMailer < ActionMailer::Base
       @recipients = story.email      
     end
     
+    puts "sending mail to: " + @recipients 
+    
     @from        = "queputamierda.com <admin@queputamierda.com>"    
     @subject = 'queputamierda.com - Nuevo comentario.'
 
