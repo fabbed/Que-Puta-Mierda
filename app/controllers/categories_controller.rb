@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
 
   def show
-    @category = Category.find(params[:id].to_i)
-    @stories = Story.find(:all, :conditions => ["category_id = ?", params[:id].to_i])
+    @category = Category.find(params[:id].to_s)
+    @stories = @category.stories.paginate(:page => params[:page], :per_page => STORIES_PER_PAGE)
   end
 
 end
