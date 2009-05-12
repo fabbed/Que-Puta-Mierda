@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     comment = Comment.new(params[:comment])
     comment.user_id = current_user.id if current_user
     
-    @story = Story.find_by_id(params[:story])
+    @story = Story.find_by_id(params[:story].to_i)
     @story.add_comment(comment)
 
     if (@story.email.length > 2 or @story.user_id > 0)
