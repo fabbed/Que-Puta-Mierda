@@ -21,6 +21,8 @@ function fade_out(time){
 
 function vote_story(id, vote_type, mode) {
 
+  $("#story_"+id).find(".vote_link").remove()
+
   params = {"id" : id, "mode" : mode}    
   
   if (vote_type == "top") {
