@@ -18,7 +18,7 @@ Rails::Initializer.run do |config|
   config.gem 'ryanb-scope-builder', :lib => 'scope_builder'
   config.gem 'fastercsv'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'RedCloth', :lib => 'redcloth'
+  #config.gem 'RedCloth', :lib => 'redcloth'
   config.gem "friendly_id"
 
 
