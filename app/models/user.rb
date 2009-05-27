@@ -2,7 +2,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
 
   has_many :stories
-  
+  has_many :page_views  
 
   # Virtual attribute for the unencrypted password
   attr_accessor :password
@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
 
 
 
+  def self.date_of_first_registration
+    self.find(:first, :order => "created_at asc").created_at.to_date
+  end
 
 
   # Activates the user in the database.

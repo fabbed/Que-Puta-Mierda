@@ -7,6 +7,9 @@ div.fieldWithErrors {
 .top-margin-20 {
   margin-top: 30px; }
 
+.padding_10 {
+  padding: 10px; }
+
 .small_input {
   width: 40px; }
 
@@ -73,6 +76,9 @@ div.fieldWithErrors {
 
 .white {
   color: white; }
+
+.back_white {
+  background-color: white; }
 
 label.error {
   color: red;

@@ -1,2 +1,32 @@
+Auswertungsstatistiken
+  Tabelle mit nice-table
+  -users pro tag (versuchen was über KPI zu finden, evt. plugin für rails?)
+  -visitors pro tag (analytics plugin)
+  -stories pro tag (mit email, anonym aber eingeloggt, namen angegeben)
+  -regístrations pro tag
+  -möglichkeit änderungen als text zu speichern
+  -wieviele über xalut, search queries, ev tl. website optimizer & google search
+
+
+
+Que puta mierda
+qpm -> den titel als <h1> deklarieren
+
 -escribir como anonymo unchecken
 default-wert ändern
+
+
+Elena
+  Hi Fab,
+
+  ideas:
+
+  1) Poner Anterior y Siguiente también en el botton de la page.
+
+  2) Lo de los comentarios debería dar un giro grande grande. Lo que te dije ya de que se pareciera más a un foro. Así no ponemos límite al crecimiento del contenido. Que se puedan responder unos a otros, que salgan ramas. Para eso es muy importante que se resalte el campo de nombre de usuario. Hay que fomentarlo, tantos anónimos no mola. Incluso se me ocurre que puedan usar nombres aunque no se registren (eso tb sirve pa engañar a los nuevos). Lo que no sé es si es conveniente restringur los nombres ya regustrados... auqnue lo estamos haciendo por mail, ¿no? ¿Entonces puede haber usuarios duplicados?
+
+  3) En cuanto al diseño de los los comentarios también le pongo pegas. Es muy poco agradable a la vista para quedarse leyendo un rato. Sería mejor fondo blanco. Y ya que estamos... aumentar el tamaño de las fuentes de toda QPM, aunque quepan menos posts por pagina pero que sean más agradables de leer.
+
+  4) Los títulos de los posts. Muy importante también. Así no hay una masa de posts sin personalidad. Con títulos se echa un ojo y sabes qué te interesa más leer.
+
+  Te mando esto y sigo pensando. ¡So ein mist se va a quedar en bragas a nuestro lado!

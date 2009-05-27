@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090519155542) do
+ActiveRecord::Schema.define(:version => 20090526161129) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(:version => 20090519155542) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "pageviews", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "request_uri",                        :null => false
+    t.string   "request_method",       :limit => 7,  :null => false
+    t.string   "referer"
+    t.string   "session",                            :null => false
+    t.string   "ip_address",           :limit => 15, :null => false
+    t.string   "user_agent"
+    t.string   "http_accept"
+    t.string   "http_accept_language"
+    t.string   "http_accept_encoding"
+    t.string   "search_engine",        :limit => 15
+    t.string   "search_terms"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pageviews", ["ip_address"], :name => "index_pageviews_on_ip_address"
+  add_index "pageviews", ["session"], :name => "index_pageviews_on_session"
+  add_index "pageviews", ["user_id"], :name => "index_pageviews_on_user_id"
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -87,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20090519155542) do
     t.datetime "activated_at"
     t.boolean  "wants_newsletter",                        :default => true
     t.integer  "country_id"
+    t.boolean  "admin",                                   :default => false
   end
 
 end

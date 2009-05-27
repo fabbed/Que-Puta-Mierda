@@ -51,6 +51,7 @@ function vote_story(id, vote_type, mode) {
 
 
 function round_corners () {
+  $(".round").corners();
   $(".round_section").corners();
   $('.top_round_section').corners("top 10px");
   $('.story_wrapper .footer').corners("bottom 10px");

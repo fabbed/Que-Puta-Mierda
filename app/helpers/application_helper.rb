@@ -45,6 +45,10 @@ module ApplicationHelper
     date.strftime("%d.%m.%Y a las %H:%Mh")
   end
 
+  def my_date_kpis(date)
+    date.strftime("%d.%m.%Y")
+  end
+
 
 
   def info_field(label, value)
