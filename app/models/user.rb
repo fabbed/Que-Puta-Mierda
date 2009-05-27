@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   end
 
 
+
+
   # Activates the user in the database.
   def activate
     @activated = true

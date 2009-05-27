@@ -3,5 +3,7 @@
     %h2="¡Hola #{current_user.login}!"
     Estás conectado
     %br
+    -if current_user.admin
+      =link_to "Admin", :controller => "admin/kpis"
     %br
     =link_to "Cerrar sesión", logout_path
