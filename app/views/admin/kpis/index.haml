@@ -1,0 +1,34 @@
+%h1 Estadísticas
+
+%h2 Transacciones
+
+%table#mytable.td_title_table{:cellspacing=>"0"}
+  %tr
+    %td.title.left.black{:colspan => 2} General
+  %tr
+    %td.title Users
+    %td=User.count
+
+  %tr
+    %td.title Stories
+    %td=Story.count
+.h_20
+
+="First user registered @ #{my_date(User.date_of_first_registration)}"
+
+%table#mytable{:cellspacing=>"0", :summary=>"Projects"}
+  %tr
+    %th Fecha
+    %th # PVs
+    %th # Visitors    
+    %th #Users
+    %th #Stories
+    %th # Newsletters    
+    -@data.each do |data|
+      %tr
+        %td=my_date_kpis(User.date_of_first_registration + data[:date])
+        %td=data[:pvs]
+        %td=data[:visitors]
+        %td=data[:users]
+        %td="#{data[:stories]} stories / #{data[:stories_with_email]} with email" 
+        %td=data[:newsletter_count]
