@@ -1,10 +1,11 @@
 .story_wrapper.round{:id => dom_id(story)}
   .body.round
+    %h1=h story.title
     -if story.user and !story.anonymous
       ="(de #{story.user.login})"
     -else
       (de anónimo) 
-    =h story.body
+    =simple_format story.body
   .footer
     .category.fl
       ="#{link_to(story.category.name, category_path(story.category))}/#{my_date(story.created_at)}"
@@ -39,7 +40,7 @@
     -story.comments.reverse.each do |comment|
       .story_comment
         ="Comentario del #{my_date(comment.created_at)} escrito por "
-        -if comment.user
+        -if comment.user_id > 0
           =User.find_by_id(comment.user_id).login
         -else
           ="anónimo:"

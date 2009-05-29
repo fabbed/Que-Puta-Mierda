@@ -8,7 +8,11 @@
       - form_for(@story) do |f|
         = f.error_messages
         %p
-          .white.label Texto
+          .white.label Titulo de la historia
+          =f.text_field :title, :class => "story_title_text_field", :size => 72
+
+        %p
+          .white.label Historia
           =f.text_area :body, :class => "story_body_text_area"
         %p
           .white.label Categoría

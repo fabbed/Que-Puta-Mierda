@@ -9,11 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090526161129) do
+ActiveRecord::Schema.define(:version => 20090529150655) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "changes", :force => true do |t|
+    t.string   "label"
+    t.text     "description"
+    t.date     "change_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,15 +78,16 @@ ActiveRecord::Schema.define(:version => 20090526161129) do
   create_table "stories", :force => true do |t|
     t.text     "body"
     t.string   "email"
-    t.integer  "rated_top",    :default => 0
-    t.integer  "rated_flop",   :default => 0
-    t.boolean  "anonymous",    :default => true
-    t.boolean  "on_startpage", :default => false
+    t.integer  "rated_top",                   :default => 0
+    t.integer  "rated_flop",                  :default => 0
+    t.boolean  "anonymous",                   :default => true
+    t.boolean  "on_startpage",                :default => false
     t.integer  "category_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "seo_title"
+    t.string   "title",        :limit => 100
   end
 
   create_table "taggings", :force => true do |t|

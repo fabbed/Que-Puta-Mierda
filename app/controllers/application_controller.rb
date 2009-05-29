@@ -13,6 +13,15 @@ class ApplicationController < ActionController::Base
   
   
   
+  
+  def is_admin
+    unless current_user.admin == true
+      flash[:notice] = "No tienes los derechos"
+      redirect_to root_path
+    end
+  end
+  
+  
   def record_pageview
     referring_search = Squeejee::SearchSniffer::ReferringSearch.new(request.env["HTTP_REFERER"])
     

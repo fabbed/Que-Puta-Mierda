@@ -23,11 +23,17 @@ class Story < ActiveRecord::Base
 
 
   def generate_seo_title
-    self.seo_title = self.body[0..(60+ (self.body[60..100].index(" ")))]    
+    if self.title.length > 30
+      self.seo_title = self.title
+    else
+      self.seo_title = self.body[0..(60+ (self.body[60..100].index(" ")))]          
+    end
   end
 
+
+
   def browser_title
-    self.body[0..(60+ (self.body[60..100].index(" ")))]    
+    self.seo_title
   end
 
 

@@ -18,28 +18,28 @@ render_tabnav :main, :html => { :id=>'top_navigation'},
   add_tab do |t|
    t.named 'Inicio'
    t.titled 'Página Principal'
-   t.links_to :controller => 'welcome'
+   t.links_to hash_for_root_path
    t.html = {:id => 'welcome'}
   end 
 
   add_tab do |t|
    t.named 'Contar nueva historia'
    t.titled 'Contar nueva historia'
-   t.links_to :controller => 'stories', :action => "new"
+   t.links_to hash_for_new_story_path
    t.html = {:id => 'new_history'}
   end 
 
   add_tab do |t|
    t.named 'Grandes putadas'
    t.titled 'Las mejores historias'
-   t.links_to :controller => 'stories', :action => "tops"
+   t.links_to :controller => '/stories', :action => "tops"
    t.html = {:id => 'top'}
   end 
 
   add_tab do |t|
    t.named 'Flops'
    t.named 'Grandes cagadas'
-   t.links_to :controller => 'stories', :action => "flops"
+   t.links_to :controller => '/stories', :action => "flops"
    t.html = {:id => 'flop'}
   end 
 

@@ -1,6 +1,8 @@
 .story_wrapper{:id => dom_id(story)}
   .body{:class => ((story_counter+1) != 1) ? "round" : ""}
     
+    %h2=link_to(story.title, story_path(story))
+    
     -if story.user and !story.anonymous
       ="(de #{story.user.login})"
     -else

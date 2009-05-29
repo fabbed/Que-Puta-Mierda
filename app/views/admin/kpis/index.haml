@@ -1,7 +1,5 @@
 %h1 Estadísticas
 
-%h2 Transacciones
-
 %table#mytable.td_title_table{:cellspacing=>"0"}
   %tr
     %td.title.left.black{:colspan => 2} General
@@ -14,21 +12,73 @@
     %td=Story.count
 .h_20
 
-="First user registered @ #{my_date(User.date_of_first_registration)}"
 
-%table#mytable{:cellspacing=>"0", :summary=>"Projects"}
+%table#mytable.td_title_table{:cellspacing=>"0"}
   %tr
-    %th Fecha
-    %th # PVs
-    %th # Visitors    
-    %th #Users
-    %th #Stories
-    %th # Newsletters    
-    -@data.each do |data|
+    %td.title.left.black{:colspan => 3}="Changes on site (#{link_to_function "crear cambio nuevo", "$('#new_change').slideDown();", :class => "small"})"
+  
+  -Change.find(:all, :order => "change_date desc").each do |change|
+    %tr
+      %td.title=my_date_kpis(change.change_date)
+      %td=change.label
+      %td=change.description
+
+
+.h_20
+
+#new_change.hidden
+  %h2 Create new change
+  
+  -form_for @change do |f|
+    Date when change was uploaded:
+    %br
+    =f.date_select :change_date
+    %br
+    %br
+    Title:
+    %br
+    =f.text_field :label
+    %br
+    %br
+    Description:
+    %br
+    =f.text_area :description
+    %br
+    =submit_tag "Create change"    
+  
+
+
+%h2 Datos por cada dia
+
+#cada_dia
+  %table#mytable{:cellspacing=>"0", :summary=>"Projects"}
+    -@data.each_with_index do |data, i|
+      -if ((i % 15) == 0)
+        %tr
+          %th Fecha
+          %th # PVs
+          %th # Visitors    
+          %th # Users
+          %th # Stories
+          %th # Comments
+          %th # Newsletters    
+
       %tr
-        %td=my_date_kpis(User.date_of_first_registration + data[:date])
-        %td=data[:pvs]
+        %td{:class => (User.date_of_first_registration + data[:date]).strftime("%A")}=my_date_kpis(User.date_of_first_registration + data[:date])
+        %td="#{data[:pvs]} (X: #{data[:pvs_xalut_count]})"
         %td=data[:visitors]
-        %td=data[:users]
-        %td="#{data[:stories]} stories / #{data[:stories_with_email]} with email" 
-        %td=data[:newsletter_count]
+        %td
+          -(data[:users]).times do
+            ="x"
+
+        %td
+          -(data[:stories_with_email]).times do
+            ="x"
+          -(data[:stories].to_i-data[:stories_with_email].to_i).times do
+            ="o"
+        %td
+          -(data[:comments]).times do
+            ="x"
+        %td
+          -(data[:newsletter_count]).times do
+            ="x"

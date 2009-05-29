@@ -1,3 +1,13 @@
+rake  titles:generate
+
+Tabelle kompakter, andere form die 3 werte rauszufinden
+comments mit rein
+
+Sa
+So einfärben
+
+
+
 Auswertungsstatistiken
   Tabelle mit nice-table
   -users pro tag (versuchen was über KPI zu finden, evt. plugin für rails?)

@@ -4,6 +4,8 @@
 !blue_link = #0C749F
 
 
+
+
 .introduction_text
   :margin-top 30px
   :padding 0 55px 0px 10px
@@ -64,6 +66,9 @@ a.inactive
 .story_body_text_area
   :width 550px
   :height 200px
+
+.story_title_text_field
+
 
 .sidebar
   :color white
@@ -131,8 +136,19 @@ a.inactive
     :padding 10px
     a
       :color black
+      :font-weight normal
     a.blue
       :color = !blue_link
+    h1
+      :font-size 17px
+      :margin-bottom 10px
+    h2
+      :font-size 14px
+      :margin-bottom 0px
+      a
+        :font-weight bold
+        :color #565247
+
 
   .footer
     :background-color = !story_footer_color
@@ -168,3 +184,10 @@ a.inactive
   :font-size 120%
 .label_description
   :font-size 90%  
+  
+#cada_dia
+  :font-size 80%
+  td
+    :padding 2px 2px 2px 8px
+  .Saturday, .Sunday
+    :color red
