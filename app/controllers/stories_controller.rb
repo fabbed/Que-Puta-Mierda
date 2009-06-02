@@ -95,7 +95,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.save
         flash[:notice] = '¡Muy bien!<br/> Ahora tu historia se encuentra en la página de inicio donde también puedes votar otras historias.'
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path(:param => "historia_creado") }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else
         format.html { render :action => "new" }
