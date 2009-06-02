@@ -25,11 +25,12 @@ class Admin::KpisController < AdminController
       newsletter_count = NewsletterRegistration.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])      
       visitors_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ?",from, to], :group => "session").size      
       comments_count = Comment.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
-      
+      conversions = (story_count.to_f / visitors_count) * 100
 
 
       @data << {:date => i, :users => user_count, 
                 :stories => story_count, 
+                :conversions => conversions,       
                 :stories_with_email => story_count_with_email,
                 :pvs => pvs_count, 
                 :pvs_xalut_count => pvs_xalut_count,

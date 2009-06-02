@@ -60,8 +60,9 @@
           %th # Visitors    
           %th # Users
           %th # Stories
+          %th Conversion(Stories per Visitor)
           %th # Comments
-          %th # Newsletters    
+          %th # Newsletters  
 
       %tr
         %td{:class => (User.date_of_first_registration + data[:date]).strftime("%A")}=my_date_kpis(User.date_of_first_registration + data[:date])
@@ -76,6 +77,8 @@
             ="x"
           -(data[:stories].to_i-data[:stories_with_email].to_i).times do
             ="o"
+        %td
+          =data[:conversions]
         %td
           -(data[:comments]).times do
             ="x"
