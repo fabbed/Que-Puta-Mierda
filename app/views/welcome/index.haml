@@ -6,6 +6,9 @@
       .my_pagination
         = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
     =render :partial => 'stories/story', :collection => @stories
+
+    .my_pagination
+      = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
   
   .sidebar    
     .grid_5

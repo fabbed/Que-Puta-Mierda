@@ -109,10 +109,12 @@ class StoriesController < ApplicationController
   def update
     @story = Story.find(params[:id])
 
+    @story.tag_list = params[:story][:tag_list]
+    @story.administered = true
     respond_to do |format|
       if @story.update_attributes(params[:story])
         flash[:notice] = 'Story was successfully updated.'
-        format.html { redirect_to(@story) }
+        format.html { redirect_to admin_stories_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -127,8 +129,10 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.destroy
 
+    flash[:notice] = 'Story deleted.'    
+
     respond_to do |format|
-      format.html { redirect_to(stories_url) }
+      format.html { redirect_to(admin_stories_path) }
       format.xml  { head :ok }
     end
   end

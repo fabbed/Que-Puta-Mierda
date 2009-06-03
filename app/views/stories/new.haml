@@ -39,7 +39,8 @@
 
         %p
           .white.label Palabras claves separadas por comas (Ejemplo: autobus, fiesta, mascota, amigo)
-          =text_field_tag "story[tag_list]"
+          =text_field_tag "story[tag_list]", nil, :size => 60
+          /, :onclick => "this.value = ''", :onfocus => "this.value = ''"
 
         %p
           %br

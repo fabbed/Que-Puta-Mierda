@@ -1,3 +1,5 @@
+=tabnav :admin
+
 %h1 Estadísticas
 
 %table#mytable.td_title_table{:cellspacing=>"0"}
@@ -60,13 +62,12 @@
           %th # Visitors    
           %th # Users
           %th # Stories
-          %th Conversion(Stories per Visitor)
           %th # Comments
           %th # Newsletters  
 
       %tr
         %td{:class => (User.date_of_first_registration + data[:date]).strftime("%A")}=my_date_kpis(User.date_of_first_registration + data[:date])
-        %td="#{data[:pvs]} (X: #{data[:pvs_xalut_count]})"
+        %td="#{data[:pvs]}"
         %td="#{data[:visitors]} X:#{data[:visitors_xalut_count]}, G: #{data[:visitos_google_count]}"
         %td
           -(data[:users]).times do
@@ -77,8 +78,7 @@
             ="x"
           -(data[:stories].to_i-data[:stories_with_email].to_i).times do
             ="o"
-        %td
-          =data[:conversions]
+          =sprintf("%.2f",data[:conversions])
         %td
           -(data[:comments]).times do
             ="x"

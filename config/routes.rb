@@ -23,7 +23,10 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
 
-
+  map.admin_kpis    "admin/kpis", :controller => 'admin/kpis'
+  map.admin_stories "admin/stories", :controller => 'admin/stories'
+  
+  
   map.root :controller => 'welcome'
 
 

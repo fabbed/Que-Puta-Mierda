@@ -14,6 +14,9 @@ class Story < ActiveRecord::Base
   named_scope :flops, :order => ['rated_flop desc']
   named_scope :newest_first, :order => ['created_at desc']
   named_scope :to_moderate, :conditions => ['on_startpage = ?', true]  
+  named_scope :for_administering, :order => "created_at desc"
+
+
   
   has_friendly_id :seo_title, :use_slug => true, :strip_diacritics => true
   
@@ -22,8 +25,14 @@ class Story < ActiveRecord::Base
 
 
 
+
+  def tags_seperated
+    tag_list.map { |tag|  tag+","}
+  end
+
+
   def generate_seo_title
-    if self.title.length > 30
+    if true #self.title.length > 30
       self.seo_title = self.title
     else
       self.seo_title = self.body[0..(60+ (self.body[60..100].index(" ")))]          
