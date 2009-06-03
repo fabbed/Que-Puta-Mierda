@@ -1,0 +1,23 @@
+.grid_16
+  .grid_10.alpha
+    .round_section
+
+
+      - form_for(@story) do |f|
+        = f.error_messages
+
+        %p
+          =f.text_field :title, :class => "story_title_text_field", :size => 72
+
+        %p
+          =f.text_area :body, :class => "story_body_text_area"
+
+        %p
+          .white.label Palabras claves separadas por comas (Ejemplo: autobus, fiesta, mascota, amigo)
+          =text_field_tag "story[tag_list]", @story.tags_seperated, :size => 70
+
+        %p
+          = f.submit 'Update'
+
+  
+          =link_to "VOLVER", admin_stories_path
