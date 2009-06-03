@@ -21,8 +21,8 @@ class Admin::KpisController < AdminController
       story_count = Story.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
       story_count_with_email = Story.count(:conditions => ["created_at BETWEEN ? AND ? AND email IS NOT NULL",from, to])      
       pvs_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
-      visitors_xalut_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ? AND referer like '%xalut%'",from, to], :group => "session")
-      visitos_google_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ? AND referer like '%google%'",from, to], :group => "session")      
+      visitors_xalut_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ? AND referer like '%xalut%'",from, to], :group => "session").size
+      visitos_google_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ? AND referer like '%google%'",from, to], :group => "session").size 
       
       
       newsletter_count = NewsletterRegistration.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])      
