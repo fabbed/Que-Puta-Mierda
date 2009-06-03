@@ -45,8 +45,8 @@
     =f.text_area :description
     %br
     =submit_tag "Create change"    
-  
-
+                                                                                                           
+                                                                                                           
 
 %h2 Datos por cada dia
 
@@ -67,7 +67,7 @@
       %tr
         %td{:class => (User.date_of_first_registration + data[:date]).strftime("%A")}=my_date_kpis(User.date_of_first_registration + data[:date])
         %td="#{data[:pvs]} (X: #{data[:pvs_xalut_count]})"
-        %td=data[:visitors]
+        %td="#{data[:visitors]} X:#{data[:visitors_xalut_count]}, G: #{data[:visitos_google_count]}"
         %td
           -(data[:users]).times do
             ="x"
