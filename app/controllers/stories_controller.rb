@@ -7,6 +7,12 @@ class StoriesController < ApplicationController
   
   layout "application"
 
+
+  def tag
+    @stories = Story.find_tagged_with(params[:id], :match_all => true).paginate(:page => params[:page], :per_page => STORIES_PER_PAGE)
+    @tags = Story.tag_counts    
+  end
+
   def prepare_stuff
     @story = Story.find_by_id(params[:id])    
     @stories = Story.newest_first
@@ -63,6 +69,8 @@ class StoriesController < ApplicationController
   # GET /stories/1.xml
   def show
     @story = Story.find(params[:id])
+
+    @related_stories = Story.find_tagged_with(@story.tag_list)
 
     respond_to do |format|
       format.html # show.html.erb

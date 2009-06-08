@@ -11,8 +11,6 @@
 -Conversion-Rate im Admin Tool anzeigen
 
 
-
-
 rake  titles:generate
 
 -escribir como anonymo unchecken

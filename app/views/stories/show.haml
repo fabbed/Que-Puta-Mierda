@@ -10,6 +10,16 @@
       =render :partial => 'users/status'
 
       .round_section
+        %h2 Historias relacionadas
+        
+        %ul
+          -@related_stories.each do |story|
+            %li
+              %h3=link_to story.title, story_path(story)
+        
+        
+        
+      .round_section
         =render :partial => "/categories/categories"
 
       .round_section

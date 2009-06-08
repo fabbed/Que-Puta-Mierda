@@ -20,6 +20,9 @@
       .round_section
         =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
 
+      .round_section
+        =render :partial => "/tags/cloud_for_sidebar", :locals => {:tags => @tags}
+
 
 
       -unless logged_in?
