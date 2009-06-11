@@ -7,6 +7,15 @@ tr.not_administered
   td
     :background-color yellow
 
+ul
+  :list-style-type disc
+
+
+.story_wrapper
+  .body
+    .story_tags
+      a
+        :color #0C749F
 
 .introduction_text
   :margin-top 30px
@@ -89,6 +98,8 @@ a.inactive
     :color = !tab_link_color
   a:hover
     :color white
+  h3, ul
+    :margin-bottom 0px
 
 #top_navigation
   ul
@@ -183,9 +194,13 @@ a.inactive
 
 
 .story_comment
-  :border-bottom 1px black dashed
+  / :border-bottom 1px black dashed
   :margin 10px 0px
-  
+  :padding 10px
+  :color grey
+  .comment_meta
+    :font-size 9px
+
 .label
   :font-size 120%
 .label_description

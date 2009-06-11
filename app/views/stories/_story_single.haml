@@ -6,6 +6,8 @@
     -else
       (de anónimo) 
     =simple_format story.body
+    .story_tags
+      ="Palabras claves: #{story.tag_list.map {|tag| link_to "#{tag}, ", :controller => :stories, :action => :tag, :id => tag}}"
   .footer
     .category.fl
       ="#{link_to(story.category.name, category_path(story.category))}/#{my_date(story.created_at)}"
@@ -38,13 +40,15 @@
 
     %h2 Comentarios
     -story.comments.reverse.each do |comment|
-      .story_comment
-        ="Comentario del #{my_date(comment.created_at)} escrito por "
+      .story_comment.round_corners.back_white
         -if comment.user_id > 0
-          =User.find_by_id(comment.user_id).login
+          =User.find_by_id(comment.user_id).login+":"
         -else
           ="anónimo:"
+        %span.comment_meta
+          ="#{my_date(comment.created_at)}"
         %br
-        =comment.comment
+        %span.black
+          =comment.comment
 
 =render :partial => "comments/js_validation", :locals => { :form_id => "comment_form" }

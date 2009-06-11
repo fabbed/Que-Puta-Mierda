@@ -71,7 +71,8 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     @related_stories = Story.find_tagged_with(@story.tag_list)
-
+    @related_stories = @related_stories - [@story]
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @story }

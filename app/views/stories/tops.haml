@@ -13,6 +13,9 @@
       .round_section
         =render :partial => "/categories/categories"
 
+      .round_section
+        =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
+
       -unless logged_in?
         .round_section
           =render :partial => "/sessions/login"
