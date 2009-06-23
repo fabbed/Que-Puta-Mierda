@@ -9,7 +9,7 @@ class Admin::KpisController < AdminController
     
     @data = Array.new
   
-    first_user_date = User.date_of_first_registration+30.days
+    first_user_date = User.date_of_first_registration+45.days
     
     100.times do |i|
       n = (i)
