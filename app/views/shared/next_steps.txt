@@ -1,29 +1,16 @@
 -Google-Suche
 
--Elena-Admin-Tool für Content-Edit, und Tags
-  -Einer nach dem anderen
-  -Neues Feld für story administered default false, dann anzeigen, bestehende tags drinnelassen
-
 -Scroll Balken nach unten und evtl. nofollow
-
--Was mit den Titeln? Einfach länger machen per Obligation?
-
--Conversion-Rate im Admin Tool anzeigen
-
-
-rake  titles:generate
 
 -escribir como anonymo unchecken
 default-wert ändern
 
 
 Elena
-  Hi Fab,
-
-  ideas:
-
-  1) Poner Anterior y Siguiente también en el botton de la page.
-
   2) Lo de los comentarios debería dar un giro grande grande. Lo que te dije ya de que se pareciera más a un foro. Así no ponemos límite al crecimiento del contenido. Que se puedan responder unos a otros, que salgan ramas. Para eso es muy importante que se resalte el campo de nombre de usuario. Hay que fomentarlo, tantos anónimos no mola. Incluso se me ocurre que puedan usar nombres aunque no se registren (eso tb sirve pa engañar a los nuevos). Lo que no sé es si es conveniente restringur los nombres ya regustrados... auqnue lo estamos haciendo por mail, ¿no? ¿Entonces puede haber usuarios duplicados?
-
-  3) En cuanto al diseño de los los comentarios también le pongo pegas. Es muy poco agradable a la vista para quedarse leyendo un rato. Sería mejor fondo blanco. Y ya que estamos... aumentar el tamaño de las fuentes de toda QPM, aunque quepan menos posts por pagina pero que sean más agradables de leer.
+  
+  
+- Historias relacionadas nur anziegen wenn auch vorhanden
+- Google Suche
+- Elena soll sich endlich registrieren
+- story in die meta description rein
