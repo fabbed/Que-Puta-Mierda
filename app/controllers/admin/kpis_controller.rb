@@ -11,7 +11,7 @@ class Admin::KpisController < AdminController
   
     first_user_date = User.date_of_first_registration
     
-    ((Date.today - (Date.today-15.days))+1).to_i.times do |i|
+    ((Date.today - (15.days))).to_i.times do |i|
       n = (i)
 
       from = (first_user_date + n.days).beginning_of_day
