@@ -9,7 +9,7 @@ class Admin::KpisController < AdminController
     
     @data = Array.new
   
-    days= 2
+    days= 15
   
     kpi_start_date = Date.today - days.days
     @kpi_start_date = kpi_start_date
