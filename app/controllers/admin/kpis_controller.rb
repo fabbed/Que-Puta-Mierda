@@ -9,13 +9,15 @@ class Admin::KpisController < AdminController
     
     @data = Array.new
   
-    first_user_date = User.date_of_first_registration+45.days
-    
-    100.times do |i|
+    days= 20
+  
+    kpi_start_date = Date.today - days.days
+    @kpi_start_date = kpi_start_date
+    (days+1).times do |i|
       n = (i)
 
-      from = (first_user_date + n.days).beginning_of_day
-      to = (first_user_date+(n+1).days).beginning_of_day
+      from = (kpi_start_date + n.days).beginning_of_day
+      to = (kpi_start_date+(n+1).days).beginning_of_day
 
       user_count = User.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
       story_count = Story.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
@@ -43,12 +45,7 @@ class Admin::KpisController < AdminController
                 :newsletter_count => newsletter_count}
 
     end  
-    
-    
         
   end
-
-
-
 
 end
