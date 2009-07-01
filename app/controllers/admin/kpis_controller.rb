@@ -9,7 +9,7 @@ class Admin::KpisController < AdminController
     
     @data = Array.new
   
-    days= 20
+    days= 2
   
     kpi_start_date = Date.today - days.days
     @kpi_start_date = kpi_start_date
@@ -31,7 +31,7 @@ class Admin::KpisController < AdminController
       visitors_count = Pageview.count(:conditions => ["created_at BETWEEN ? AND ?",from, to], :group => "session").size      
       comments_count = Comment.count(:conditions => ["created_at BETWEEN ? AND ?",from, to])
       conversions = (story_count.to_f / visitors_count) * 100
-
+      pvs_per_visitor = (pvs_count.to_f / visitors_count.to_f)
 
       @data << {:date => i, :users => user_count, 
                 :stories => story_count, 
@@ -41,7 +41,8 @@ class Admin::KpisController < AdminController
                 :visitors_xalut_count => visitors_xalut_count,
                 :visitos_google_count => visitos_google_count,
                 :visitors => visitors_count,
-                :comments => comments_count,                
+                :comments => comments_count,
+                :pvs_per_visitor => pvs_per_visitor,
                 :newsletter_count => newsletter_count}
 
     end  

@@ -15,7 +15,7 @@
 .h_20
 
 
-%table#mytable.td_title_table{:cellspacing=>"0"}
+%table#mytable.td_title_table{:cellspacing=>"0", :style => "width: 870px;"}
   %tr
     %td.title.left.black{:colspan => 3}="Changes on site (#{link_to_function "crear cambio nuevo", "$('#new_change').slideDown();", :class => "small"})"
   
@@ -60,15 +60,17 @@
           %th Fecha
           %th # PVs
           %th # Visitors    
+          %th # PVs p. Visitor    
           %th # Users
           %th # Stories
           %th # Comments
-          %th # Newsletters  
+
 
       %tr
         %td{:class => (@kpi_start_date + data[:date]).strftime("%A")}=my_date_kpis(@kpi_start_date + data[:date])
         %td="#{data[:pvs]}"
         %td="#{data[:visitors]} X:#{data[:visitors_xalut_count]}, G: #{data[:visitos_google_count]}"
+        %td=sprintf("%.2f",data[:pvs_per_visitor])
         %td
           -(data[:users]).times do
             ="x"
@@ -81,7 +83,4 @@
           =sprintf("%.2f",data[:conversions])
         %td
           -(data[:comments]).times do
-            ="x"
-        %td
-          -(data[:newsletter_count]).times do
             ="x"

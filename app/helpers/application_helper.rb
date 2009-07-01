@@ -78,7 +78,7 @@ module ApplicationHelper
     case classname
     when "Administrator": return (tabnav "admin_main")
     when "Distributor": return (tabnav "distributor_main")
-    when "Author": return tabnav ("author_main")
+    when "Author": return tabnav("author_main")
     end
 
   end
