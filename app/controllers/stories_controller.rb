@@ -70,7 +70,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
 
-    @related_stories = Story.find_tagged_with(@story.tag_list)
+    @related_stories = Story.find_tagged_with(@story.tag_list, :limit => 10)
     @related_stories = @related_stories - [@story]
     
     respond_to do |format|

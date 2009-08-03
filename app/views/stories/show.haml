@@ -9,13 +9,14 @@
     .grid_5
       =render :partial => 'users/status'
 
-      .round_section
-        %h2 Historias relacionadas
+      -if @related_stories.size > 0
+        .round_section
+          %h2 Historias relacionadas
         
-        %ul
-          -@related_stories.each do |story|
-            %li
-              %h3=link_to story.title, story_path(story)
+          %ul
+            -@related_stories.each do |story|
+              %li
+                %h3=link_to story.title, story_path(story)
 
         
         

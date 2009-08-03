@@ -1,25 +1,3 @@
 = javascript_include_tag :defaults
-= javascript_include_tag 'jquery.confirm-1.2.js'
-= javascript_include_tag 'jquery.jgrowl.js'
-= javascript_include_tag 'jquery.form.js'  # for ajaxSubmit & ajaxForm
-= javascript_include_tag 'jquery.validate.js'  # for Form Validation
-= javascript_include_tag 'jquery.corners.js'
-= javascript_include_tag 'jquery.scrollTo.js'
-/ = javascript_include_tag 'facebox.js'
-= javascript_include_tag 'jquery.tablesorter.min.js'
-= javascript_include_tag 'jquery.timer.js'
 
-
-
-/= javascript_include_tag 'jquery.alerts.js'
-/ = javascript_include_tag 'jquery.autocomplete.js'
-/ = javascript_include_tag 'jquery-dom.js'
-/ = javascript_include_tag 'ui.datepicker.js'
-/ = javascript_include_tag 'facebox.js'
-/ = javascript_include_tag 'jquery.tipsy.js'
-
-/ - content_for :javascript do
-/   :javascript
-/     $(document).ready(function() {
-/       $('a[rel*=facebox]').facebox()
-/     });
+= javascript_include_tag 'jquery.confirm-1.2.js', 'jquery.jgrowl.js', 'jquery.form.js', 'jquery.validate.js', 'jquery.corners.js', 'jquery.scrollTo.js', 'jquery.tablesorter.min.js', 'jquery.timer.js'
