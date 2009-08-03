@@ -101,6 +101,14 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
     @story.tag_list = params[:story][:tag_list]
     @story.user = current_user if current_user
+
+    @story.ip = request.env["REMOTE_ADDR"]
+    @story.lat = session[:geo_location].lat
+    @story.lng = session[:geo_location].lng
+    @story.country_code = session[:geo_location].country_code
+    
+    
+
     respond_to do |format|
       if @story.save
         flash[:notice] = '¡Muy bien!<br/> Ahora tu historia se encuentra en la página de inicio donde también puedes votar otras historias.'

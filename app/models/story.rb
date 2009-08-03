@@ -4,6 +4,7 @@ class Story < ActiveRecord::Base
 
   acts_as_commentable
   acts_as_taggable
+  acts_as_mappable
 
   validates_presence_of   :body
   validates_length_of     :body,              :within => 40..10000
@@ -22,14 +23,9 @@ class Story < ActiveRecord::Base
   
   before_validation :generate_seo_title
 
-
-
-
-
   def tags_seperated
     tag_list.map { |tag|  tag+","}
   end
-
 
   def generate_seo_title
     if true #self.title.length > 30
@@ -38,8 +34,6 @@ class Story < ActiveRecord::Base
       self.seo_title = self.body[0..(60+ (self.body[60..100].index(" ")))]          
     end
   end
-
-
 
   def browser_title
     self.seo_title

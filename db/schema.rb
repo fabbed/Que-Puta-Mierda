@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090603143029) do
+ActiveRecord::Schema.define(:version => 20090803155941) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -89,6 +89,10 @@ ActiveRecord::Schema.define(:version => 20090603143029) do
     t.string   "seo_title"
     t.string   "title",        :limit => 100
     t.boolean  "administered",                :default => false
+    t.string   "ip"
+    t.float    "lng"
+    t.float    "lat"
+    t.string   "country_code"
   end
 
   create_table "taggings", :force => true do |t|
