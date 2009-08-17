@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  before_filter :authenticate, :only => :authenticate
+  before_filter :authenticate, :only => :new
   
 
   def index
