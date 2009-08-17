@@ -3,7 +3,8 @@
 !text_color = #26130C
 !comment_number = #FF3300
 !comment_number_zero = #D6BBB1
-
+!leer_mas = #FF6600
+!story_footer_text = #AB8573
 
 /----------------- GENERAL
 
@@ -23,6 +24,14 @@ a
   :color = !link_blue
   :text-decoration none
 
+a.leer_mas
+  :color = !leer_mas
+  
+a.zero
+  :color = !comment_number_zero
+a.not_zero
+  :color = !comment_number
+    
 / #container
 /   #left, #right
 /     :float left
@@ -80,6 +89,8 @@ a
 
 .story
   :overflow hidden
+  .text
+    :line-height 14px
   .footer
     :margin-left 100px
     :margin-bottom 20px
@@ -90,24 +101,49 @@ a
   .left
     :float left
     :margin-left 25px
+    :margin-right 20px
+    :width 53px    
+    :background transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em  
     a
       :display block
-      :width 53px
+      :width 50px
+      :text-align center
       :height 57px
-      :background transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em  
-      :padding 10px 0px 0px 20px
+      :padding-top 12px
       :font-size 2em
   .middle
     :width 460px
     :float left  
+    .story_footer
+      :margin-top 15px
+      :padding 0px
+      :color = !story_footer_text
+      .flag
+        :float left
+      .text
+        :float left
+        :padding-left 5px        
+    .category_small, .category_medium
+      :text-align center
+      a
+        :color white
+        :font-size 10px
+        :text-transform capitalize
+        :padding-left 8px
+        :padding-top -10px
+    .category_small
+      :background transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0 7px
+    .category_medium
+      :background transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0 7px
   .divider
     :background transparent url(/images/new/story_divider.png) no-repeat scroll 0 0em  
-    :height 166px
+    :height 155px
     :width 25px
     :float left  
   .right
     :float left  
     :width 110px
+    :overflow hidden
     .thumbs
       :float right
       :height 70px

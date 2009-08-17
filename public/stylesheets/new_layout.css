@@ -15,6 +15,15 @@ a {
   color: #0099ff;
   text-decoration: none; }
 
+a.leer_mas {
+  color: #ff6600; }
+
+a.zero {
+  color: #d6bbb1; }
+
+a.not_zero {
+  color: #ff3300; }
+
 
 
 
@@ -66,6 +75,8 @@ a {
 
 .story {
   overflow: hidden; }
+  .story .text {
+    line-height: 13px; }
   .story .footer {
     margin-left: 100px;
     margin-bottom: 20px; }
@@ -75,25 +86,50 @@ a {
     font-weight: normal; }
   .story .left {
     float: left;
-    margin-left: 25px; }
+    margin-left: 25px;
+    margin-right: 20px;
+    width: 53px;
+    background: transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em; }
     .story .left a {
       display: block;
-      width: 53px;
+      width: 50px;
+      text-align: center;
       height: 57px;
-      background: transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em;
-      padding: 10px 0px 0px 20px;
+      padding-top: 12px;
       font-size: 2em; }
   .story .middle {
     width: 460px;
     float: left; }
+    .story .middle .story_footer {
+      margin-top: 15px;
+      padding: 0px;
+      color: #ab8573; }
+      .story .middle .story_footer .flag {
+        float: left; }
+      .story .middle .story_footer .text {
+        float: left;
+        padding-left: 5px; }
+    .story .middle .category_small, .story .middle .category_medium {
+      text-align: center; }
+      .story .middle .category_small a,       .story .middle .category_medium a {
+        color: white;
+        font-size: 10px;
+        text-transform: capitalize;
+        padding-left: 8px;
+        padding-top: -10px; }
+    .story .middle .category_small {
+      background: transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0 7px; }
+    .story .middle .category_medium {
+      background: transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0 7px; }
   .story .divider {
     background: transparent url(/images/new/story_divider.png) no-repeat scroll 0 0em;
-    height: 166px;
+    height: 155px;
     width: 25px;
     float: left; }
   .story .right {
     float: left;
-    width: 110px; }
+    width: 110px;
+    overflow: hidden; }
     .story .right .thumbs {
       float: right;
       height: 70px; }

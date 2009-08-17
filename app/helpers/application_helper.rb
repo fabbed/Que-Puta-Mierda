@@ -42,7 +42,7 @@ module ApplicationHelper
 
 
   def my_date(date)
-    date.strftime("%d.%m.%Y a las %H:%Mh")
+    date.strftime("%d/%m/%Y a las %H:%M hrs")
   end
 
   def my_date_kpis(date)
