@@ -1,0 +1,38 @@
+.story{:id => dom_id(story)}
+  .left
+    =#comment_bubble_link
+    =link_to("#{story.comments.size}", story_path(story, :anchor => "comments"))
+  .middle
+    %h2=link_to(story.title, story_path(story))
+    
+    -if story.user and !story.anonymous
+      ="(de #{story.user.login})"
+    -else
+      (de anónimo)
+    =truncate(story.body, 400)
+    =link_to("(Leer mas)", story_path(story), :class => "blue", :rel => "nofollow")
+    / .footer
+    /   .category.fl
+    /     ="#{link_to(story.category.name, category_path(story.category))}/#{my_date(story.created_at)}"
+    /   .vote_top.fl
+    /     %span
+    /       -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)
+    /         =link_to_function "¡Qué puta mierda!(#{story.rated_top})", "vote_story(#{story.id}, 'top', 'collection')", :class => "vote_link"
+    /       -else
+    /         =link_to_function "¡Qué puta mierda!(#{story.rated_top})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
+    /   .vote_flop.fl
+    /     %span
+    /       -unless session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)
+    /         =link_to_function "Te lo buscaste(#{story.rated_flop})", "vote_story(#{story.id}, 'flop', 'collection')", :class => "vote_link"
+    /       -else
+    /         =link_to_function "Te lo buscaste(#{story.rated_flop})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
+    /   .comments
+    /     =link_to("Comentarios(#{story.comments.size})", story_path(story, :anchor => "comments"))
+  .divider &nbsp;
+  .right
+    .thumbs
+      =thumbs_up_link(story)
+    .thumbs      
+      =thumbs_down_link(story)
+  .footer
+    =image_tag "new/footer_story_divider.png"
