@@ -55,8 +55,30 @@ a.not_zero {
     float: right;
     margin-top: 40px; }
 
+#sidebar {
+  padding: 40px 0px 0px 35px;
+  width: 242px;
+  height: 514px;
+  float: left;
+  position: absolute;
+  left: 236px;
+  top: 354px;
+  background: transparent url(/images/new/sidebar_small.png) no-repeat scroll 0 0em; }
+  #sidebar #sb_content {
+    padding-left: 20px; }
+    #sidebar #sb_content a {
+      color: #FFFF00; }
+    #sidebar #sb_content ul li {
+      list-style-type: disc;
+      color: #784E3D;
+      line-height: 16px; }
+  #sidebar #header {
+    background: transparent url(/images/new/header_categories.png) no-repeat scroll 0 0em;
+    width: 146px;
+    height: 32px; }
+
 #content {
-  width: 740px;
+  width: 732px;
   float: right; }
   #content #top {
     background: transparent url(/images/new/content_top.png) no-repeat scroll 0 0em;
@@ -67,6 +89,8 @@ a.not_zero {
     background: transparent url(/images/new/content_middle.png) repeat-y scroll 0 0em;
     width: 100%;
     float: right; }
+    #content #middle #stories {
+      margin-top: -80px; }
 
 .seperator_line {
   height: 7px;
@@ -76,7 +100,7 @@ a.not_zero {
 .story {
   overflow: hidden; }
   .story .text {
-    line-height: 13px; }
+    line-height: 14px; }
   .story .footer {
     margin-left: 100px;
     margin-bottom: 20px; }
