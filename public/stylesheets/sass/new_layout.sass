@@ -1,0 +1,121 @@
+!dark_brown = #26140C
+!link_blue = #0099FF
+!text_color = #26130C
+!comment_number = #FF3300
+!comment_number_zero = #D6BBB1
+
+
+/----------------- GENERAL
+
+body
+  :background transparent url(/images/new/grandes-putadas-background.jpg) repeat 0 0em
+  :font-family Verdana, Tahoma, Helvetica, Arial
+  :font-size 10px
+  :color = !text_color
+
+img, div 
+  :behavior url(/iepngfix.htc)
+
+h2
+  :font-size 1.8em
+
+a
+  :color = !link_blue
+  :text-decoration none
+
+/ #container
+/   #left, #right
+/     :float left
+/     :width auto
+/ .container_16
+/   :float left
+
+#main
+  / :background transparent url(/images/new/background_image_middle.jpg) no-repeat scroll 0 0em
+  / :float left
+  / :position absolute
+
+/----------------- TOP CONTENT
+
+#header
+  :height 130px
+  #logo
+    :float left
+    :margin-top 40px
+    :width 360px
+    #tagline
+      :float right
+      :margin-top -10px
+      :margin-right 30px
+  #header_login_section
+    :float right
+    :margin-right 10px
+    :height 42px
+    :width 400px
+    :background-color = !dark_brown
+
+#sub_header
+  :height 120px
+  img
+    :float right
+    :margin-top 40px
+#content
+  :width 740px
+  :float right
+  #top
+    :background transparent url(/images/new/content_top.png) no-repeat scroll 0 0em
+    :width 100%
+    :height 187px
+    :float right
+  #middle
+    :background transparent url(/images/new/content_middle.png) repeat-y scroll 0 0em
+    :width 100%
+    :float right
+
+.seperator_line
+  :height 7px
+  :background transparent url(/images/new/seperator_line.png) no-repeat scroll 0 0em
+
+/----------------- Story
+
+.story
+  :overflow hidden
+  .footer
+    :margin-left 100px
+    :margin-bottom 20px
+  h2
+    :margin-bottom 7px
+    :text-transform uppercase
+    :font-weight normal
+  .left
+    :float left
+    :margin-left 25px
+    a
+      :display block
+      :width 53px
+      :height 57px
+      :background transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em  
+      :padding 10px 0px 0px 20px
+      :font-size 2em
+  .middle
+    :width 460px
+    :float left  
+  .divider
+    :background transparent url(/images/new/story_divider.png) no-repeat scroll 0 0em  
+    :height 166px
+    :width 25px
+    :float left  
+  .right
+    :float left  
+    :width 110px
+    .thumbs
+      :float right
+      :height 70px
+      span
+        :margin -49px 0px 0px 79px
+        :display block
+        :font-size 1.3em
+        :color #3D2115
+      .down
+        span
+          :margin -46px 0 0 72px

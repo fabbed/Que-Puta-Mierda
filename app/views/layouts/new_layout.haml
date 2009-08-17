@@ -1,0 +1,30 @@
+!!! XML
+!!! Strict
+%html{html_attrs("es")}
+  %head
+    %meta{content_type_attrs("text/html")}
+    :erb
+      <meta name="verify-v1" content="nd/clabopIlPDTbgXhlNswgrO2uUSa2CABjvYNlSAaU=">
+    %title=yield(:title)
+
+    =stylesheet_link_tag "reset"
+    =stylesheet_link_tag "960"
+    =stylesheet_link_tag "new_layout"
+    =stylesheet_link_tag "generic"    
+
+    = javascript_include_tag 'jquery.js', 'jquery.corners.js', 'new_application.js'
+
+
+  %body{:id=>controller.controller_name}
+    #container
+      .container_16
+        #main.grid_16
+          #header
+            #header_login_section
+            #logo
+              =image_tag "new/que-puta-mierda-logo.png"
+              #tagline
+                =image_tag "new/tagline.png"
+          .seperator_line
+            &nbsp;
+          = yield

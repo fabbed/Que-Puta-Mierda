@@ -1,0 +1,9 @@
+#sub_header
+  =link_to(image_tag("new/btn_contar_nueva_historia.png"), new_story_path)
+
+#content
+  #top
+    test
+  #middle 
+    =render :partial => 'stories/story', :collection => @stories
+
