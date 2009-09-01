@@ -1,0 +1,20 @@
+#main {
+  border: 1px solid green;
+  overflow: hidden;
+  width: 800px; }
+  #main #content {
+    display: inline;
+    float: right;
+    margin-top: 250px;
+    width: 730px;
+    border: 1px solid red; }
+    #main #content #middle {
+      border: 1px solid black;
+      height: 200px;
+      float: right;
+      display: inline;
+      width: 730px; }
+      #main #content #middle #stories {
+        border: 1px solid green;
+        float: right;
+        position: fixed; }

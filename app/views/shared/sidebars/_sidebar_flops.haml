@@ -1,0 +1,16 @@
+#sidebar
+  #sb_content
+    .section
+      %h2 Las cagadas mas grandes
+      %p
+        Aqui ves las cagadas mas grandes
+
+    =image_tag "new/sidebar_seperator.png", :class => :seperator
+
+    .section
+      =image_tag "new/header_newsletter.png"
+
+      %br
+      %p Ingresa tu email y recibe<br/> semanal o diariamente las mejores cagadas y puteada
+
+      =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}

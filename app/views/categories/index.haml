@@ -1,0 +1,19 @@
+-content_for(:top) do
+  #top
+    .country_selector
+      %table{:cellpadding => 2}
+        %tr
+          %td{:valign => "BOTTOM", :style => "width:85px;"} Estas viendo
+          %td{:valign => "BOTTOM", :style => "width:200px;"}=select_tag "search", "<option>Entradas de todos los países</option><option>Entradas de peru</option><option>Entradas de Chile</option>"
+          %td{:valign => "BOTTOM"}=image_tag "new/btn_refresh.png"
+        %tr
+          %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
+
+
+-content_for(:main) do
+  =render :partial => 'stories/story_new', :collection => @stories
+
+  = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
+  = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
+
+#end &nbsp;

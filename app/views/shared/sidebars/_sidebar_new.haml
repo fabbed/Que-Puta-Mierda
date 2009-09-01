@@ -1,0 +1,27 @@
+#sidebar
+  #sb_content
+    .section
+      =image_tag "new/header_como_funciona.png"
+
+      %p Muy sencillo, basta con escribir un pequeño texto y después pulsar el botón <span class="highlight">“¡Soltar la mierda!”</span>. Entonces el texto aparecerá en la página principal y podrá ser valorado como cagada o putada por otros usuarios. 
+
+
+    =image_tag "new/sidebar_seperator.png", :class => :seperator
+
+
+    .section
+      =image_tag "new/header_debo_registrarme.png"
+
+      %p <span class="highlight">No.</span> Para publicar o valorar historias no es necesario estar registrado. Pero si lo haces podremos informarte cuando alguien comente lo que escribiste.
+    
+    =image_tag "new/sidebar_seperator.png", :class => :seperator
+
+
+
+    .section
+      =image_tag "new/header_newsletter.png"
+
+      %br
+      %p Ingresa tu email y recibe<br/> semanal o diariamente las mejores cagadas y puteada
+
+      =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}

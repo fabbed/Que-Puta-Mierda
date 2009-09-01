@@ -1,0 +1,43 @@
+/ !!! XML
+/ !!! Strict
+/ %html{html_attrs("es")}
+/   %head
+/     %meta{content_type_attrs("text/html")}
+/     :erb
+/       <meta name="verify-v1" content="nd/clabopIlPDTbgXhlNswgrO2uUSa2CABjvYNlSAaU=">
+/     %title=yield(:title)
+/     
+/     = render :partial => "shared/css_includes"
+/ 
+/ 
+/ 
+/   %body
+/     #content
+/       .container_16
+/         .grid_16#header
+/           =image_tag "que-puta-mierda-logo.gif"
+/         .grid_7#navigation
+/           =tabnav :main
+/         .grid_9
+/           .introduction_text
+/             ¿Tu novia te dejó en  tu cumpleaños? ¿Compraste un vuelo para el día equivocado y lo supiste una vez en el aeropuerto? ¡Suéltalo! Todos somos alguna vez víctimas de la mala suerte o de nuestra propia estupidez. Cuenta tu historia y opina sobre las ajenas. ¿Cuando es una cagada y cuando una putada?
+/ 
+/ 
+/           
+/         .grid_16#main
+/           = yield
+/         .clear
+/               
+/ 
+/ 
+/         %br.clear
+/         .grid_16#footer
+/           =render :partial => "shared/footer"
+/ 
+/     = yield :javascript
+/     
+/     -if flash[:notice]
+/       =render :partial => "shared/flash_message", :locals => {:message => flash[:notice]}
+/ 
+/     :erb
+/       <script type="text/javascript" src="http://cetrk.com/pages/scripts/0010/4149.js"> </script>
