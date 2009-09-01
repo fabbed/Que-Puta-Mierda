@@ -5,24 +5,57 @@
 !comment_number_zero = #D6BBB1
 !leer_mas = #FF6600
 !story_footer_text = #AB8573
-
+!estas_viendo = #784E3D
+!new_story_background = #F5EEEB
+!sidebar_color = #AB8574
+!header_sub_text = #FF9900  
 /----------------- GENERAL
 
+.wrapper
+  :text-align left
+  :border 1px solid #999999
+  :width 960px
+  :margin 0 auto
+
+
 body
-  :background transparent url(/images/new/grandes-putadas-background.jpg) repeat 0 0em
+  :background transparent url(/images/new/new_background_image.jpg) repeat-x fixed center top
   :font-family Verdana, Tahoma, Helvetica, Arial
   :font-size 10px
   :color = !text_color
+  :text-align center
 
 img, div 
   :behavior url(/iepngfix.htc)
 
+#main
+  :margin-top 50px
+
+h1
+  :font-size 2em
+  :margin-bottom 15px
 h2
   :font-size 1.8em
 
 a
   :color = !link_blue
   :text-decoration none
+
+label.error
+  :color = !comment_number
+  :font-size 13px
+  :margin 0
+  :margin-top 3px
+
+#vamos
+  :background transparent url(/images/new/vamos_arrow.png) no-repeat scroll 0 0em
+  :position absolute
+  :float right
+  :left 900px
+  :width 255px
+  :height 165px
+
+
 
 a.leer_mas
   :color = !leer_mas
@@ -31,18 +64,42 @@ a.zero
   :color = !comment_number_zero
 a.not_zero
   :color = !comment_number
-    
-#container
-/   #left, #right
-/     :float left
-/     :width auto
-/ .container_16
-/   :float left
 
-#main
-  / :background transparent url(/images/new/background_image_middle.jpg) no-repeat scroll 0 0em
-  / :float left
-  / :position absolute
+.link_blue
+  :color !link_blue
+
+.btn_middle
+  :width 114px
+  :height 30px
+  :padding 0
+  :border 0
+  :font-size 1.2em
+  :font-weight bold
+  :cursor pointer
+.orange
+  :background transparent url(/images/new/btn_orange.png) no-repeat scroll 0 0em
+  :color white
+
+.formError
+  :color = !comment_number
+
+
+
+
+
+#header_text
+  :color #fff
+  :font-size 1.8em
+  :line-height 1.1em
+  :width 500px
+  :margin-left 10px
+  :margin-top 20px
+  #subtext
+    :color = !header_sub_text
+    :font-size 13px
+    :margin 10px 30px 0px 30px
+    :line-height 1.05em
+    
 
 /----------------- TOP CONTENT
 
@@ -64,14 +121,28 @@ a.not_zero
     :background-color = !dark_brown
 
 #sub_header
-  :height 120px
+  :height 80px
   img
     :float right
     :margin-top 40px
 
 #sidebar
+  p
+    :color = !sidebar_color
+    :font-size 1.2em
+  span.label
+    :font-size 1.2em
+    :display block
+    :margin-bottom 3px
+  input.input
+    :width 184px
+    :background-image url( '/images/new/sidebar_input_gradient.png' )
+    :border-top 1px solid white
+    :border-left 1px solid white
+    :border-right 1px solid white
+  :color #784E3D
   :padding 40px 0px 0px 35px
-  :width 242px
+  :width 207px
   :height 514px
   :float left
   :position absolute
@@ -81,6 +152,7 @@ a.not_zero
   #sb_content
     :padding-left 16px
     a
+      :font-size 1.4em
       :color #FFFF00
     ul
       li
@@ -91,6 +163,7 @@ a.not_zero
     :background transparent url(/images/new/header_categories.png) no-repeat scroll 0 0em    
     :width 146px
     :height 32px
+    :margin 0
 
 #content
   :width 732px
@@ -100,33 +173,189 @@ a.not_zero
     :width 100%
     :height 187px
     :float right
+    .country_selector
+      table
+        :table-layout fixed
+        td
+          :vertical-align middle
+      :vertical-align top
+      :font-size 1.2em
+      :margin-top 60px
+      :margin-left 103px
+      :margin-bottom 2em
+      :color = !estas_viendo
+
   #middle
     :background transparent url(/images/new/content_middle.png) repeat-y scroll 0 0em
     :width 100%
     :float right
-    #stories
-      :margin-top -80px
+  #end
+    :background transparent url(/images/new/content_bottom.png) repeat-y scroll 0 0em
+    :width 100%
+    :float right
+    :height 93px
+    :width 748px
 
 .seperator_line
   :height 7px
   :background transparent url(/images/new/seperator_line.png) no-repeat scroll 0 0em
 
+
+
+
+
+
 /----------------- Story
 
+.pagination
+  :float left
+  :margin-left 5em
+  :margin-top 0.5em
+  .next_page, .prev_page
+    :display none
+  :font-size 2.0em
+  a
+  
+
+.prev_next_pagination
+  :float right
+  :margin-right 4em
+  .next_page, .prev_page
+    :margin-right 1em
+    :float left
+    :display block
+    :width 81px
+    :height 64px
+  a.next_page
+    :background transparent url(/images/new/icon_next.png) no-repeat scroll 0 0em
+  a.prev_page
+    :background transparent url(/images/new/icon_prev.png) no-repeat scroll 0 0em
+  span.next_page
+    :background transparent url(/images/new/icon_next_disabled.png) no-repeat scroll 0 0em
+  span.prev_page
+    :background transparent url(/images/new/icon_prev_disabled.png) no-repeat scroll 0 0em
+
+
+/--------------------  NEW STORY
+.input
+  :font-family Arial, Sans-Serif
+  :margin-bottom 5px
+  :display block
+  :height 20px
+  :background-image url( '/images/new/input_gradient.png' )
+  :background-repeat repeat-x
+  :background-position top
+
+div.fieldWithErrors
+  :border 0
+
+.fieldWithErrors
+  .input, select, textarea
+    :margin-bottom 5px
+    :display block
+    :background-image url( '/images/new/input_gradient_error.png' )
+    :border solid 1px red
+
+input.error, textarea.error
+  :background-image url( '/images/new/input_gradient_error.png' )
+  :border solid 1px red
+
+
+.input, textarea
+  :width 540px
+  :border solid 1px #D6BCB1
+  :font-size 1.6em
+  :padding 4px
+  
+textarea  
+  :font-size 1.2em
+
+.input:focus, select:focus
+  :background-image none
+  :background-color #ffffff
+  :border solid 1px #FF6600
+
+.short
+  :width 260px
+
+#story_body
+  :height 263px
+  :font-size 1.2em
+  
+#story_category_id
+  :width 200px
+
+label
+  :display block
+  :font-size 12px
+  :margin-bottom 3px
+  :margin-top 20px
+
+label.label_sub
+  :color = !estas_viendo
+  :margin-bottom 3px
+  :margin-top 0px
+  :font-size 11px
+    
+    
+#show, #new
+  #stories
+    :margin-top -90px
+    :margin-left 20px
+    #comments
+      :margin-left 80px
+      .story_comment_divider
+        :background transparent url(/images/new/single_footer.png) no-repeat scroll 0 0em  
+        :width 580px
+        :height 55px
+        :margin-top 15px
+      h2
+        :padding-top 20px
+        :font-size 1.6em
+        :font-weight normal
+        :margin-bottom 2em
+      .comment
+        :background-color = !new_story_background
+        :padding 13px
+        :font-size 12px
+        :width 88%  
+        :margin-bottom 10px
+        .black
+          :margin-top 4px
+          :display block
+        .info
+          :color #AB8574
+          :font-size 11px
+
+                    
+              
+#stories
+  :margin-top -50px
+  :margin-left 20px
+
+  #new_story_wrapper
+    :margin-left 70px
+    #new_story
+      :width 88%
+      :background-color = !new_story_background
+      :padding 3px 15px 15px 15px
+      
 .story
   :overflow hidden
   .text
-    :line-height 14px
+    :line-height 16px
+    :font-size 1.3em
   .footer
-    :margin-left 100px
+    :margin-left 80px
     :margin-bottom 20px
+    :margin-top 20px
   h2
     :margin-bottom 7px
     :text-transform uppercase
     :font-weight normal
   .left
     :float left
-    :margin-left 25px
+    :margin-left 10px
     :margin-right 20px
     :width 53px    
     :background transparent url(/images/new/comment_bubble.png) no-repeat scroll 0 0em  
@@ -146,6 +375,7 @@ a.not_zero
       :color = !story_footer_text
       .flag
         :float left
+        :padding-top 4px
       .text
         :float left
         :padding-left 5px        

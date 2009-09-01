@@ -1,3 +1,12 @@
+-terms verlinken
+-header text einbinden
+
+-comments antwortbox
+-antwortmöglichkeit und einrckung
+
+
+
+
 -Google-Suche
 
 -Scroll Balken nach unten und evtl. nofollow
@@ -14,3 +23,11 @@ Elena
 - Google Suche
 - Elena soll sich endlich registrieren
 - story in die meta description rein
+
+
+
+Elena
+  -neuer Algorithmus
+  -Texte für sidebars tops/flops
+  -Newsletter wenn fertig
+  -Varianten für Header Text

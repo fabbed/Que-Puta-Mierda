@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_stories "admin/stories", :controller => 'admin/stories'
   
   
-  map.root :controller => 'welcome'
+  map.root :controller => 'stories'
 
 
   map.connect ':controller/:action/:id'

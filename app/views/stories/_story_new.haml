@@ -6,19 +6,17 @@
       =link_to(story_new.title, story_path(story_new))
       =category_as_tag(story_new)
     
-    / -if story_new.user and !story_new.anonymous
-    /   ="(de #{story_new.user.login})"
-    / -else
-    /   (de anónimo)
     .text
-      =truncate(story_new.body, 600)
-    =link_to("(Leer mas)", story_path(story_new), :class => "leer_mas", :rel => "nofollow")
+      =truncate(story_new.body, 400).strip
+      =link_to("(Leer mas)", story_path(story_new), :class => "leer_mas", :rel => "nofollow")
 
     .story_footer
       .flag
         =image_tag "new/flags/#{story_new.country_code}.png"
       .text
-        ="Escrito por: LINK el #{my_date(story_new.created_at)}"
+        ="Escrito por: #{author(story_new)} el #{my_date(story_new.created_at)}"
+    
+    
     
     / .footer
     /   .category.fl

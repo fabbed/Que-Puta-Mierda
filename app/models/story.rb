@@ -1,14 +1,19 @@
 class Story < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  belongs_to :country  
 
   acts_as_commentable
   acts_as_taggable
   acts_as_mappable
 
-  validates_presence_of   :body
-  validates_length_of     :body,              :within => 40..10000
-  validates_presence_of :category_id
+  validates_presence_of   :body, :message => "Debes escribir una historia"
+  validates_presence_of   :title, :message => "Debes poner un titulo"
+  
+    
+  validates_length_of     :body,              :within => 40..10000, :message => "Al menos 40 letras"
+  validates_presence_of :category_id, :message => "Elige una categoría"
+  validates_presence_of :country_id, :message => "Elige una categoría"
 
   named_scope :moderated, :conditions => ['on_startpage = ?', true]
   named_scope :tops, :order => ['rated_top desc']

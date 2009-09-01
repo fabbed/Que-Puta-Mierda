@@ -2,12 +2,11 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.xml
 
+  layout "application"
+
   protect_from_forgery :only => [:create, :update, :destroy] 
   before_filter :prepare_stuff, :only => [:vote_top, :vote_flop] 
   
-  layout "application"
-
-
   def tag
     @stories = Story.find_tagged_with(params[:id], :match_all => true).paginate(:page => params[:page], :per_page => STORIES_PER_PAGE)
     @tags = Story.tag_counts    
@@ -49,20 +48,18 @@ class StoriesController < ApplicationController
   end
 
   def tops
-    @stories = Story.tops
+    @stories = Story.tops.paginate(:page => params[:page], :per_page => 8)
   end
 
   def flops
-    @stories = Story.flops
+    @stories = Story.flops.paginate(:page => params[:page], :per_page => 8)
   end
 
   def index
-    @stories = Story.all
+    @stories = Story.newest_first.paginate(:page => params[:page], :per_page => 8)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @stories }
-    end
+#    render :template => "stories/test960", :layout => false
+    
   end
 
   # GET /stories/1

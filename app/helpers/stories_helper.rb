@@ -1,18 +1,29 @@
 module StoriesHelper
 
+
+  def author(object)
+
+    if object.is_a? Story
+      if object.user and !object.anonymous
+        object.user.login
+      else
+        "anónimo"
+      end
+    else object.is_a? Comment
+      #todo: wenn eingeloogt dann echten namen
+      "anónimo"
+    end
+    
+    
+  end
+
   def thumbs_up_link(story)
     
     icon = (story.rated_top == 0) ? image_tag("new/icon_thumbs_up_not_active.png"): image_tag("new/icon_thumbs_up_active.png")
     
-    
     content_tag(:div, icon + content_tag(:span, story.rated_flop.to_s), :class => "up")
+    
 
-    
-    # =image_tag "new/icon_thumbs_down_active.png"
-    # =
-    # =image_tag "new/icon_thumbs_down_not_active.png"
-    # =image_tag "new/icon_thumbs_up_not_active.png"          
-    
   end
 
   def thumbs_down_link(story)

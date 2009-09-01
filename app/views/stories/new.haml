@@ -1,64 +1,60 @@
--title("Contar nueva historia")
+-title("Contar nueva historia en queputamierda.com")
 
-.grid_16
-  .grid_10.alpha
-    .round_section
-      %h1.title Contar nueva historia
-      
-      - form_for(@story) do |f|
-        = f.error_messages
-        %p
-          .white.label Titulo de la historia
-          =f.text_field :title, :class => "story_title_text_field", :size => 72
+-content_for(:sidebar) do
+  =render :partial => '/shared/sidebars/sidebar_new'
 
-        %p
-          .white.label Historia
-          =f.text_area :body, :class => "story_body_text_area"
-        %p
-          .white.label Categoría
-          =select("story", "category_id", Category.for_select_box, { :include_blank => true })
-        
-        
-        -unless logged_in?
+-content_for(:main) do
+  #new_story_wrapper
+    %h1.title ¡Cuenta tu historia!
 
-          %br
-          %br          
-          .white.label E-Mail
-          .white.label_description ¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!
-          =f.text_field :email, :class => "story_email_text_field"
-        -else
-          %br
-          %br          
-          =f.check_box :anonymous
-          %span.white.label Escribir como anónimo
-
-        %p
-          %br
-          =check_box_tag "terms[accepted]", "", :checked => "checked"
-          %span.white.label= link_to "Aceptar los Términos del Servicio", terms_path, :target => "blank", :class => "white"
-
-        %p
-          .white.label Palabras claves separadas por comas (Ejemplo: autobus, fiesta, mascota, amigo)
-          =text_field_tag "story[tag_list]", nil, :size => 60
-          /, :onclick => "this.value = ''", :onfocus => "this.value = ''"
-
-        %p
-          %br
-          = f.submit '¡Soltar la mierda!'
-
-
-      =# link_to 'Back', stories_path
-
-      
-  .grid_5.sidebar
-    =render :partial => 'users/status'
-
-    .round_section
-      %h2 ¿Cómo funciona?
+    - form_for(@story) do |f|
+      =# f.error_messages
       %p
-        Muy sencillo, basta con escribir un pequeño texto y después pulsar el botón “¡Soltar la mierda!". Entonces el texto aparecerá en la página principal y podrá ser valorado como cagada o putada por otros usuarios.             
-      %h2 ¿Debo registrarme?
+        =f.label(:title, "Titulo de la historia")
+        =f.text_field :title, :class => "input", :size => 72
+        =f.error_message_on :title
+
       %p
-        No. Para publicar o valorar historias no es necesario estar registrado. Pero si lo haces podremos informarte cuando alguien comente lo que escribiste.
+        =f.label(:body, "Historia")
+        =f.text_area :body, :class => "input"
+        =f.error_message_on :body
+      %p
+        =f.label(:category_id, "Categoría")
+        =select("story", "category_id", Category.for_select_box, { :include_blank => true })
+        =f.error_message_on :category_id        
+
+      %p
+        =f.label(:country_id, "Tu País")
+        =f.select("country_id", Country.for_select_box, { :include_blank => true })
+        =f.error_message_on :category_id        
+
+  
+      -unless logged_in?
+
+        =f.label(:email, "E-Mail")
+        =f.label(:email, "¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!", :class => "label_sub")
+        =f.text_field :email, :class => "input  short"
+        =f.error_message_on :email              
+      -else
+
+        =f.check_box :anonymous
+        %span.label Escribir como anónimo
+
+      %p
+        =f.label(:tag_list, "Palabras claves")
+        =f.label(:tag_list, "Separadas por comas (Ejemplo: autobus, fiesta, mascota, amigo)", :class => "label_sub")              
+        =text_field_tag "story[tag_list]", nil, :size => 60, :class => "input short"
+        /, :onclick => "this.value = ''", :onfocus => "this.value = ''"
+
+      %p
+        %br
+        =check_box_tag "terms[accepted]", "", :checked => "checked"
+        %span.label= link_to "Aceptar los Términos del Servicio", terms_path, :target => "blank", :class => "link_blue"
+
+      %p
+        %br
+        = f.submit '¡Soltar la mierda!', :class => "btn_middle orange"
+
+#end &nbsp;
 
 =render :partial => "js_validation", :locals => { :form_id => "new_story" }

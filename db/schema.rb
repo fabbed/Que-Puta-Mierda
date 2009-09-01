@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090803155941) do
+ActiveRecord::Schema.define(:version => 20090828110825) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(:version => 20090803155941) do
     t.integer  "commentable_id",                 :default => 0,  :null => false
     t.string   "commentable_type", :limit => 15, :default => "", :null => false
     t.integer  "user_id",                        :default => 0,  :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.string   "iso"
+    t.boolean  "visible",    :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sort_order"
+    t.integer  "used_id"
   end
 
   create_table "newsletter_registrations", :force => true do |t|
@@ -93,6 +103,8 @@ ActiveRecord::Schema.define(:version => 20090803155941) do
     t.float    "lng"
     t.float    "lat"
     t.string   "country_code"
+    t.integer  "country_id"
+    t.string   "city"
   end
 
   create_table "taggings", :force => true do |t|

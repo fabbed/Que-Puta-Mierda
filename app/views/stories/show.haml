@@ -1,33 +1,43 @@
 -title("#{@story.browser_title} - queputamierda.com")
 
-.grid_16
-  .grid_10.alpha
-    .single_start
-    =render :partial => "story_single", :locals => {:story => @story}
+-content_for(:sidebar) do
+  =render :partial => '/shared/sidebars/sidebar', :locals => {:big => false}
 
-  .sidebar    
-    .grid_5
-      =render :partial => 'users/status'
+-content_for(:main) do
+  =render :partial => "story_single", :locals => {:story => @story}
 
-      -if @related_stories.size > 0
-        .round_section
-          %h2 Historias relacionadas
-        
-          %ul
-            -@related_stories.each do |story|
-              %li
-                %h3=link_to story.title, story_path(story)
-
-        
-        
-      .round_section
-        =render :partial => "/categories/categories"
-
-      .round_section
-        =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
+  
+  
 
 
-      -unless logged_in?
-        .round_section
-          =render :partial => "/sessions/login"
-        .clear
+/ .grid_16
+/   .grid_10.alpha
+/     .single_start
+/     =render :partial => "story_single", :locals => {:story => @story}
+/ 
+/   .sidebar    
+/     .grid_5
+/       =render :partial => 'users/status'
+/ 
+/       -if @related_stories.size > 0
+/         .round_section
+/           %h2 Historias relacionadas
+/         
+/           %ul
+/             -@related_stories.each do |story|
+/               %li
+/                 %h3=link_to story.title, story_path(story)
+/ 
+/         
+/         
+/       .round_section
+/         =render :partial => "/categories/categories"
+/ 
+/       .round_section
+/         =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
+/ 
+/ 
+/       -unless logged_in?
+/         .round_section
+/           =render :partial => "/sessions/login"
+/         .clear
