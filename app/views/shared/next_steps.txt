@@ -1,6 +1,8 @@
 Alles möglich machen was jetzt auch geht.
-
+-doppelte löschen
 -newsletter javascript validieren
+-uniqueness validates of title
+-absenden button disablen wenn einmal geklickt
 
 
 

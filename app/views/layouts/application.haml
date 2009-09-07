@@ -8,18 +8,15 @@
       <link rel=”shortcut icon” href=”favicon.ico” type=”image/x-icon”> 
     %title=yield(:title)
 
-    =stylesheet_link_tag "reset"
-    =stylesheet_link_tag "all"    
-    =stylesheet_link_tag "generic"    
-    =stylesheet_link_tag "messages"        
+
+    = render :partial => "shared/js_and_css"
 
   /[if IE 7]
     =stylesheet_link_tag "iefixes"
 
   /[if IE 6]
     =stylesheet_link_tag "iefixes_v6"
-      
-  = javascript_include_tag 'jquery.js', 'jquery.corners.js', 'jrails.js', 'new_application.js', 'jquery.form.js', 'jquery.validate.js'
+
 
   %body{:id=>controller.controller_name}
     .wrapper{:id => controller.action_name}
