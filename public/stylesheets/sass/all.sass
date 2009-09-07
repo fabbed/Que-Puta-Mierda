@@ -11,7 +11,7 @@
 !header_sub_text = #FF9900  
 /----------------- GENERAL
 
-.fix, .active, .seperator_line, #sidebar img, .thumb_input, .success, .info
+.fix, .active, .seperator_line, #sidebar img, .thumb_input, .success, .info, .paginators a, .paginators span
   :behavior url("/iepngfix.htc")
 
 #terms_link
@@ -274,6 +274,7 @@ a.not_zero
 
 .pagination
   :float left
+  :display inline
   :margin-left 5em
   :margin-top 0.5em
   .next_page, .prev_page
@@ -285,6 +286,7 @@ a.not_zero
 .prev_next_pagination
   :float right
   :margin-right 4em
+  :display inline
   .next_page, .prev_page
     :margin-right 1em
     :float left

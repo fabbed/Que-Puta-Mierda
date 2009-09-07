@@ -19,5 +19,7 @@
   
   =render :partial => 'stories/story_new', :collection => @stories
 
-  / = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
-  / = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
+  .paginators
+    -if PAGINATION or true
+      = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
+      = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
