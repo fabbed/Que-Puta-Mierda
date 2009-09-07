@@ -44,11 +44,11 @@ class NewsletterRegistrationsController < ApplicationController
 
     respond_to do |format|
       if @newsletter_registrations.save
-        flash[:notice] = 'Te has registrado para el newsletter.'
+        flash[:success] = 'Te has registrado para el newsletter.'
         format.html { redirect_to(root_path) }
         format.xml  { render :xml => @newsletter_registrations, :status => :created, :location => @newsletter_registrations }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(root_path) }
         format.xml  { render :xml => @newsletter_registrations.errors, :status => :unprocessable_entity }
       end
     end

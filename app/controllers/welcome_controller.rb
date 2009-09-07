@@ -14,9 +14,6 @@ class WelcomeController < ApplicationController
     render :action => "new_design", :layout => "new_layout"
   end
 
-
-
-
   private
   
   def authenticate

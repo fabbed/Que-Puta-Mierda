@@ -13,21 +13,22 @@ class StoriesController < ApplicationController
   end
 
   def prepare_stuff
-    @story = Story.find_by_id(params[:id])    
+    @story = Story.find(params[:id])    
     @stories = Story.newest_first
     @mode = params[:mode]
-    flash[:notice] = "Gracias por el voto!"
+    flash[:success] = "Has votado por la historia #{@story.title}. <br/>Gracias por el voto!"
   end
 
   def vote_top
-    session[:top_votes] << params[:id].to_i
-    flash[:notice] = "Gracias por el voto!"
+    session[:top_votes] << @story.id
 
     @story.rated_top = @story.rated_top + 1
-    @story.save    
-    
+    @story.save
+
     respond_to do |wants|
-      wants.html {  }
+      wants.html do
+        redirect_to root_path
+      end
       wants.js do
         render :partial => "mark_as_voted"
       end
@@ -40,7 +41,9 @@ class StoriesController < ApplicationController
     @story.save
     
     respond_to do |wants|
-      wants.html {  }
+      wants.html do
+        redirect_to root_path        
+      end
       wants.js do
         render :partial => "mark_as_voted"
       end
@@ -57,9 +60,6 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.newest_first.paginate(:page => params[:page], :per_page => 8)
-
-#    render :template => "stories/test960", :layout => false
-    
   end
 
   # GET /stories/1
@@ -100,9 +100,12 @@ class StoriesController < ApplicationController
     @story.user = current_user if current_user
 
     @story.ip = request.env["REMOTE_ADDR"]
-    @story.lat = session[:geo_location].lat
-    @story.lng = session[:geo_location].lng
-    @story.country_code = session[:geo_location].country_code
+    
+    location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@story.ip)
+    @story.lat = location.lat if location.lat
+    @story.lng = location.lng if location.lng
+    @story.city = location.city if location.city
+    @story.country_code = location.country_code if location.country_code
     
     
 

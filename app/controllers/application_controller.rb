@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
   after_filter  :record_pageview
   
   
-  
-  
   def is_admin
     unless current_user.admin == true
       flash[:notice] = "No tienes los derechos"

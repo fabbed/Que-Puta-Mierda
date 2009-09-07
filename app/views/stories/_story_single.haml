@@ -19,9 +19,16 @@
   .divider &nbsp;
   .right
     .thumbs
-      =thumbs_up_link(story)
-    .thumbs      
-      =thumbs_down_link(story)
+      .thumb
+        .top
+          -form_tag(vote_top_story_path(story), :id => "rate_top_#{dom_id(story)}") do 
+            =thumbs_up_link(story)
+        %span=story.rated_top
+      .thumb
+        .flop
+          -form_tag (vote_flop_story_path(story), :id => "rate_flop_#{dom_id(story)}") do 
+            =thumbs_down_link(story)
+        %span=story.rated_flop            
   .footer.cl
 
   
@@ -29,17 +36,27 @@
     .clear
     %br
     .story_comment_divider
-      %h2 Comentarios
 
+    .leave_comment
+      %h3 Tu respuesta:
+      %br
+      -form_for :comment, :url => comments_path(:story => story.id), :html => {:id => "comment_form"} do |f|
+        =text_area_tag "comment[comment]", "", :id => "story_comment_field", :size => "1x6"
+        =submit_tag "Mandar comentario", :style => "margin-top: 10px;"
 
-    -@story.comments.reverse.each do |comment|
-      -if comment.comment.size > 10
-        .comment.round
-          %span.info
-            ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
-          %br
-          %span.black
-            =comment.comment
+    %h2 Comentarios
+
+    -if @story.comments.size > 0
+      -@story.comments.reverse.each do |comment|
+        -if comment.comment.size > 10
+          .comment.round
+            %span.info
+              ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
+            %br
+            %span.black
+              =comment.comment
+    -else
+      No hay comentarios para esta entrada
     .clear
     %br
     %br

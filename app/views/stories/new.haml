@@ -4,11 +4,15 @@
   =render :partial => '/shared/sidebars/sidebar_new'
 
 -content_for(:main) do
+
   #new_story_wrapper
     %h1.title ¡Cuenta tu historia!
 
     - form_for(@story) do |f|
-      =# f.error_messages
+      - if f.error_messages.present?
+        #flash_message
+          .error
+            Hay errores, debes llenar todos los campos para enviar tu historia.
       %p
         =f.label(:title, "Titulo de la historia")
         =f.text_field :title, :class => "input", :size => 72
@@ -23,22 +27,19 @@
         =select("story", "category_id", Category.for_select_box, { :include_blank => true })
         =f.error_message_on :category_id        
 
-      %p
-        =f.label(:country_id, "Tu País")
-        =f.select("country_id", Country.for_select_box, { :include_blank => true })
-        =f.error_message_on :category_id        
-
+      / %p
+      /   =f.label(:country_id, "Tu País")
+      /   =f.select("country_id", Country.for_select_box, { :include_blank => true })
   
-      -unless logged_in?
-
-        =f.label(:email, "E-Mail")
-        =f.label(:email, "¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!", :class => "label_sub")
-        =f.text_field :email, :class => "input  short"
-        =f.error_message_on :email              
-      -else
-
-        =f.check_box :anonymous
-        %span.label Escribir como anónimo
+      %p
+        -unless logged_in?
+          =f.label(:email, "E-Mail")
+          =f.label(:email, "¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!", :class => "label_sub")
+          =f.text_field :email, :class => "input  short"
+          =f.error_message_on :email              
+        -else
+          =f.check_box :anonymous
+          %span.label Escribir como anónimo
 
       %p
         =f.label(:tag_list, "Palabras claves")
@@ -55,6 +56,5 @@
         %br
         = f.submit '¡Soltar la mierda!', :class => "btn_middle orange"
 
-#end &nbsp;
-
-=render :partial => "js_validation", :locals => { :form_id => "new_story" }
+-if JS_VALIDATION == true
+  =render :partial => "js_validation", :locals => { :form_id => "new_story" }

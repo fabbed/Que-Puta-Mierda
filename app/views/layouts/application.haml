@@ -11,17 +11,15 @@
     =stylesheet_link_tag "reset"
     =stylesheet_link_tag "all"    
     =stylesheet_link_tag "generic"    
+    =stylesheet_link_tag "messages"        
 
   /[if IE 7]
     =stylesheet_link_tag "iefixes"
 
   /[if IE 6]
     =stylesheet_link_tag "iefixes_v6"
-
-
       
-    =# javascript_include_tag 'jquery.js', 'jquery.corners.js', 'jrails.js', 'new_application.js', 'jquery.form.js', 'jquery.validate.js'
-
+  = javascript_include_tag 'jquery.js', 'jquery.corners.js', 'jrails.js', 'new_application.js', 'jquery.form.js', 'jquery.validate.js'
 
   %body{:id=>controller.controller_name}
     .wrapper{:id => controller.action_name}
@@ -44,8 +42,8 @@
             #subtext
               ¡Suéltalo! Todos somos alguna vez víctimas de la mala suerte o de nuestra propia estupidez. Cuenta tu historia y opina sobre las ajenas. ¿Cuando es una cagada y cuando una putada?
 
-          -if controller.controller_name == "stories" and controller.action_name == "new"
-            #vamos &nbsp;              
+          /-if controller.controller_name == "stories" and controller.action_name == "new"
+          /  #vamos &nbsp;              
 
           #right
             -unless controller.controller_name == "stories" and controller.action_name == "new"
@@ -54,10 +52,25 @@
         =yield(:sidebar)
         
         #content
-          / #top
-          /   =yield(:top) || "&nbsp;"
           #middle.fix
-            #stories
+            #stories_content
+
+              #top
+                -unless yield(:top)
+                  .spacer
+                =yield(:top) || "&nbsp;"
+                -if flash[:success] || flash[:info] || flash[:error]
+                  #flash_message
+                    -if flash[:success]
+                      .success
+                        =flash[:success]
+                    -if flash[:info]
+                      .info
+                        =flash[:info]
+                    -if flash[:error]
+                      .error
+                        =flash[:error]
+
               =yield(:main) || "&nbsp;"
           = yield
 

@@ -1,16 +1,16 @@
 #sidebar{:class => big ? "big" : ""}
   #sb_content
     .section
-      =image_tag "new/header_categories.png"
+      =image_tag "new/header_categories.png", :class => "fix"
       #categories
         %ul
           -Category.all.each do |category|
             %li=link_to(category.name, category_path(category)) # %li=link_to(category.name + " (#{category.stories.size})", category_path(category))
 
-    =image_tag "new/sidebar_seperator.png", :class => :seperator
+    =image_tag "new/sidebar_seperator.png", :class => "seperator fix"
 
     .section
-      =image_tag "new/header_newsletter.png"
+      =image_tag "new/header_newsletter.png", :class => "fix"
 
       %br
       %p Ingresa tu email y recibe<br/> semanal o diariamente las mejores cagadas y puteada

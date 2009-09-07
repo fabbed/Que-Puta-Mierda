@@ -1,3 +1,18 @@
+Alles möglich machen was jetzt auch geht.
+
+-newsletter javascript validieren
+
+
+
+
+Sidebar background
+sidebar position
+not clickable childrens in pngfix and positioned elements (gif?)
+
+Abstimmen und inactive icons wenn abgestimmt.
+
+
+
 -terms verlinken
 -header text einbinden
 

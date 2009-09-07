@@ -5,14 +5,14 @@ class CommentsController < ApplicationController
     comment = Comment.new(params[:comment])
     comment.user_id = current_user.id if current_user
     
-    @story = Story.find_by_id(params[:story].to_i)
+    @story = Story.find(params[:story])
     @story.add_comment(comment)
 
     if (@story.email.present? or @story.user_id.present?)
       UserMailer.deliver_new_comment(@story)
     end
 
-    flash[:notice] = "Comentario enviado."
+    flash[:success] = "Comentario enviado."
     
     respond_to do |wants|
         wants.html { redirect_to story_path(@story) }

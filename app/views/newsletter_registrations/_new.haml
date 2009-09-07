@@ -4,6 +4,8 @@
   %br  
   %span.label Email:
   = f.text_field :email, :class => :input
+  =f.error_message_on :email
+  
   %br
   = f.submit 'Registrarse', :class => "btn_middle orange"
 .clear

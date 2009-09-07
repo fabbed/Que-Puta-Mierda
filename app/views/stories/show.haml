@@ -6,6 +6,9 @@
 -content_for(:main) do
   =render :partial => "story_single", :locals => {:story => @story}
 
+-if PAGINATION
+  = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
+  = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
   
   
 

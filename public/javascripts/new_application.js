@@ -6,11 +6,10 @@ function round_corners () {
   // $('.story_wrapper .round').corners("top 10px");
 
   $('#header_login_section').corners("bottom 10px");
-  $('#new_story').corners("20px");
+  $('.round_20').corners("20px");
+  $('#new_story').corners("20px");  
   $('.round').corners("10px");  
   
-
-
 }
 
 

@@ -1,6 +1,18 @@
 module StoriesHelper
 
 
+  def awesome_truncate(text, length = 30, truncate_string = "...")
+    return if text.nil?
+    
+    l = length - truncate_string.chars.length
+    new_text = text.chars.length > length ? text[/\A.{#{l}}\w*\;?/m][/.*[\w\;]/m] + truncate_string : text
+    
+    new_text.split(" ").inject("") { |new_title, word| new_title = new_title + " " + word[0..22] }
+  
+  end
+
+
+
   def author(object)
 
     if object.is_a? Story
@@ -13,36 +25,34 @@ module StoriesHelper
       #todo: wenn eingeloogt dann echten namen
       "anónimo"
     end
-    
-    
   end
+
+
+
+# =link_to_function "¡Qué puta mierda!(#{story_new.rated_top})", "vote_story(#{story_new.id}, 'top', 'collection')", :class => "vote_link"
+# -else
+# =link_to_function "¡Qué puta mierda!(#{story_new.rated_top})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
 
   def thumbs_up_link(story)
-    
-    icon = (story.rated_top == 0) ? image_tag("new/icon_thumbs_up_not_active.png"): image_tag("new/icon_thumbs_up_active.png")
-    
-    content_tag(:div, icon + content_tag(:span, story.rated_flop.to_s), :class => "up")
-    
+    class_name = (session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)) ? "not_active" : "active"
 
+    submit_tag("&nbsp;", :class => "#{class_name} thumb_input")
   end
+
+  #"vote_story(#{story.id}, 'top', 'collection')"
 
   def thumbs_down_link(story)
-    
-    icon = (story.rated_flop == 0) ? image_tag("new/icon_thumbs_down_not_active.png"): image_tag("new/icon_thumbs_down_active.png")    
-    content_tag(:div, icon + content_tag(:span, story.rated_flop.to_s), :class => "down")    
-    # =image_tag "new/icon_thumbs_down_active.png"
-    # =image_tag "new/icon_thumbs_up_active.png"
-    # =image_tag "new/icon_thumbs_down_not_active.png"
-    # =image_tag "new/icon_thumbs_up_not_active.png"          
-    
+    class_name = ((session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id))) ? "not_active" : "active"
+
+    submit_tag("&nbsp;", :class => "#{class_name} thumb_input")
   end
+
 
 
   def comment_bubble_link(story)
     
     link_class = ((story.comments.size == 0) ? "zero" : "not_zero"     )
     link_to("#{story.comments.size}", story_path(story, :anchor => "comments"), :class => link_class)
-    
     
   end
 

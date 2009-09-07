@@ -1,12 +1,15 @@
 
+.fix, .active, .seperator_line, #sidebar img, .thumb_input, .success, .info {
+  behavior: url("/iepngfix.htc"); }
+
 #terms_link {
   margin-top: 5em;
   display: inline-block; }
 
 .wrapper {
   text-align: left;
-  width: 960px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 960px; }
 
 body {
   background: transparent url(/images/new/background_image.jpg) repeat-x scroll center top;
@@ -14,9 +17,6 @@ body {
   font-size: 10px;
   color: #26130c;
   text-align: center; }
-
-.fix, .active, .seperator_line {
-  behavior: url(/iepngfix.htc); }
 
 h1 {
   font-size: 2em;
@@ -37,7 +37,8 @@ label.error {
 
 #main {
   background: transparent url(/images/new/background_top.jpg) no-repeat scroll center top;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 960px; }
 
 #vamos {
   background: transparent url(/images/new/vamos_arrow.png) no-repeat scroll 0 0em;
@@ -144,14 +145,17 @@ a.not_zero {
 
 #sidebar {
   color: #784E3D;
-  width: 239px;
+  width: 240px;
+  height: 369px;
+  background: transparent url(/images/new/sidebar_bottom_small.png) no-repeat scroll 0px 0px;
+  float: left;
   position: absolute;
-  left: 233px;
-  top: 542px;
-  height: 370px;
-  background: transparent url(/images/new/sidebar_bottom_small.png) no-repeat scroll 0px 0px; }
+  margin-top: 255px; }
   #sidebar #sb_content {
-    margin: -112px 0 0 35px; }
+    margin: -112px 0 0 35px;
+    float: right;
+    position: relative;
+    display: inline; }
   #sidebar .seperator {
     margin: 1.2em 0; }
   #sidebar h2 {
@@ -195,22 +199,6 @@ a.not_zero {
   float: right;
   display: inline;
   margin-top: 250px; }
-  #content #top {
-    width: 100%;
-    height: 100px;
-    float: right;
-    display: inline; }
-    #content #top .country_selector {
-      vertical-align: top;
-      font-size: 1.2em;
-      margin-top: 60px;
-      margin-left: 103px;
-      margin-bottom: 2em;
-      color: #784e3d; }
-      #content #top .country_selector table {
-        table-layout: fixed; }
-        #content #top .country_selector table td {
-          vertical-align: middle; }
   #content #middle {
     background: transparent url(/images/new/content_middle.png) repeat-y scroll 0 0em;
     display: inline;
@@ -219,15 +207,33 @@ a.not_zero {
     #content #middle h2 {
       font-size: 1.7em;
       line-height: 1.3em; }
-    #content #middle #stories {
-      margin-top: -125px;
-      margin-left: 27px; }
-      #content #middle #stories #new_story_wrapper {
-        margin-left: 70px; }
-        #content #middle #stories #new_story_wrapper #new_story {
-          width: 88%;
-          background-color: #f5eeeb;
-          padding: 3px 15px 15px 15px; }
+    #content #middle #stories_content {
+      float: right;
+      position: relative;
+      margin-top: -186px;
+      padding-right: 27px;
+      display: inline;
+      width: 720px; }
+    #content #middle #top {
+      display: inline; }
+      #content #middle #top .spacer {
+        height: 57px; }
+      #content #middle #top .country_selector {
+        vertical-align: top;
+        font-size: 1.2em;
+        margin-bottom: 1.8em;
+        color: #784e3d; }
+        #content #middle #top .country_selector .cs_content {
+          margin-left: 125px; }
+        #content #middle #top .country_selector .filter_indicator {
+          font-size: 1.2em; }
+          #content #middle #top .country_selector .filter_indicator span {
+            font-weight: bold; }
+        #content #middle #top .country_selector table {
+          table-layout: fixed; }
+          #content #middle #top .country_selector table td {
+            vertical-align: middle;
+            color: #784e3d; }
   #content #end {
     background: transparent url(/images/new/content_bottom.png) no-repeat scroll 0 0em;
     float: right;
@@ -327,43 +333,16 @@ label.label_sub {
   margin-top: 0px;
   font-size: 11px; }
 
-#show #stories, #new #stories {
-  margin-top: -90px;
-  margin-left: 20px; }
-  #show #stories #comments,   #new #stories #comments {
-    margin-left: 80px; }
-    #show #stories #comments .story_comment_divider,     #new #stories #comments .story_comment_divider {
-      background: transparent url(/images/new/single_footer.png) no-repeat scroll 0 0em;
-      width: 580px;
-      height: 55px;
-      margin-top: 15px; }
-    #show #stories #comments h2,     #new #stories #comments h2 {
-      padding-top: 20px;
-      font-size: 1.6em;
-      font-weight: normal;
-      margin-bottom: 2em; }
-    #show #stories #comments .comment,     #new #stories #comments .comment {
-      background-color: #f5eeeb;
-      padding: 13px;
-      font-size: 12px;
-      width: 88%;
-      margin-bottom: 10px; }
-      #show #stories #comments .comment .black,       #new #stories #comments .comment .black {
-        margin-top: 4px;
-        display: block; }
-      #show #stories #comments .comment .info,       #new #stories #comments .comment .info {
-        color: #AB8574;
-        font-size: 11px; }
-
 .story {
-  overflow: hidden; }
+  overflow: hidden;
+  float: right; }
   .story .text {
     line-height: 16px;
     font-size: 1.3em; }
   .story .footer {
     margin-left: 80px;
     margin-bottom: 20px;
-    margin-top: 20px; }
+    margin-top: 0px; }
   .story h2 {
     margin-bottom: 7px;
     text-transform: uppercase;
@@ -415,13 +394,72 @@ label.label_sub {
     float: left;
     width: 110px;
     overflow: hidden; }
-    .story .right .thumbs {
-      float: right;
-      height: 70px; }
-      .story .right .thumbs span {
-        margin: -49px 0px 0px 79px;
-        display: block;
-        font-size: 1.3em;
-        color: #3D2115; }
-      .story .right .thumbs .down span {
-        margin: -46px 0 0 72px; }
+
+#stories #show #content #middle #stories_content, #stories #new #content #middle #stories_content {
+  margin-top: -220px;
+  width: 685px; }
+
+#new_story_wrapper {
+  margin-left: 70px; }
+  #new_story_wrapper #new_story {
+    width: 90%;
+    background-color: #f5eeeb;
+    padding: 3px 20px 20px 20px; }
+
+#comments {
+  margin-left: 80px; }
+  #comments .story_comment_divider {
+    background: transparent url(/images/new/single_footer.png) no-repeat scroll 0 0em;
+    width: 580px;
+    height: 55px;
+    margin-top: 15px; }
+  #comments h2 {
+    padding-top: 20px;
+    font-size: 1.6em;
+    font-weight: normal;
+    margin-bottom: 0.5em; }
+  #comments .leave_comment {
+    height: 190px;
+    overflow: hidden;
+    display: block; }
+  #comments .comment {
+    background-color: #f5eeeb;
+    padding: 13px;
+    font-size: 12px;
+    width: 88%;
+    margin-bottom: 10px; }
+    #comments .comment .black {
+      margin-top: 4px;
+      display: block; }
+    #comments .comment .info {
+      color: #AB8574;
+      font-size: 11px; }
+
+.thumbs {
+  margin-top: 1.5em; }
+  .thumbs .thumb {
+    font-size: 1.3em;
+    color: #3D2115; }
+    .thumbs .thumb .thumb_input {
+      border: 0;
+      display: block;
+      cursor: pointer; }
+    .thumbs .thumb span {
+      position: relative;
+      margin-left: 80px;
+      margin-top: -45px;
+      float: left; }
+    .thumbs .thumb .top .thumb_input {
+      background: transparent url(/images/new/icon_thumbs_up_active.png) no-repeat scroll 0 0em;
+      width: 101px;
+      height: 65px; }
+    .thumbs .thumb .top .not_active {
+      background: transparent url(/images/new/icon_thumbs_up_not_active.png) no-repeat scroll 0 0em; }
+    .thumbs .thumb .flop .thumb_input {
+      margin-top: 0.6em;
+      background: transparent url(/images/new/icon_thumbs_down_active.png) no-repeat scroll 0 0em;
+      width: 101px;
+      height: 65px;
+      margin-left: 8px; }
+    .thumbs .thumb .flop .not_active {
+      background: transparent url(/images/new/icon_thumbs_down_not_active.png) no-repeat scroll 0 0em; }

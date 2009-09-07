@@ -1,21 +1,31 @@
+.wrapper
+  :text-align left
+  :margin 0 auto
+  :width 960px
+body
+  :background transparent url(/images/new/background_image.jpg) repeat-x scroll center top
+  :font-family Verdana, Tahoma, Helvetica, Arial
+  :font-size 10px
+  :color black
+  :text-align center
+
 #main
-  :border 1px solid green
+  :background transparent url(/images/new/background_top.jpg) no-repeat scroll center top
   :overflow hidden
-  :width 800px
+  :width 960px  
   #content
-    :display inline
-    :float right
-    :margin-top 250px
-    :width 730px
-    :border 1px solid red
+    #top
     #middle
-      :border 1px solid black
-      :height 200px
-      :float right
+      :background transparent url(/images/new/content_middle.png) repeat-y scroll 0 0em
       :display inline
       :width 730px
+      :float right
+      h2
+        :font-size 1.7em
+        :line-height 1.3em
       #stories
-        :border 1px solid green
-        /:margin-top -100px
+        :margin-top -40px
+        :border 6px solid red
+        :position static
         :float right
-        :position fixed
+        :position relative
