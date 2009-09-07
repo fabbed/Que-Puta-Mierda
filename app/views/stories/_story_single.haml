@@ -12,7 +12,7 @@
 
     .story_footer
       .flag
-        =image_tag "new/flags/#{story.country_code}.png"
+        =image_tag "new/flags/#{story.country_code.downcase}.png"
       .text
         ="Escrito por: #{author(story)} el #{my_date(story.created_at)}"
 
