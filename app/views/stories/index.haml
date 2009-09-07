@@ -1,16 +1,16 @@
 -content_for(:sidebar) do
   =render :partial => '/shared/sidebars/sidebar', :locals => {:big => false}
 
--content_for(:top) do
-  .country_selector
-    .cs_content
-      %table{:cellpadding => 2}
-        %tr
-          %td{:valign => "BOTTOM", :style => "width:85px;"} Estas viendo
-          %td{:valign => "BOTTOM", :style => "width:200px;"}=select_tag "search", "<option>Entradas de todos los países</option><option>Entradas de peru</option><option>Entradas de Chile</option>"
-          %td{:valign => "BOTTOM"}=image_tag "new/btn_refresh.png"
-        %tr
-          %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
+/ -content_for(:top) do
+/   .country_selector
+/     .cs_content
+/       %table{:cellpadding => 2}
+/         %tr
+/           %td{:valign => "BOTTOM", :style => "width:85px;"} Estas viendo
+/           %td{:valign => "BOTTOM", :style => "width:200px;"}=select_tag "search", "<option>Entradas de todos los países</option><option>Entradas de peru</option><option>Entradas de Chile</option>"
+/           %td{:valign => "BOTTOM"}=image_tag "new/btn_refresh.png"
+/         %tr
+/           %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
 
 
 -content_for(:main) do

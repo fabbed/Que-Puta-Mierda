@@ -40,7 +40,7 @@ namespace :stories do
     desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
     task :get_countries => :environment do
 
-      require 'GeoKit'
+      require 'geokit'
 
       Geokit::Geocoders::google = 'ABQIAAAAq41jgnMAVw_fZQq0XgCgOxTJQa0g3IQ9GZqIMmInSLzwtGDKaBQs02mhfURaIntuWJUEHCe7OlHgpg'
 
