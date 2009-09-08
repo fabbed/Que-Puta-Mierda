@@ -6,7 +6,8 @@ class StoriesController < ApplicationController
 
   protect_from_forgery :only => [:create, :update, :destroy] 
   before_filter :prepare_stuff, :only => [:vote_top, :vote_flop] 
-  
+
+
   def tag
     @stories = Story.find_tagged_with(params[:id], :match_all => true).paginate(:page => params[:page], :per_page => STORIES_PER_PAGE)
     @tags = Story.tag_counts    
@@ -16,7 +17,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])    
     @stories = Story.newest_first
     @mode = params[:mode]
-    flash[:success] = "Has votado por la historia #{@story.title}. <br/>Gracias por el voto!"
+    flash[:success] = "Has votado por la historia <a href='/stories/#{@story.id}'>#{@story.title}</a>. <br/>Gracias por el voto!"
   end
 
   def vote_top

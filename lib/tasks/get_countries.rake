@@ -1,4 +1,79 @@
+# rake stories:assign_comments
+# rake stories:delete_doubles
+# rake stories:find_long_words
+# rake db:migrate
+# rake stories:get_countries
+# rake stories:get_real_country_names
+
+
+
+
 namespace :stories do
+
+    desc "delete doubles"
+    task :assign_comments => :environment do
+      
+
+    Story.find_by_sql("SELECT id, title, count(*) AS cnt FROM stories GROUP BY title HAVING cnt > 1").each do |story|
+      puts
+      story_obj=Story.find_by_id(story.id)
+      puts "ID: #{story_obj.id}, TITLE: " + story_obj.title
+      stories_with_same_title = Story.find(:all, :conditions => ['title = ?', story.title])
+      puts "# Same stories: #{stories_with_same_title.size}"
+
+      stories_with_same_title[1..stories_with_same_title.size].each do |story_to_delete|
+        story_obj.comments=story_obj.comments | story_to_delete.comments
+      end
+
+      stories_with_same_title[1..stories_with_same_title.size].each do |story_to_delete|
+        puts "To delete: " + story_to_delete.id.to_s
+        # story_to_delete.destroy
+      end
+      
+      puts "# Comments original story: #{story_obj.comments.size}"
+      
+    end
+      
+end
+
+    desc "delete doubles"
+    task :delete_doubles => :environment do
+      
+
+    Story.find_by_sql("SELECT id, title, count(*) AS cnt FROM stories GROUP BY title HAVING cnt > 1").each do |story|
+      puts
+      story_obj=Story.find_by_id(story.id)
+      puts "ID: #{story_obj.id}, TITLE: " + story_obj.title
+      stories_with_same_title = Story.find(:all, :conditions => ['title = ?', story_obj.title])
+
+      stories_with_same_title[1..stories_with_same_title.size].each do |story_to_delete|
+        puts "To delete: " + story_to_delete.id.to_s
+        story_to_delete.destroy
+      end
+
+    end
+  end
+
+
+    desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
+    task :get_real_country_names => :environment do
+
+      Story.find(675).destroy
+      
+      Story.all.each do |story|
+
+        if story.country_code!="xx" and story.country_code
+          puts story.country_code
+          puts story.id
+          
+          story.country_name = Country.find_by_iso(story.country_code.upcase).name
+          story.save
+        end
+        
+      end
+    end
+
+
 
     desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
     task :find_long_words => :environment do

@@ -1,8 +1,13 @@
-Alles möglich machen was jetzt auch geht.
--doppelte löschen
--newsletter javascript validieren
--uniqueness validates of title
--absenden button disablen wenn einmal geklickt
+Next:
+-Wiki-Page mit Problemen und Lösungen
+-Admin Stuff für Elena
+-AdSense
+-Sidebar transparent
+-Landsuche
+-more info on flag tooltips (people in total, people in the internet)
+-big tooltip giving options for seeing all entradas from that country etc.
+
+
 
 
 

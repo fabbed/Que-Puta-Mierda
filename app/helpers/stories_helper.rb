@@ -34,9 +34,10 @@ module StoriesHelper
 # =link_to_function "¡Qué puta mierda!(#{story_new.rated_top})", "alert('Ya hay un voto tuyo para esta historia')", :class => "inactive"
 
   def thumbs_up_link(story)
+    
     class_name = (session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id)) ? "not_active" : "active"
 
-    submit_tag("&nbsp;", :class => "#{class_name} thumb_input")
+    submit_tag("&nbsp;", :disabled => (class_name == "not_active" ? true : false), :class => "#{class_name} thumb_input")
   end
 
   #"vote_story(#{story.id}, 'top', 'collection')"
@@ -44,7 +45,7 @@ module StoriesHelper
   def thumbs_down_link(story)
     class_name = ((session[:flop_votes].include?(story.id) or session[:top_votes].include?(story.id))) ? "not_active" : "active"
 
-    submit_tag("&nbsp;", :class => "#{class_name} thumb_input")
+    submit_tag("&nbsp;", :disabled => (class_name == "not_active" ? true : false), :class => "#{class_name} thumb_input")
   end
 
 
@@ -57,9 +58,9 @@ module StoriesHelper
   end
 
   def category_as_tag(story)
-    icon_class = (story.category.name.length > 5) ? "category_medium" : "category_small" 
+    icon_class = (story.category.name.length > 4) ? "category_medium" : "category_small" 
     
-    content_tag(:span, (link_to(story.category.name, category_path(story.category)) + "&nbsp;&nbsp;&nbsp;"), :class => icon_class)
+    link_to(story.category.name+"&nbsp;&nbsp;&nbsp;", category_path(story.category), :class => icon_class + " fix tag")
     
   end
 

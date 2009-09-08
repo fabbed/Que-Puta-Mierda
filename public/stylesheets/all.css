@@ -6,7 +6,7 @@ body {
   color: #26130c;
   text-align: center; }
 
-.fix, .active, .seperator_line, #sidebar img, .thumb_input, .success, .info, .paginators a, .paginators span {
+.fix, .active, .seperator_line, #sidebar img, .thumb_input, .paginators a, .paginators span {
   behavior: url("/iepngfix.htc"); }
 
 #terms_link {
@@ -119,7 +119,8 @@ a.not_zero {
     margin-top: 40px;
     width: 360px; }
     #header #logo #tagline {
-      float: none;
+      display: inline;
+      float: right;
       margin-top: -10px;
       margin-right: 30px; }
   #header #header_login_section {
@@ -217,7 +218,7 @@ a.not_zero {
     #content #middle #top {
       display: inline; }
       #content #middle #top .spacer {
-        height: 57px; }
+        height: 50px; }
       #content #middle #top .country_selector {
         vertical-align: top;
         font-size: 1.2em;
@@ -375,18 +376,15 @@ label.label_sub {
       .story .middle .story_footer .text {
         float: left;
         padding-left: 5px; }
-    .story .middle .category_small, .story .middle .category_medium {
-      text-align: center; }
-      .story .middle .category_small a,       .story .middle .category_medium a {
-        color: white;
-        font-size: 10px;
-        text-transform: capitalize;
-        padding-left: 8px;
-        padding-top: -10px; }
-    .story .middle .category_small {
-      background: transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0 7px; }
-    .story .middle .category_medium {
-      background: transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0 7px; }
+    .story .middle h2 a.tag {
+      color: white;
+      font-size: 12px;
+      text-transform: capitalize;
+      padding-left: 8px; }
+    .story .middle a.category_small {
+      background: transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0px 0px; }
+    .story .middle a.category_medium {
+      background: transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0px 0px; }
   .story .divider {
     background: transparent url(/images/new/story_divider.png) no-repeat scroll 0 0em;
     height: 155px;
@@ -397,16 +395,20 @@ label.label_sub {
     width: 110px;
     overflow: hidden; }
 
-#stories #show #content #middle #stories_content, #stories #new #content #middle #stories_content {
+#stories #new #content #middle #stories_content, #stories #create #content #middle #stories_content {
   margin-top: -220px;
   width: 685px; }
 
 #new_story_wrapper {
-  margin-left: 70px; }
+  background-color: #f5eeeb;
+  width: 87%;
+  margin-top: 15px;
+  margin-left: 55px; }
   #new_story_wrapper #new_story {
-    width: 90%;
-    background-color: #f5eeeb;
-    padding: 3px 20px 20px 20px; }
+    display: block;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px; }
 
 #comments {
   margin-left: 80px; }
@@ -421,7 +423,7 @@ label.label_sub {
     font-weight: normal;
     margin-bottom: 0.5em; }
   #comments .leave_comment {
-    height: 190px;
+    height: 171px;
     overflow: hidden;
     display: block; }
   #comments .comment {
@@ -449,7 +451,7 @@ label.label_sub {
     .thumbs .thumb span {
       position: relative;
       margin-left: 80px;
-      margin-top: -45px;
+      margin-top: -48px;
       float: left; }
     .thumbs .thumb .top .thumb_input {
       background: transparent url(/images/new/icon_thumbs_up_active.png) no-repeat scroll 0 0em;

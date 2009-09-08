@@ -11,6 +11,8 @@ class Story < ActiveRecord::Base
   validates_presence_of   :title, :message => "Debes poner un titulo"
   
   validates_length_of     :title,              :within => 20..100, :message => "Al menos 20 letras, no mas que 100"    
+  validates_uniqueness_of :title,              :message => "Ya existe una historia con este titulo"
+  
   validates_length_of     :body,              :within => 100..1000000, :message => "Al menos 100 letras"
   validates_presence_of :category_id, :message => "Elige una categoría"
 

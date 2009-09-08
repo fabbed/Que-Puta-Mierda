@@ -5,14 +5,13 @@
   .middle
     %h2
       =link_to(awesome_truncate(story_new.title, 80), story_path(story_new))
-      
       =category_as_tag(story_new)
     .text
       =truncate(story_new.body, 400).strip
       =link_to("(Leer mas)", story_path(story_new), :class => "leer_mas", :rel => "nofollow")
     .story_footer
       .flag
-        =image_tag "new/flags/#{story_new.country_code.downcase}.png" if story_new.country_code
+        =image_tag "new/flags/#{story_new.country_code.downcase}.png", :title => story_new.country_name, :class => "tooltip" if story_new.country_code
       .text
         ="Escrito por: #{author(story_new)} el #{my_date(story_new.created_at)}"
 
@@ -31,5 +30,8 @@
             =thumbs_down_link(story_new)
         %span=story_new.rated_flop            
 
-  .footer.cl
-    =image_tag "new/footer_story_divider.png"
+  -unless controller.controller_name == "stories" and controller.action_name == "show"
+    .footer.cl
+      =image_tag "new/footer_story_divider.png"
+  -else
+    &nbsp;

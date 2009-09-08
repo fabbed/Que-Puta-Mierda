@@ -6,9 +6,11 @@
 -content_for(:main) do
 
   #new_story_wrapper
-    %h1.title ¡Cuenta tu historia!
 
     - form_for(@story) do |f|
+      
+      %h1.title ¡Cuenta tu historia!
+      
       - if f.error_messages.present?
         #flash_message
           .error

@@ -10,5 +10,16 @@
 #content #middle #top .country_selector .cs_content {
   margin-left: 100px; }
 
-#show #content #middle #stories_content #new_story_wrapper, #new #content #middle #stories_content #new_story_wrapper {
-  margin-left: 30px; }
+#show #content #middle #stories_content #new_story_wrapper, #new #content #middle #stories_content #new_story_wrapper, #create #content #middle #stories_content #new_story_wrapper {
+  width: 95%;
+  margin-top: 0px;
+  margin-left: 40px; }
+
+#stories #new #flash_message, #stories #show #flash_message {
+  width: 68%;
+  margin-left: 84px;
+  margin-top: 23px; }
+
+#flash_message {
+  margin-left: 100px;
+  width: 78%; }

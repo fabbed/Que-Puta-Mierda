@@ -18,7 +18,7 @@ body
   :color = !text_color
   :text-align center
 
-.fix, .active, .seperator_line, #sidebar img, .thumb_input, .success, .info, .paginators a, .paginators span
+.fix, .active, .seperator_line, #sidebar img, .thumb_input, .paginators a, .paginators span
   :behavior url("/iepngfix.htc")
 
 #terms_link
@@ -132,7 +132,8 @@ a.not_zero
     :margin-top 40px
     :width 360px
     #tagline
-      :float none
+      :display inline
+      :float right
       :margin-top -10px
       :margin-right 30px
   #header_login_section
@@ -235,7 +236,7 @@ a.not_zero
     #top
       :display inline
       .spacer
-        :height 57px
+        :height 50px
       .country_selector
         .cs_content
           :margin-left 125px
@@ -405,18 +406,16 @@ label.label_sub
       .text
         :float left
         :padding-left 5px        
-    .category_small, .category_medium
-      :text-align center
-      a
+    h2
+      a.tag
         :color white
-        :font-size 10px
+        :font-size 12px
         :text-transform capitalize
         :padding-left 8px
-        :padding-top -10px
-    .category_small
-      :background transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0 7px
-    .category_medium
-      :background transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0 7px
+    a.category_small
+      :background transparent url(/images/new/icon_tag_small.png) no-repeat scroll 0px 0px
+    a.category_medium
+      :background transparent url(/images/new/icon_tag_medium.png) no-repeat scroll 0px 0px
   .divider
     :background transparent url(/images/new/story_divider.png) no-repeat scroll 0 0em  
     :height 155px
@@ -429,18 +428,23 @@ label.label_sub
 
 
 #stories
-  #show, #new
+  #new, #create
     #content
       #middle
         #stories_content
           :margin-top -220px
           :width 685px
+
 #new_story_wrapper
-  :margin-left 70px
+  :background-color = !new_story_background
+  :width 87%
+  :margin-top 15px
+  :margin-left 55px
   #new_story
-    :width 90%
-    :background-color = !new_story_background
-    :padding 3px 20px 20px 20px
+    :display block
+    :padding-top 20px
+    :padding-left 20px
+    :padding-bottom 10px
 
 #comments
   :margin-left 80px
@@ -455,7 +459,7 @@ label.label_sub
     :font-weight normal
     :margin-bottom 0.5em
   .leave_comment
-    :height 190px
+    :height 171px
     :overflow hidden
     :display block
   .comment
@@ -483,7 +487,7 @@ label.label_sub
     span
       :position relative
       :margin-left 80px
-      :margin-top -45px
+      :margin-top -48px
       :float left
     .top
       .thumb_input

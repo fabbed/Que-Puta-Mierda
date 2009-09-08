@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090907124845) do
+ActiveRecord::Schema.define(:version => 20090908092428) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20090907124845) do
     t.string   "country_code"
     t.integer  "country_id"
     t.string   "city"
+    t.string   "country_name"
   end
 
   create_table "taggings", :force => true do |t|

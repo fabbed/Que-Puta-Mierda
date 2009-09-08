@@ -1,65 +1,35 @@
-.story{:id => dom_id(story)}
-  .left
-    =comment_bubble_link(story)
-  .middle
-    %h2
-      =story.title
-      =category_as_tag(story)
-    
-    .text
-      =simple_format story.body
+=render :partial => "stories/story_new", :locals => {:story_new => story}
 
+.c
+#comments
+  .cl
+  %br
+  .story_comment_divider.fix
+    &nbsp;
 
-    .story_footer
-      .flag
-        =image_tag "new/flags/#{story.country_code.downcase}.png"
-      .text
-        ="Escrito por: #{author(story)} el #{my_date(story.created_at)}"
-
-  .divider &nbsp;
-  .right
-    .thumbs
-      .thumb
-        .top
-          -form_tag(vote_top_story_path(story), :id => "rate_top_#{dom_id(story)}") do 
-            =thumbs_up_link(story)
-        %span=story.rated_top
-      .thumb
-        .flop
-          -form_tag (vote_flop_story_path(story), :id => "rate_flop_#{dom_id(story)}") do 
-            =thumbs_down_link(story)
-        %span=story.rated_flop            
-  .footer.cl
-
-  
-  #comments
-    .clear
+  .leave_comment
+    %h3 Tu respuesta:
     %br
-    .story_comment_divider
+    -form_for :comment, :url => comments_path(:story => story.id), :html => {:id => "comment_form"} do |f|
+      =text_area_tag "comment[comment]", "", :id => "story_comment_field", :size => "1x6"
+      =submit_tag "Mandar comentario", :style => "margin-top: 10px;", :class => "comment_submit"
 
-    .leave_comment
-      %h3 Tu respuesta:
-      %br
-      -form_for :comment, :url => comments_path(:story => story.id), :html => {:id => "comment_form"} do |f|
-        =text_area_tag "comment[comment]", "", :id => "story_comment_field", :size => "1x6"
-        =submit_tag "Mandar comentario", :style => "margin-top: 10px;"
+  %h2 Comentarios
 
-    %h2 Comentarios
-
-    -if @story.comments.size > 0
-      -@story.comments.reverse.each do |comment|
-        -if comment.comment.size > 10
-          .comment.round
-            %span.info
-              ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
-            %br
-            %span.black
-              =comment.comment
-    -else
-      No hay comentarios para esta entrada
-    .clear
-    %br
-    %br
+  -if @story.comments.size > 0
+    -@story.comments.reverse.each do |comment|
+      -if comment.comment.size > 5
+        .comment.round
+          %span.info
+            ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
+          %br
+          %span.black
+            =comment.comment
+  -else
+    No hay comentarios para esta entrada
+  .clear
+  %br
+  %br
 
 
 

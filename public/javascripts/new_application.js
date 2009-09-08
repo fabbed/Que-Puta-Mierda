@@ -7,7 +7,7 @@ function round_corners () {
 
   $('#header_login_section').corners("bottom 10px");
   $('.round_20').corners("20px");
-  $('#new_story').corners("20px");  
+  $('#new_story_wrapper').corners("20px");  
   $('.round').corners("10px");  
   
 }
@@ -15,6 +15,33 @@ function round_corners () {
 
 $(document).ready(function() { 
   round_corners();
+
+  $('form').submit(function(){
+      $('.story_submit').attr('disabled', 'disabled');
+  });
+
+  $(".tooltip").tooltip({
+     delay: 0,
+     showURL: false
+  })
+
+
+
+    $.timer(2000, function (timer) {
+      var fade_time = 200;
+      $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.1}, fade_time, function() {
+        $("#new_history").animate({opacity: 0.1}, fade_time).animate({opacity: 1.0}, fade_time)
+      })
+      timer.stop();
+    });  
+    $.timer(5000, function (timer) {
+      var fade_time = 200;
+      $("#new_history").animate({opacity: 1.0}, fade_time).animate({opacity: 0.1}, fade_time, function() {
+        $("#new_history").animate({opacity: 0.1}, fade_time).animate({opacity: 1.0}, fade_time)
+      })
+      timer.stop();
+    });  
+
 
 
 }); 

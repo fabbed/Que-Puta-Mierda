@@ -43,7 +43,7 @@
 
           #right
             -unless controller.controller_name == "stories" and controller.action_name == "new"
-              =link_to(image_tag("new/btn_contar_nueva_historia.png"), new_story_path)
+              =link_to(image_tag("new/btn_contar_nueva_historia.png"), new_story_path, :id => :new_history)
     
         =yield(:sidebar)
         
@@ -52,7 +52,7 @@
             #stories_content
 
               #top
-                -unless yield(:top)
+                -unless yield(:top) || flash[:success] || flash[:info] || flash[:error]
                   .spacer
                 =yield(:top) || "&nbsp;"
                 -if flash[:success] || flash[:info] || flash[:error]

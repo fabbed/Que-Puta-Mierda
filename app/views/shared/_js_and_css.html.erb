@@ -1,12 +1,16 @@
 <% bundle do%>
-
-<%= javascript_include_tag 'jquery.js', 'jquery.corners.js', 'jrails.js', 'new_application.js', 'jquery.form.js', 'jquery.validate.js' %>
-
+<%= javascript_include_tag 'jquery.js', 'jquery.corners.js', 'jquery.timer.js', 'jrails.js', 'new_application.js', 'jquery.form.js', 'jquery.validate.js',  'jquery.dimensions.js' %>
+<%#= javascript_include_tag 'jquery.tooltip.pack.js' %>
 <%=stylesheet_link_tag "reset"%>
 <%=stylesheet_link_tag "all"%>
 <%=stylesheet_link_tag "generic"%>  
 <%=stylesheet_link_tag "messages"%>     
-
+<%=stylesheet_link_tag "jquery.tooltip"%>
 <% end %>
+
+
+
+<%= javascript_include_tag 'jquery.tooltip.pack.js' %>
+<%= javascript_include_tag 'jquery.validate.js' %>
 
 <link rel="icon" href="/favicon.gif" type="image/gif" >
