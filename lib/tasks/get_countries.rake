@@ -5,9 +5,10 @@
 # rake stories:get_countries
 # rake stories:get_real_country_names
 
-
-
-
+# RAILS_ENV=production rake stories:assign_comments
+# RAILS_ENV=production rake stories:delete_doubles
+# RAILS_ENV=production rake stories:find_long_words
+#RAILS_ENV=production stories:get_real_country_names
 namespace :stories do
 
     desc "delete doubles"
