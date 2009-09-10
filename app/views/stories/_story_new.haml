@@ -7,8 +7,11 @@
       =link_to(awesome_truncate(story_new.title, 80), story_path(story_new))
       =category_as_tag(story_new)
     .text
-      =truncate(story_new.body, 400).strip
-      =link_to("(Leer mas)", story_path(story_new), :class => "leer_mas", :rel => "nofollow")
+      -unless controller.controller_name == "stories" and controller.action_name == "show"
+        =truncate(story_new.body, 400).strip
+        =link_to("(Leer mas)", story_path(story_new), :class => "leer_mas", :rel => "nofollow")
+      -else
+        =simple_format(story_new.body.strip)
     .story_footer
       .flag
         =image_tag "new/flags/#{story_new.country_code.downcase}.png", :title => story_new.country_name, :class => "tooltip" if story_new.country_code
