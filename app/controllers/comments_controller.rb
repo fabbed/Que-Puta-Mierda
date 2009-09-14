@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(params[:comment])
     comment.user_id = current_user.id if current_user
+
+    location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
+    comment.country_code = location.country_code if location.country_code
+    comment.city = location.city if location.city
+    comment.country_name = Country.find_by_iso(comment.country_code.upcase).name
     
     @story = Story.find(params[:story])
     @story.add_comment(comment)

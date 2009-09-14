@@ -20,9 +20,11 @@
     -@story.comments.reverse.each do |comment|
       -if comment.comment.size > 5
         .comment.round
-          %span.info
-            ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
-          %br
+          .info
+            .flag
+              =image_tag "new/flags/#{comment.country_code.downcase}.png", :title => comment.country_name, :class => "tooltip" if comment.country_code
+              %span.info
+                ="Escrito por: #{author(comment)} el #{my_date(comment.created_at)}"
           %span.black
             =comment.comment
   -else

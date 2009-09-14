@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090908092428) do
+ActiveRecord::Schema.define(:version => 20090914122046) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(:version => 20090908092428) do
     t.integer  "commentable_id",                 :default => 0,  :null => false
     t.string   "commentable_type", :limit => 15, :default => "", :null => false
     t.integer  "user_id",                        :default => 0,  :null => false
+    t.integer  "country_id"
+    t.string   "city"
+    t.string   "country_name"
+    t.string   "country_code"
   end
 
   create_table "countries", :force => true do |t|

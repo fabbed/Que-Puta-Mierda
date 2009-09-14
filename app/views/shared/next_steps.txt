@@ -1,3 +1,6 @@
+rake stories:get_real_country_names
+
+
 icon_tag_medium.png
 icon_prev.png
 

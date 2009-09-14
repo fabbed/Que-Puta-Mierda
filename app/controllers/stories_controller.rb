@@ -107,8 +107,7 @@ class StoriesController < ApplicationController
     @story.lng = location.lng if location.lng
     @story.city = location.city if location.city
     @story.country_code = location.country_code if location.country_code
-    
-    
+    @story.country_name = Country.find_by_iso(location.country_code.upcase).name if location.country_code
 
     respond_to do |format|
       if @story.save
