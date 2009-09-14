@@ -59,8 +59,7 @@ end
     desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
     task :get_real_country_names => :environment do
 
-      Story.find(675).destroy if Story.find(675)
-      
+    
       Story.all.each do |story|
 
         if story.country_code!="xx" and story.country_code
