@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     flash[:success] = "Comentario enviado."
     
     respond_to do |wants|
-        wants.html { redirect_to story_path(@story) }
+        wants.html { redirect_to story_path(@story, :param => "comentario_creado") }
         wants.xml { render :xml => @comment, :status => :created, :location => @comment }
     end
   end

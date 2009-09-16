@@ -45,7 +45,7 @@ class NewsletterRegistrationsController < ApplicationController
     respond_to do |format|
       if @newsletter_registrations.save
         flash[:success] = 'Te has registrado para el newsletter.'
-        format.html { redirect_to(root_path) }
+        format.html { redirect_to(root_path, :param => "nueva_registracion_de_newsletter") }
         format.xml  { render :xml => @newsletter_registrations, :status => :created, :location => @newsletter_registrations }
       else
         format.html { redirect_to(root_path) }
