@@ -1,16 +1,11 @@
 rake stories:get_real_country_names
 
-
-icon_tag_medium.png
-icon_prev.png
-
+Deaktivieren von dem Mandar COmentario Button
 
 Soltar la mierda button
 what can be better kasten
 
-
 Next:
--Wiki-Page mit Problemen und Lösungen
 -Admin Stuff für Elena
 -AdSense
 -Sidebar transparent
@@ -19,21 +14,14 @@ Next:
 -big tooltip giving options for seeing all entradas from that country etc.
 
 
-
-
-
-
-Sidebar background
-sidebar position
 not clickable childrens in pngfix and positioned elements (gif?)
 
-Abstimmen und inactive icons wenn abgestimmt.
+
 
 
 
 -terms verlinken
 -header text einbinden
-
 -comments antwortbox
 -antwortmöglichkeit und einrckung
 

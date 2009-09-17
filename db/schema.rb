@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914122046) do
+ActiveRecord::Schema.define(:version => 20090916152339) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -88,6 +88,22 @@ ActiveRecord::Schema.define(:version => 20090914122046) do
 
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "stats", :force => true do |t|
+    t.date     "day"
+    t.integer  "pageviews"
+    t.integer  "visitors"
+    t.integer  "users"
+    t.integer  "stories"
+    t.integer  "stories_with_email"
+    t.integer  "comments"
+    t.integer  "visitors_xalut_count"
+    t.integer  "visitos_google_count"
+    t.integer  "newsletter_registrations"
+    t.boolean  "finished",                 :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stories", :force => true do |t|
     t.text     "body"

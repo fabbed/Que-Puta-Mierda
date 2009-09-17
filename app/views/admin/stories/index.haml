@@ -1,6 +1,13 @@
 =tabnav :admin
 
 
+
+.paginators
+  -if PAGINATION or true
+    = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
+    = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
+
+
 %table#mytable{:cellspacing=>"0", :summary=>"Projects"}
   -@stories.each_with_index do |story, i|
     -if ((i % 15) == 0)

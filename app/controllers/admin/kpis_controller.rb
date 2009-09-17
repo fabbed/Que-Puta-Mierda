@@ -8,11 +8,14 @@ class Admin::KpisController < AdminController
     
     
     @data = Array.new
-    days= 15
+    days = 30
     kpi_start_date = Date.today - days.days
     @kpi_start_date = kpi_start_date
-
-
+    
+    
+    
+    
+    
     # (days+1).times do |i|
     #   n = (i)
     # 

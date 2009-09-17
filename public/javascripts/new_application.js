@@ -13,12 +13,15 @@ function round_corners () {
 }
 
 
+function submit_form (form_id) {
+  $(form_id).find("input[type='submit']").attr('disabled', 'disabled');
+  $(form_id).find("input[type='submit']").after($("#spinner").show())
+  $(form_id).submit();
+}
+
+
 $(document).ready(function() { 
   round_corners();
-
-  $('form').submit(function(){
-      $('.story_submit').attr('disabled', 'disabled');
-  });
 
   $(".tooltip").tooltip({
      delay: 0,

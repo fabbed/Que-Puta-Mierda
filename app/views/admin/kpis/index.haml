@@ -56,37 +56,37 @@
                                                                                                            
                                                                                                            
 
-/ %h2 Datos por cada dia
-/ 
-/ #cada_dia
-/   %table#mytable{:cellspacing=>"0", :summary=>"Projects"}
-/     -@data.each_with_index do |data, i|
-/       -if ((i % 15) == 0)
-/         %tr
-/           %th Fecha
-/           %th # PVs
-/           %th # Visitors    
-/           %th # PVs p. Visitor    
-/           %th # Users
-/           %th # Stories
-/           %th # Comments
-/ 
-/ 
-/       %tr
-/         %td{:class => (@kpi_start_date + data[:date]).strftime("%A")}=my_date_kpis(@kpi_start_date + data[:date])
-/         %td="#{data[:pvs]}"
-/         %td="#{data[:visitors]} X:#{data[:visitors_xalut_count]}, G: #{data[:visitos_google_count]}"
-/         %td=sprintf("%.2f",data[:pvs_per_visitor])
-/         %td
-/           -(data[:users]).times do
-/             ="x"
-/ 
-/         %td
-/           -(data[:stories_with_email]).times do
-/             ="x"
-/           -(data[:stories].to_i-data[:stories_with_email].to_i).times do
-/             ="o"
-/           =sprintf("%.2f",data[:conversions])
-/         %td
-/           -(data[:comments]).times do
-/             ="x"
+%h2 Datos por cada dia
+
+#cada_dia
+  %table#mytable{:cellspacing=>"0", :summary=>"Projects"}
+    -Stats.all.each_with_index do |data, i|
+      -if ((i % 15) == 0)
+        %tr
+          %th Fecha
+          %th # PVs
+          %th # Visitors    
+          %th # PVs p. Visitor    
+          %th # Users
+          %th # Stories
+          %th # Comments
+
+
+      %tr
+        %td{:class => (data.day.to_date).strftime("%A")}=data.day
+        %td="#{data.pageviews}"
+        %td="#{data.visitors} X:#{data.visitors_xalut_count}, G: #{data.visitos_google_count}"
+        %td=sprintf("%.2f",(data.pageviews.to_f / data.visitors.to_f))
+        %td
+          -(data.users).times do
+            ="x"
+
+        %td
+          -(data.stories_with_email).times do
+            ="x"
+          -(data.stories.to_i-data.stories_with_email.to_i).times do
+            ="o"
+          =sprintf("%.2f", (data.stories.to_f / data.visitors.to_f) * 100)
+        %td
+          -(data.comments).times do
+            ="x"

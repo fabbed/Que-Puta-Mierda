@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
     comment.country_code = location.country_code if location.country_code
     comment.city = location.city if location.city
-    comment.country_name = Country.find_by_iso(comment.country_code.upcase).name
+    comment.country_name = Country.find_by_iso(comment.country_code.upcase).name if comment.country_code
     
     @story = Story.find(params[:story])
     @story.add_comment(comment)
