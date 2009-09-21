@@ -33,6 +33,11 @@ class Story < ActiveRecord::Base
   
   
   
+  def generate_url
+    self.to_param
+  end
+  
+  
   def remove_long_words_in_body
         indexes = []
         body_as_array = self.body.split(" ")

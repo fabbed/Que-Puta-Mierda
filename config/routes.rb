@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => 'stories'
 
+  map.sitemap "/sitemap.xml", :controller => "sitemap", :action => "xml"
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
