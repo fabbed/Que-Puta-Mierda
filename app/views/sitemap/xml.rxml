@@ -1,0 +1,12 @@
+base_url = "http://www.queputamierda.com/stories/"
+xml.instruct! :xml, :version=>"1.0"
+xml.tag! 'urlset', "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  for story in @stories do
+    xml.tag! 'url' do
+      xml.tag! 'loc', "#{base_url}#{story.generate_url}"
+      xml.tag! 'lastmod', story.updated_at.strftime("%Y-%m-%d")
+      xml.tag! 'changefreq', 'monthly'
+      xml.tag! 'priority', '0.8'
+    end
+  end
+end
