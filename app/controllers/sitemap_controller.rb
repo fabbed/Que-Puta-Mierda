@@ -1,10 +1,11 @@
 class SitemapController < ApplicationController
 
 def xml
-  @headers = Hash.new
-  @headers['Content-Type'] = "application/xml"
-  @stories = Story.newest_first
-  render :layout => false
+    @stories = Story.newest_first    
+
+    headers["Content-Type"] = "text/xml"
+    headers["Last-Modified"] = @stories[0].updated_at.httpdate  
+    render :layout => false
 end
 
 
