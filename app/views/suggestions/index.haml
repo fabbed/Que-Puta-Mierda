@@ -1,12 +1,12 @@
 -title("Queremos vuestras sugerencias")
 
 -content_for(:sidebar) do
-  =render :partial => '/shared/sidebars/sidebar_new'
+  =render :partial => '/shared/sidebars/sidebar_empty'
 
 -content_for(:main) do
   #new_story_wrapper
     #new_story
-      - form_for(:suggestion, :url => { :action => "create"}) do |f|
+      - form_for(:suggestion, :url => { :action => "create"}, :html => {:id => "new_suggestion"}) do |f|
   
         %h1.title ¿Qué añadirías o cambiarías en queputamierda.com?
   
