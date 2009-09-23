@@ -40,9 +40,11 @@ namespace :mail do
       NewsletterRegistration.all.each do |recipient|
         # if recipient.email == "fabian.dittrich@gmail.com" or recipient.email == "contiosofleming@gmail.com"
           
-          UserMailer.deliver_suggestions_newsletter(recipient.email)
-          recipient.nl1 = true
-          recipient.save
+          if recipient.nl1 != true
+            UserMailer.deliver_suggestions_newsletter(recipient.email)
+            recipient.nl1 = true
+            recipient.save
+          end
           
         # end
       end
