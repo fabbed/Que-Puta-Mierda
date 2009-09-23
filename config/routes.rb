@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :newsletter_registrations
-
+  
   map.resources :suggestions
 
   map.resources :stories, 

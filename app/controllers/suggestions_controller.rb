@@ -1,5 +1,4 @@
 class SuggestionsController < ApplicationController
-  
 
   # render new.rhtml
   def index
@@ -7,29 +6,18 @@ class SuggestionsController < ApplicationController
   end
 
   def create
-    cookies.delete :auth_token
-    # protects against session fixation attacks, wreaks havoc with 
-    # request forgery protection.
-    # uncomment at your own risk
-    # reset_session
-    @user = User.new(params[:user])
-    @user.save
-    if @user.errors.empty?
-      self.current_user = @user
-      redirect_back_or_default('/')
-      flash[:notice] = "¡Gracias por registrarte! En breve recibirás un e-mail"
-    else
-      render :action => 'new'
-    end
-  end
+    @suggestion = Suggestion.new(params[:suggestion])
 
-  def activate
-    self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
-    if logged_in? && !current_user.active?
-      current_user.activate
-      flash[:notice] = "¡Todo listo, te has registrado correctamente!"
+    location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
+    @suggestion.country_code = location.country_code if location.country_code
+
+    
+    if @suggestion.save
+      flash[:success] = "¡Gracias por tu sugerencia!"
+      redirect_to root_path(:param => "sugerencia_creado")
+    else
+      render :action => 'index'
     end
-    redirect_back_or_default('/')
   end
 
 end

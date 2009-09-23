@@ -8,7 +8,9 @@
     #new_story
       - form_for(@suggestion) do |f|
   
-        %h1.title Queridos putos!
+        %h1.title Estimado usuario:
+  
+        %p{:style => "font-size: 14px; line-height: 17px;"} ¿Qué añadirías o cambiarías en queputamierda.com? Estamos de remodelaciones. Si tienes ideas de nuevas funcionalidades u opciones, o si encuentras que se nos ha escapado algo, ¡dínoslo y haz que queputamierda.com crezca y mejore contigo!
   
         - if f.error_messages.present?
           #flash_message
@@ -16,17 +18,17 @@
               Hay errores, debes llenar todos los campos para enviar tu sugerencia.
         %p
           =f.label(:email, "E-Mail")
-          =f.label(:email, "¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!", :class => "label_sub")
+          =f.label(:email, "Déjanos tu Email y te informaremos de las novedades", :class => "label_sub")
           =f.text_field :email, :class => "input  short"
           =f.error_message_on :email              
         
         %p
-          =f.label(:body, "Historia")
+          =f.label(:body, "Sugerencia")
           =f.text_area :body, :size => "20x10", :class => "input"
           =f.error_message_on :body
         %p
           %br
-          = f.submit '¡Soltar la mierda!', :class => "btn_middle orange"
+          = f.submit '¡Mandar!', :class => "btn_middle orange"
 
 -if JS_VALIDATION == true
   =render :partial => "js_validation", :locals => { :form_id => "new_suggestion" }

@@ -5,12 +5,26 @@ class UserMailer < ActionMailer::Base
   
     @body[:url]  = "http://www.queputamierda.com/activate/#{user.activation_code}"  
   end
+
   
   def activation(user)
     setup_email(user)
     @subject    += 'Registro en www.queputamierda.com'
     @body[:url]  = "http://www.queputamierda.com/"
   end
+
+
+  def suggestions_newsletter(email)
+    puts "sending mail to: " + email
+
+    @recipients   = "#{email}"
+    @from         = "queputamierda.com <admin@queputamierda.com>"
+    @subject      = "Nuevo queputamierda.com"
+    @reply_to     = "admin@queputamierda.com"
+    @sent_on      = Time.now
+
+  end
+
 
   def new_comment(story)
     if story.user.present?
