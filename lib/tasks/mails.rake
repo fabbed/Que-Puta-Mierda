@@ -17,20 +17,34 @@ namespace :mail do
           end
     
         end
-
-
     end
+
+
+
+    desc "Calculates statistics"
+    task :delete_bad_ones => :environment do
+      
+      NewsletterRegistration.find(:all, :conditions => ['email NOT LIKE ?', "%@%"]).each do |nl|
+        nl.destroy
+      end
+      
+    end
+
+
+
 
 
     desc "Calculates statistics"
     task :send_first_newsletter => :environment do
       
       NewsletterRegistration.all.each do |recipient|
-        if recipient.email == "fabian.dittrich@gmail.com" or recipient.email == "contiosofleming@gmail.com"
+        # if recipient.email == "fabian.dittrich@gmail.com" or recipient.email == "contiosofleming@gmail.com"
           
           UserMailer.deliver_suggestions_newsletter(recipient.email)
+          recipient.nl1 = true
+          recipient.save
           
-        end
+        # end
       end
       
     end
