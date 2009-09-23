@@ -1,0 +1,20 @@
+=tabnav :admin
+
+/ .paginators
+/   -if PAGINATION or true
+/     = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
+/     = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
+
+
+%table#mytable{:cellspacing=>"0", :summary=>"Projects"}
+  -@suggestions.each_with_index do |suggestion, i|
+    -if ((i % 15) == 0)
+      %tr
+        %th Fecha
+        %th E-Mail
+        %th suggestion
+
+    %tr
+      %td=my_date_kpis(suggestion.created_at)
+      %td=suggestion.email
+      %td=suggestion.body
