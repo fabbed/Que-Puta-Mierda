@@ -16,3 +16,9 @@
       %p Ingresa tu email y recibe<br/> semanal o diariamente las mejores cagadas y puteada
 
       =render :partial => "/newsletter_registrations/new", :locals => {:newsletter_registration => NewsletterRegistration.new}
+
+    =image_tag "new/sidebar_seperator.png", :class => "seperator fix"
+
+    .section
+      %h2=link_to "¡Ayudanos mejorar queputamierda y dandonos tu opinion en este enlace!", suggestions_path
+      

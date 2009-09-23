@@ -18,7 +18,6 @@ ActionController::Routing::Routes.draw do |map|
   map.privacidad  '/politica-de-privacidad', :controller => 'terminos', :action => 'privacidad'
 
 
-
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -32,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.sitemap "/sitemap.xml", :controller => "sitemap", :action => "xml"
 
-  map.sitemap "/queremos-vuestras-sugerencias", :controller => "suggestions", :action => "index"
+  map.suggestions "/queremos-vuestras-sugerencias", :controller => "suggestions", :action => "index"
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
