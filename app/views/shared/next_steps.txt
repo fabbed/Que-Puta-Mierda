@@ -1,3 +1,9 @@
+See suggestions on admin page
+
+
+
+
+
 rake stories:get_real_country_names
 
 Deaktivieren von dem Mandar COmentario Button

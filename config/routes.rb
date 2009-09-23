@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :newsletter_registrations
 
+  map.resources :suggestions
 
   map.resources :stories, 
                 :collection => { :tops => :get, :flops => :get, :to_moderate => :get},
@@ -30,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'stories'
 
   map.sitemap "/sitemap.xml", :controller => "sitemap", :action => "xml"
+
+  map.sitemap "/queremos-vuestras-sugerencias", :controller => "suggestions", :action => "index"
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

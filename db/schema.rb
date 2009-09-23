@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090916152339) do
+ActiveRecord::Schema.define(:version => 20090923093412) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -126,6 +126,14 @@ ActiveRecord::Schema.define(:version => 20090916152339) do
     t.integer  "country_id"
     t.string   "city"
     t.string   "country_name"
+  end
+
+  create_table "suggestions", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|
