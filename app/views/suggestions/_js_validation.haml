@@ -1,0 +1,29 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      var validator = $("##{form_id}").validate({
+        rules: {
+          "suggestion[email]": {
+            email: true
+          },
+          "suggestion[body]": {
+            required: true,
+            minlength: 50
+          }
+        },
+
+        messages: {
+          "suggestion[email]": {
+            email: "Este email no es valido"
+          },
+          "suggestion[body]": {
+            required: "¡Suelta una sugerencia!",
+            minlength: "¡Enróllate un poco más, al menos 50 letras por favor!"
+          }
+          
+        },
+        
+        submitHandler: function() { submit_form($("##{form_id}")) }
+        
+      });
+    });

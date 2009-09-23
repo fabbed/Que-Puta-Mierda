@@ -1,0 +1,32 @@
+-title("Queremos vuestras sugerencias")
+
+-content_for(:sidebar) do
+  =render :partial => '/shared/sidebars/sidebar_new'
+
+-content_for(:main) do
+  #new_story_wrapper
+    #new_story
+      - form_for(@suggestion) do |f|
+  
+        %h1.title Queridos putos!
+  
+        - if f.error_messages.present?
+          #flash_message
+            .error
+              Hay errores, debes llenar todos los campos para enviar tu sugerencia.
+        %p
+          =f.label(:email, "E-Mail")
+          =f.label(:email, "¿Quieres que te avisemos cuando tu historia tenga comentarios? ¡Déjanos tu correo!", :class => "label_sub")
+          =f.text_field :email, :class => "input  short"
+          =f.error_message_on :email              
+        
+        %p
+          =f.label(:body, "Historia")
+          =f.text_area :body, :size => "20x10", :class => "input"
+          =f.error_message_on :body
+        %p
+          %br
+          = f.submit '¡Soltar la mierda!', :class => "btn_middle orange"
+
+-if JS_VALIDATION == true
+  =render :partial => "js_validation", :locals => { :form_id => "new_suggestion" }
