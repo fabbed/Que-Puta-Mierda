@@ -6,7 +6,7 @@
 -content_for(:main) do
   #new_story_wrapper
     #new_story
-      - form_for(@suggestion) do |f|
+      - form_for(:suggestion, :url => { :action => "create"}) do |f|
   
         %h1.title ¿Qué añadirías o cambiarías en queputamierda.com?
   
