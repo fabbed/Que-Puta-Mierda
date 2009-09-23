@@ -28,6 +28,12 @@ render_tabnav :admin,
    t.links_to hash_for_admin_stories_path
   end 
 
+  add_tab do |t|
+   t.named 'Suggestions'
+   t.titled 'Administration of Suggestions'
+   t.links_to hash_for_admin_suggestions_path
+  end 
+
 
     
   # this generates a tab for every controller in your app
