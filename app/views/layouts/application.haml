@@ -76,18 +76,29 @@
           
           =link_to (image_tag("new/terms.png", :class => :fix), "#", :id => "terms_link")
 
-  =yield(:javascript)
+    =yield(:javascript)
 
-  
-  #spinner
-    =image_tag "facebox/loading.gif"
 
-  :erb
-    <script type="text/javascript" src="http://cetrk.com/pages/scripts/0010/4149.js"> </script>
+    #spinner
+      =image_tag "facebox/loading.gif"
 
-  -if ANALYTICS
-    -if current_user
-      -if current_user.login != "fabito" and current_user.login != "elenoide"
+    :erb
+      <script type="text/javascript" src="http://cetrk.com/pages/scripts/0010/4149.js"> </script>
+
+    -if ANALYTICS
+      -if current_user
+        -if current_user.login != "fabito" and current_user.login != "elenoide"
+          :erb
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+            try {
+            var pageTracker = _gat._getTracker("UA-8678890-1");
+            pageTracker._trackPageview();
+            } catch(err) {}</script>
+      -else
         :erb
           <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -97,15 +108,18 @@
           try {
           var pageTracker = _gat._getTracker("UA-8678890-1");
           pageTracker._trackPageview();
-          } catch(err) {}</script>
-    -else
+          } catch(err) {}</script>  
+
+    -if params[:param] == "historia_creado"
       :erb
+        <!-- Google Website Optimizer Tracking Script -->
         <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
+        if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+        (document.location.protocol=='https:'?'s://ssl':'://www')+
+        '.google-analytics.com/ga.js"></sc'+'ript>')</script>
         <script type="text/javascript">
         try {
-        var pageTracker = _gat._getTracker("UA-8678890-1");
-        pageTracker._trackPageview();
-        } catch(err) {}</script>  
+        var gwoTracker=_gat._getTracker("UA-78290-22");
+        gwoTracker._trackPageview("/1353356641/test");
+        }catch(err){}</script>
+        <!-- End of Google Website Optimizer Tracking Script -->
