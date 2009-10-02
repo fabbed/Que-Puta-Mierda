@@ -16,7 +16,6 @@
   /[if IE 6]
     =stylesheet_link_tag "iefixes_v6"
 
-
   %body{:id=>controller.controller_name}
     .wrapper{:id => controller.action_name}
       #main
@@ -50,7 +49,9 @@
         #content
           #middle.fix
             #stories_content
-
+              -if controller.controller_name == "stories" and controller.action_name == "new"
+                #vamos.fix
+                  &nbsp;
               #top
                 -unless yield(:top) || flash[:success] || flash[:info] || flash[:error]
                   .spacer

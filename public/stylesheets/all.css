@@ -48,7 +48,8 @@ label.error {
   background: transparent url(/images/new/vamos_arrow.png) no-repeat scroll 0 0em;
   position: absolute;
   float: right;
-  left: 900px;
+  left: 425px;
+  top: -124px;
   width: 255px;
   height: 165px; }
 

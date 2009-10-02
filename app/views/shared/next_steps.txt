@@ -1,12 +1,24 @@
-Google Goal for Suggestions
+Böse Kommentare:
+-Evtl. durch Priming versuchen das zu verhinderm erinnern an gute Sachen
+-
 
-See suggestions on admin page
+Errors:
+Parameters  	
+{"story"=>"1133",
+ "action"=>"create",
+ "authenticity_token"=>"txto8ueTkVMzIIt5B4pzdgaUmWrV3pGiOVAZ+jkUjRc=",
+ "controller"=>"comments",
+ "comment"=>
+  {"comment"=>
+    "eso es incesto, no sabes que no debes tener relaciones sexuales con tu hermana? Qué te pasaba por la cabeza en ese momento?"}}
+
+-Story.find(1133), Email mit jimmylñagobas@hotmail.com
+-Loesung: nur Email wenn email valid ist
 
 
 
 
 rake stories:get_real_country_names
-
 Deaktivieren von dem Mandar COmentario Button
 
 Soltar la mierda button
