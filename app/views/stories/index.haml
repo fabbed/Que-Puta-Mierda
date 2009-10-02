@@ -23,3 +23,18 @@
     -if PAGINATION or true
       = will_paginate @stories, :prev_label => '« Anterior', :next_label => 'Siguiente »'
       = will_paginate @stories, :page_links => false, :class => :prev_next_pagination, :previous_label => "", :next_label => ""
+
+-if params[:param]=="historia_creado"
+  :erb
+    <!-- Google Website Optimizer Tracking Script -->
+    <script type="text/javascript">
+    if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+    (document.location.protocol=='https:'?'s://ssl':'://www')+
+    '.google-analytics.com/ga.js"></sc'+'ript>')</script>
+    <script type="text/javascript">
+    try {
+    var gwoTracker=_gat._getTracker("UA-78290-22");
+    gwoTracker._trackPageview("/1353356641/test");
+    }catch(err){}</script>
+    <!-- End of Google Website Optimizer Tracking Script -->
+  
