@@ -13,7 +13,6 @@ function round_corners () {
 }
 
 function submit_form (form) {
-    alert("resr")
     $("input:submit", form).after($("#spinner").show());
     $("input:submit", form).attr("disabled", true).attr("value", "Enviando...................");
     form.submit();
