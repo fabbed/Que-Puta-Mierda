@@ -12,11 +12,10 @@ function round_corners () {
   
 }
 
-
-function submit_form (form_id) {
-  $(form_id).find("input[type='submit']").after($("#spinner").show())
-  $(form_id).find("input[type='submit']").attr('disabled', 'disabled');
-  $(form_id).submit();
+function submit_form (form) {
+    $("input:submit", form).after($("#spinner").show());
+    $(form).find(":submit").attr("disabled", true).attr("value", "Enviando...");
+    form.submit();
 }
 
 

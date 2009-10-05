@@ -42,6 +42,14 @@ AUTO_TRIPS_HELPER = true
 JS_VALIDATION = true
 PAGINATION = true
 
+if RAILS_ENV == "development"
+  WEBSITE_OPTIMIZER=FALSE
+else
+  WEBSITE_OPTIMIZER=TRUE
+end
+
+
+
 
 EMAILADDRESS = begin
   qtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]'

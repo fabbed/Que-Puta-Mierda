@@ -53,7 +53,11 @@
           
         },
         
-        submitHandler: function() { submit_form($("##{form_id}")) }
+        submitHandler: function(form) { 
+
+          submit_form(form)
+    
+        }
         
       });
     });
