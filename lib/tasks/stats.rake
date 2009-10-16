@@ -16,7 +16,7 @@ namespace :stats do
         puts "#{from} - #{to}"
         puts from.to_date
         
-        unless Stats.find_by_day(from.to_date)
+        unless (Stats.find_by_day(from.to_date) and Stats.find_by_day(from.to_date).pageviews > 2000)
           puts "Not there"          
           # if from.to_date == "2009-09-09".to_date
           #   Stats.create!(:day => from.to_date)
