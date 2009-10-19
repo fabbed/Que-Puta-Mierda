@@ -483,3 +483,22 @@ label.label_sub {
       margin-left: 8px; }
     .thumbs .thumb .flop .not_active {
       background: transparent url(/images/new/icon_thumbs_down_not_active.png) no-repeat scroll 0 0em; }
+
+#inside_navigation {
+  height: 10px; }
+  #inside_navigation li {
+    display: block;
+    float: left; }
+  #inside_navigation li.active {
+    display: block;
+    float: left; }
+  #inside_navigation a {
+    color: #26140c;
+    display: block;
+    padding-right: 1em;
+    text-decoration: underline; }
+  #inside_navigation a.active {
+    display: block;
+    padding-right: 1em;
+    color: #26140c;
+    text-decoration: none; }

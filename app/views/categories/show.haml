@@ -6,7 +6,8 @@
 -content_for(:top) do
   .country_selector
     .cs_content
-      ="Estas viendo entradas de la categoría: <b>#{@category.name}</b>"
+      .filter_indicator
+        ="Estas viendo entradas de la categoría: <b>#{@category.name}</b>"
 
 -content_for(:main) do
   =render :partial => 'stories/story_new', :collection => @stories

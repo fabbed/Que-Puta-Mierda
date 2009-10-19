@@ -23,6 +23,8 @@ class Story < ActiveRecord::Base
   named_scope :to_moderate, :conditions => ['on_startpage = ?', true]  
   named_scope :for_administering, :order => "created_at desc"
 
+  named_scope :date_between, lambda { |date_range|   { :conditions => { :created_at => date_range } } }
+
 
   
   has_friendly_id :seo_title, :use_slug => true, :strip_diacritics => true

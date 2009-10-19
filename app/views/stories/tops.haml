@@ -7,8 +7,11 @@
 -content_for(:top) do
   .country_selector
     .cs_content
-      .filter_indicator="Estas viendo <span id='filter'>las putadas más grandes</span>"
-
+      .filter_indicator
+        %span Las putadas más grandes
+      %br      
+      .cl
+      =tabnav :time_span_tops_flops
 
 
 -content_for(:main) do

@@ -52,11 +52,51 @@ class StoriesController < ApplicationController
   end
 
   def tops
-    @stories = Story.tops.paginate(:page => params[:page], :per_page => 8)
+    
+    date_range=case params[:tiempo]
+      when nil
+        (Date.today)..(Date.today-7.days)
+      when "hoy"
+        Date.today..(Date.today-1.days)
+      when "ayer"
+        (Date.today-1.day)..(Date.today-2.days)        
+      when "semana"
+        (Date.today)..(Date.today-7.days)
+      when "mes"
+        (Date.today)..(Date.today-30.days)        
+      when "siempre"
+        "no sort"
+    end
+    
+    unless date_range != "no sort"
+      @stories = Story.tops.paginate(:page => params[:page], :per_page => 8)      
+    else
+      @stories = Story.tops.date_between(date_range).paginate(:page => params[:page], :per_page => 8)            
+    end
+
   end
 
   def flops
-    @stories = Story.flops.paginate(:page => params[:page], :per_page => 8)
+    date_range=case params[:tiempo]
+      when nil
+        (Date.today)..(Date.today-7.days)
+      when "hoy"
+        Date.today..(Date.today-1.days)
+      when "ayer"
+        (Date.today-1.day)..(Date.today-2.days)        
+      when "semana"
+        (Date.today)..(Date.today-7.days)
+      when "mes"
+        (Date.today)..(Date.today-30.days)        
+      when "siempre"
+        "no sort"
+    end
+    
+    unless date_range != "no sort"
+      @stories = Story.flops.paginate(:page => params[:page], :per_page => 8)      
+    else
+      @stories = Story.flops.date_between(date_range).paginate(:page => params[:page], :per_page => 8)            
+    end
   end
 
   def index

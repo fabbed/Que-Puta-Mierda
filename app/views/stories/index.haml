@@ -15,8 +15,13 @@
 /           %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
 
 
+-content_for(:top) do
+  .country_selector
+    .cs_content
+      .filter_indicator
+        %span Nuevas Historias en queputamierda.com
+
 -content_for(:main) do
-  
   =render :partial => 'stories/story_new', :collection => @stories
 
   .paginators
