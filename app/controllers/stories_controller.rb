@@ -55,15 +55,15 @@ class StoriesController < ApplicationController
     
     date_range=case params[:tiempo]
       when nil
-        (Date.today)..(Date.today-7.days)
+        (Date.today-7.days)..(Date.today)
       when "hoy"
-        Date.today..(Date.today-1.days)
+        (Date.today-1.days)..Date.today
       when "ayer"
-        (Date.today-1.day)..(Date.today-2.days)        
+        (Date.today-2.days)..(Date.today-1.day)
       when "semana"
-        (Date.today)..(Date.today-7.days)
+        (Date.today-7.days)..(Date.today)
       when "mes"
-        (Date.today)..(Date.today-30.days)        
+        (Date.today-30.days)..(Date.today)
       when "siempre"
         "no sort"
     end
@@ -79,15 +79,15 @@ class StoriesController < ApplicationController
   def flops
     date_range=case params[:tiempo]
       when nil
-        (Date.today)..(Date.today-7.days)
+        (Date.today-7.days)..(Date.today)
       when "hoy"
-        Date.today..(Date.today-1.days)
+        (Date.today-1.days)..Date.today
       when "ayer"
-        (Date.today-1.day)..(Date.today-2.days)        
+        (Date.today-2.days)..(Date.today-1.day)
       when "semana"
-        (Date.today)..(Date.today-7.days)
+        (Date.today-7.days)..(Date.today)
       when "mes"
-        (Date.today)..(Date.today-30.days)        
+        (Date.today-30.days)..(Date.today)
       when "siempre"
         "no sort"
     end
