@@ -8,6 +8,9 @@
     .cs_content
       .filter_indicator
         ="Estas viendo entradas de la categoría: <b>#{@category.name}</b>"
+      %br
+      .cl
+      =tabnav :category_filter
 
 -content_for(:main) do
   =render :partial => 'stories/story_new', :collection => @stories

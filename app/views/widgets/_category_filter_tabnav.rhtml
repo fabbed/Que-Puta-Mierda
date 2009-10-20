@@ -1,0 +1,77 @@
+<%  
+# this partial renders a tabnav, you can call it in your views with:
+#   <%= tabnav :category_filter % > (just the tabnav) 
+# or, if you want a boxed tabnav:
+#   <% tabnav :category_filter do % >
+#     your html here
+#   <% end % >
+# (remove the space between % and >, we don't want to mess up your brand new tabnav :-))
+#
+# you can pass render_tabnav a few options:
+#   :generate_css => true|false #=> generates a default inline css for the tabnav, defaults to false
+#   :html => aHash #=> sets html options for the tabnav's div (es :html => {:class=> 'myCssClass', :id=>'myCssId'}) 
+#     
+render_tabnav :category_filter, :html => { :id=>'inside_navigation'}, 
+              :generate_css => false do 
+    
+   add_tab do |t|
+   t.named 'Historias nuevas'
+   t.titled ''
+   t.links_to :controller => '/categories', :action => "show", :id=> @category, :ordenar_por => "nuevas"
+   t.highlights_on :controller => '/categories', :action => "show", :id=> @category.name, :ordenar_por => "nuevas"   
+  end 
+
+  add_tab do |t|
+   t.named 'Las putadas más grandes'
+   t.titled 'Las cagadas más grandes'
+   t.links_to :controller => '/categories', :action => "show", :id=> @category, :ordenar_por => "putadas"
+   t.highlights_on :controller => '/categories', :action => "show", :id=> @category.name, :ordenar_por => "putadas"
+   t.highlights_on :controller => '/categories', :action => "show", :id=> @category.name, :ordenar_por => ""      
+  end 
+
+  add_tab do |t|
+   t.named 'Las cagadas más grandes'
+   t.titled 'Las cagadas más grandes'
+   t.links_to :controller => '/stories', :action => "flops", :tiempo=>"semana"
+   t.links_to :controller => '/categories', :action => "show", :id=> @category, :ordenar_por => "cagadas"
+   t.highlights_on :controller => '/categories', :action => "show", :id=> @category.name, :ordenar_por => "cagadas"   
+  end 
+         
+  #add_tab do |t|
+  #  t.named 'Home'
+  #  t.titled 'Home Page'
+  #  t.links_to :controller => 'welcome'
+  #end 
+  #  
+  # you can use restful routes with:
+  #
+  #add_tab do |t|
+  #  t.named 'Users'
+  #  t.links_to hash_for_users_path
+  #end
+  #
+  #add_tab do |t|
+  #  t.named 'Customers'
+  #  t.links_to :controller => 'customers'
+  #end
+  #  
+  # # A tab can be initialized with a Hash like this:
+  # 
+  # add_tab :name => 'welcome', :link => {:controller=>'welcome'}
+  #
+  # # You can have a dynamic name or link 
+  # # (this partial is evaluated in the page context, so it sees every helper or instance variable)
+  #  
+  # add_tab do |t|
+  #   t.named "#{current_user} details"
+  #   t.links_to :controller => 'users', :action => 'show', :id => current_user.id
+  # end
+  #
+  # # You can have an image inside 
+  #
+  # add_tab do |t|
+  #   t.named image_tag('test')
+  #   t.links_to :controller => 'users', :action => 'show', :id => current_user.id
+  # end
+end 
+%>
