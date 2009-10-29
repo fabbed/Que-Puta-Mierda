@@ -47,4 +47,20 @@ namespace :stats do
 
       end
     end
+
+
+    desc "PageView Verteilung"
+    task :pv_distributions => :environment do
+    
+      file_data = Pageview.count(:conditions => [""], :group => "ip_address").inject([]) { |pvs, pv| pvs << pv[1] }
+    
+      new_file_data = file_data.reject { |e| e > 10}
+    
+      File.open("page_view_distributions.txt", 'w') {|f| f.write("Pageviews\n" + new_file_data.join("\n")) }
+
+    
+    end
+
+
+
 end
