@@ -1,0 +1,45 @@
+%h2= "VisitorSession \"#{@visitor_session.to_param}\""
+- content_tag_for :div, @visitor_session do
+  %ul
+    %li
+      %strong Ip:
+      =h @visitor_session.ip
+    %li
+      %strong Session:
+      =h @visitor_session.session
+    %li
+      %strong User agent:
+      =h @visitor_session.user_agent
+    %li
+      %strong Referrer:
+      =h @visitor_session.referrer
+    %li
+      %strong Http accept language:
+      =h @visitor_session.http_accept_language
+    %li
+      %strong Pageviews:
+      =h @visitor_session.pageviews
+    %li
+      %strong Stories:
+      =h @visitor_session.stories
+    %li
+      %strong Comments:
+      =h @visitor_session.comments
+    %li
+      %strong Recommendations:
+      =h @visitor_session.recommendations
+    %li
+      %strong Returns:
+      =h @visitor_session.returns
+    %li
+      %strong Ratings:
+      =h @visitor_session.ratings
+    %li
+      %strong Session start:
+      =h @visitor_session.session_start
+    %li
+      %strong Session end:
+      =h @visitor_session.session_end
+%ul
+  %li= link_to 'Edit', edit_visitor_session_path(@visitor_session)
+  %li= link_to 'Back', visitor_sessions_path

@@ -1,0 +1,56 @@
+- form_for(visitor_session) do |f|
+  = f.error_messages
+  %p
+    = f.label :ip
+    %br
+    = f.text_field :ip
+  %p
+    = f.label :session
+    %br
+    = f.text_field :session
+  %p
+    = f.label :user_agent
+    %br
+    = f.text_field :user_agent
+  %p
+    = f.label :referrer
+    %br
+    = f.text_field :referrer
+  %p
+    = f.label :http_accept_language
+    %br
+    = f.text_field :http_accept_language
+  %p
+    = f.label :pageviews
+    %br
+    = f.text_field :pageviews
+  %p
+    = f.label :stories
+    %br
+    = f.text_field :stories
+  %p
+    = f.label :comments
+    %br
+    = f.text_field :comments
+  %p
+    = f.label :recommendations
+    %br
+    = f.text_field :recommendations
+  %p
+    = f.label :returns
+    %br
+    = f.text_field :returns
+  %p
+    = f.label :ratings
+    %br
+    = f.text_field :ratings
+  %p
+    = f.label :session_start
+    %br
+    = f.date_select :session_start
+  %p
+    = f.label :session_end
+    %br
+    = f.date_select :session_end
+  %p
+    = f.submit "Submit"

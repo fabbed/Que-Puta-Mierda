@@ -1,0 +1,14 @@
+- content_tag_for :div, visitor do
+  %ul
+    %li
+      %strong Email:
+      =h visitor.email
+    %li
+      %strong Returns:
+      =h visitor.returns
+    %li
+      %strong Country:
+      =h visitor.country_id
+    = link_to 'Show', visitor
+    = link_to 'Edit', edit_visitor_path(visitor)
+    = link_to 'Destroy', visitor, :confirm => 'Are you sure?', :method => :delete

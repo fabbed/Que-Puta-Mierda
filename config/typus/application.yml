@@ -1,0 +1,140 @@
+# Typus Models Configuration File
+#
+# Use the README file on the same folder as this file as a reference to
+# customize this file to your needs.
+
+Category:
+  fields:
+    list: name, description
+    form: name, description
+    show: id, name, description, created_at, updated_at
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: stories
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Change:
+  fields:
+    list: label, change_date
+    form: label, description, change_date
+    show: id, label, description, change_date, created_at, updated_at
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: 
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Country:
+  fields:
+    list: name, iso, visible, sort_order, used_id
+    form: name, iso, visible, sort_order, used_id
+    show: id, name, iso, visible, created_at, updated_at, sort_order, used_id
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: users
+  filters:
+  search:
+  application: quemierda
+  description:
+
+NewsletterRegistration:
+  fields:
+    list: name, email, nl1, nl2, nl3, nl4, nl5, nl6
+    form: name, email, nl1, nl2, nl3, nl4, nl5, nl6
+    show: id, name, email, created_at, updated_at, nl1, nl2, nl3, nl4, nl5, nl6
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: 
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Pageview:
+  fields:
+    list: request_uri, request_method, referer, session, ip_address, user_agent, http_accept, http_accept_language, http_accept_encoding, search_engine, search_terms, user
+    form: request_uri, request_method, referer, session, ip_address, user_agent, http_accept, http_accept_language, http_accept_encoding, search_engine, search_terms, user
+    show: id, request_uri, request_method, referer, session, ip_address, user_agent, http_accept, http_accept_language, http_accept_encoding, search_engine, search_terms, created_at, updated_at, user
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: user
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Stats:
+  fields:
+    list: day, pageviews, visitors, users, stories, stories_with_email, comments, visitors_xalut_count, visitos_google_count, newsletter_registrations, finished
+    form: day, pageviews, visitors, users, stories, stories_with_email, comments, visitors_xalut_count, visitos_google_count, newsletter_registrations, finished
+    show: id, day, pageviews, visitors, users, stories, stories_with_email, comments, visitors_xalut_count, visitos_google_count, newsletter_registrations, finished, created_at, updated_at
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: 
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Story:
+  fields:
+    list: email, rated_top, rated_flop, anonymous, on_startpage, seo_title, title, administered, ip, lng, lat, country_code, city, country_name, user, country, category
+    form: body, email, rated_top, rated_flop, anonymous, on_startpage, seo_title, title, administered, ip, lng, lat, country_code, city, country_name, user, country, category
+    show: id, body, email, rated_top, rated_flop, anonymous, on_startpage, created_at, updated_at, seo_title, title, administered, ip, lng, lat, country_code, city, country_name, user, country, category
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: category, comments, country, slugs, taggings, tags, user
+  filters:
+  search:
+  application: quemierda
+  description:
+
+Suggestion:
+  fields:
+    list: email, name, country_code
+    form: email, name, body, country_code
+    show: id, email, name, body, created_at, updated_at, country_code
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: 
+  filters:
+  search:
+  application: quemierda
+  description:
+
+User:
+  fields:
+    list: login, email, crypted_password, salt, remember_token, remember_token_expires_at, activation_code, activated_at, wants_newsletter, country_id, admin
+    form: login, email, crypted_password, salt, remember_token, remember_token_expires_at, activation_code, activated_at, wants_newsletter, country_id, admin
+    show: id, login, email, crypted_password, salt, created_at, updated_at, remember_token, remember_token_expires_at, activation_code, activated_at, wants_newsletter, country_id, admin
+  actions:
+    index:
+    edit:
+  order_by:
+  relationships: page_views, stories
+  filters:
+  search:
+  application: quemierda
+  description:
+

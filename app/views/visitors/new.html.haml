@@ -1,0 +1,4 @@
+%h2 New visitor
+= render :partial => "form", :locals => {:visitor => @visitor}
+%ul
+  %li= link_to 'Back', visitors_path

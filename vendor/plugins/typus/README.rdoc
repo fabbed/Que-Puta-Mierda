@@ -1,0 +1,114 @@
+= Typus: Effortless admin interface for your Rails application
+
+*Typus* is designed for a single activity:
+
+    Trusted users editing structured content.
+
+*Typus* doesn't try to be all the things to all the people but it's 
+extensible enough to match lots of use cases.
+
+- Project site and documentation http://intraducibles.com/projects/typus
+- Plugin source http://github.com/fesplugas/typus/tree
+- Google Group http://groups.google.es/group/typus
+- Bugs http://typus.lighthouseapp.com/dashboard
+
+== Impatients to see it working?
+
+Step 1: Create a Rails application using a template.
+
+    $ rails example.com -m http://gist.github.com/86613.txt
+
+Step 2: Start the server:
+
+    $ cd example.com && script/server
+
+Step 3: Go to the admin area and enjoy it!
+
+    http://0.0.0.0:3000/admin
+
+== Want to see a demo working?
+
+There's an application running at Heroku.
+
+    http://typus.heroku.com/
+
+Use the following credentials to log in.
+
+    Email: userdemo@intraducibles.com
+    Password: userdemo
+
+Notes on the application demo:
+
+- Runs under SSL.
+- Has an Assets model to show how assets can work.
+- User can only edit the posts they have generated.
+- User cannot edit Categories, just view them.
+- Shows how TinyMCE is integrated with Pages.
+
+== Installing
+
+Install from GitHub the latest version which it's compatible with Rails 2.3.4.
+
+    $ script/plugin install git://github.com/fesplugas/typus.git
+
+Once *Typus* is installed, run the generator to create required files and migrate your 
+database. (<tt>typus_users</tt> table is created)
+
+    $ script/generate typus
+    $ rake db:migrate
+
+To create the first user, start the application server, go to 
+http://0.0.0.0:3000/admin and follow the instructions.
+
+== Support Typus
+
+*Typus* is licensed under the MIT license. As an experiment we 
+encourage you to support this project by donating[http://intraducibles.com/projects/typus/donate] 
+90 euros if you are a developer or studio. Donations do allow us to spend more 
+time working and supporting the project. All contributions are much appreciated!
+
+Hire us to work on your next project. We build large and small websites.
+
+Contribute your patches to the community & support people on the 
+mailing list.
+
+Tell everybody about *Typus*, tell your friends and colleagues about 
+*Typus* and blog about *Typus*.
+
+== Using Typus as a Gem?
+
+If you are using *Typus* as a gem add the following line at the end of the 
+<tt>Rakefile</tt> on the root of your Rails application.
+
+    Dir["#{RAILS_ROOT}/vendor/gems/*/**/tasks/**/*.rake"].sort.each { |ext| load ext }
+
+== Contributors
+
+- Laia Gargallo (Lover and tea provider) http://azotacalles.net
+- Isaac Feliu (Codereview on first public release) http://www.vesne.com
+- Lluis Folch (Icons, feedback & crazy ideas) http://wet-floor.com
+- Sergio Espeja (Code) http://github.com/spejman
+- Eadz (Code) http://github.com/eadz
+- Anthony Underwood (Code) http://github.com/aunderwo
+- Felipe Talavera (Code) http://github.com/flype
+- Erik Tigerholm (Code) http://github.com/eriktigerholm
+- George Guimarães (Portuguese translation and code) http://github.com/georgeguimaraes
+- José Valim (Code) http://github.com/josevalim
+- Luqman Amjad (Code) http://github.com/luqman
+- Alexey Noskov (Russian translation and code) http://github.com/alno
+- Andres Gutierres (Bugfixes & feedback) http://github.com/andresgutgon
+- Komzák Nándor (Code, bugfixes & feedback) http://github.com/rubymood
+- Michael Grunewalder (German translation) http://michael.grunewalder.com
+- Tim Harvey (Code) http://www.timharvey.net/ 
+- Ned Baldessin (French translation and code) http://github.com/nedbaldessin
+- Robert Rouse (Code) - Ruby 1.9 compatibility fixes.
+
+== Acknowledgments
+
+- *Typus* uses "Paginator" by Bruce Williams http://codefluency.com.
+- *Typus* has been inspired by "Django Admin" http://djangoproject.com.
+- *Typus* uses http://fancybox.net.
+- *Typus* uses UI icons from http://jqueryui.com.
+
+Copyright (c) 2007-2009 Francesc Esplugas Marti, released under the 
+MIT license

@@ -1,0 +1,2 @@
+module VisitorSessionsHelper
+end

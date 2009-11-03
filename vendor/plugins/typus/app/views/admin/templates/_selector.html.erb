@@ -1,0 +1,21 @@
+<%
+
+  options = []
+  @resource[:class].send(attribute).each do |option|
+    case option.kind_of?(Array)
+    when true
+      selected = (@item.send(attribute).to_s == option.last.to_s) ? 'selected' : ''
+      options << "<option #{selected} value=\"#{option.last}\">#{option.first}</option>"
+    else
+      selected = (@item.send(attribute).to_s == option.to_s) ? 'selected' : ''
+      options << "<option #{selected} value=\"#{option}\">#{option}</option>"
+    end
+  end
+
+%>
+
+<li><label for="item_<%= attribute %>"><%= @resource[:class].human_attribute_name(attribute) %></label>
+<select id="item_<%= attribute %>" <%= attribute_disabled?(attribute) ? 'disabled="disabled"' : '' %> name="item[<%= attribute %>]">
+<option value=""></option>
+<%= options.join("\n") %>
+</select></li>

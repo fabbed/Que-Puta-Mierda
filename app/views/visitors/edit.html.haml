@@ -1,0 +1,6 @@
+%h2 Editing visitor
+= render :partial => "form", :locals => {:visitor => @visitor}
+%ul
+  %li= link_to 'Show', @visitor
+  %li= link_to 'Back', visitors_path
+  %li= link_to 'Destroy', @visitor, :confirm => 'Are you sure?', :method => :delete  

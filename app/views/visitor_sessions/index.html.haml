@@ -1,0 +1,8 @@
+%h2 Listing visitor_sessions
+- if !@visitor_sessions.empty?
+  .visitor_sessions
+    = render :partial => "visitor_session", :collection => @visitor_sessions
+  = will_paginate(@visitor_sessions)
+- else
+  %p There are no visitor_sessions to show yet.
+= link_to 'New visitor_session', new_visitor_session_path

@@ -1,0 +1,8 @@
+%h2 Listing visitors
+- if !@visitors.empty?
+  .visitors
+    = render :partial => "visitor", :collection => @visitors
+  = will_paginate(@visitors)
+- else
+  %p There are no visitors to show yet.
+= link_to 'New visitor', new_visitor_path
