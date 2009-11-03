@@ -51,14 +51,23 @@ namespace :stats do
 
     desc "PageView Verteilung"
     task :pv_distributions => :environment do
-    
-      file_data = Pageview.count(:conditions => [""], :group => "ip_address").inject([]) { |pvs, pv| pvs << pv[1] }
-    
+      file_data = Pageview.count(:conditions => [""], :group => "session").inject([]) { |pvs, pv| pvs << pv[1] }
       new_file_data = file_data.reject { |e| e > 10}
-    
       File.open("page_view_distributions.txt", 'w') {|f| f.write("Pageviews\n" + new_file_data.join("\n")) }
+    end
 
-    
+    desc "One week distributions"
+    task :pv_week_session => :environment do
+      file_data = Pageview.count(:conditions => ['created_at BETWEEN "2009-08-01 00:00:00.0" AND "2009-08-08 00:00:00.0"'], :group => "session").inject([]) { |pvs, pv| pvs << pv[1] }
+      new_file_data = file_data
+      File.open("week_pageviews_session.txt", 'w') {|f| f.write("Pageviews\n" + new_file_data.join("\n")) }
+    end
+
+    desc "One week distributions"
+    task :pv_week_ip => :environment do
+      file_data = Pageview.count(:conditions => ['created_at BETWEEN "2009-08-01 00:00:00.0" AND "2009-08-08 00:00:00.0"'], :group => "ip_address").inject([]) { |pvs, pv| pvs << pv[1] }
+      new_file_data = file_data
+      File.open("week_pageviews_ip.txt", 'w') {|f| f.write("Pageviews\n" + new_file_data.join("\n")) }
     end
 
 

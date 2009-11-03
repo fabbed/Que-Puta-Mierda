@@ -24,4 +24,12 @@
 class Pageview < ActiveRecord::Base
   belongs_to :user
   
+  
+  
+  named_scope :no_bots, :conditions => ['user_agent NOT LIKE ? AND user_agent NOT LIKE ? AND user_agent NOT LIKE ? AND user_agent NOT LIKE ? AND user_agent NOT LIKE ? AND user_agent NOT LIKE ? AND user_agent NOT LIKE ?', "%google%", "%yahoo%", "%msnbot%", "%searchpre%", "%slurp%", "%teoma%", "%roboz%"]
+
+
+  
+  
+  
 end

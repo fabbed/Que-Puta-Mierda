@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :visitors
+
+  map.resources :visitor_sessions
+
   map.resources :newsletter_registrations
   
   map.resources :suggestions

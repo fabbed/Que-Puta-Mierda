@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091002115215) do
+ActiveRecord::Schema.define(:version => 20091103065824) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -185,6 +185,33 @@ ActiveRecord::Schema.define(:version => 20091002115215) do
     t.boolean  "wants_newsletter",                        :default => true
     t.integer  "country_id"
     t.boolean  "admin",                                   :default => false
+  end
+
+  create_table "visitor_sessions", :force => true do |t|
+    t.integer  "visitor_id"
+    t.string   "ip",                   :limit => 15,                :null => false
+    t.string   "session_id",                                        :null => false
+    t.string   "user_agent"
+    t.string   "referer"
+    t.integer  "pageviews",                          :default => 0
+    t.integer  "stories",                            :default => 0
+    t.integer  "comments",                           :default => 0
+    t.integer  "recommendations",                    :default => 0
+    t.integer  "ratings",                            :default => 0
+    t.string   "request_uri",                                       :null => false
+    t.string   "request_method",       :limit => 7,                 :null => false
+    t.string   "http_accept_language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "visitors", :force => true do |t|
+    t.string   "email"
+    t.string   "vcode"
+    t.integer  "logins",     :default => 1
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -32,15 +32,6 @@ module ApplicationHelper
 
 
 
-  def formated_money(money, main_currency)
-    if main_currency == "CLP"
-      "#{money.as_euro.format} (#{money.format(:no_cents)})"
-    elsif
-      "#{money.format(:no_cents)} (#{money.as_euro.format})"
-    end
-  end
-
-
   def my_date(date)
     date.strftime("%d/%m/%Y a las %H:%M hrs")
   end
