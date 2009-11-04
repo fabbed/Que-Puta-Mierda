@@ -24,8 +24,8 @@ class Visitor < ActiveRecord::Base
 
 
 
-  def self.create_new
-    new_visitor = self.create(:vcode => self.generate_vcode)
+  def self.create_new(request)
+    new_visitor = self.create(:vcode => self.generate_vcode, :ip =>request.env["REMOTE_ADDR"], :referer => request.env["HTTP_REFERER"])
   end
 
 

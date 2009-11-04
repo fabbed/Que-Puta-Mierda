@@ -4,6 +4,8 @@ class CreateVisitors < ActiveRecord::Migration
       t.string :email
       t.string :vcode
       t.integer :logins, :default => 1
+      t.string     :ip,           :limit => 15, :null => false
+      t.string :referer
       t.belongs_to :country
 
       t.timestamps

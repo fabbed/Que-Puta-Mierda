@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
 
-  session :off, :if => proc { |request| robot?(request.user_agent) }
+  # session :off #, :if => proc { |request| robot?(request.user_agent) }
     
   before_filter :create_ratings_session
-  after_filter :track_activity
+  before_filter :create_visitor_or_load_existing
 
   # after_filter  :record_pageview
   
@@ -58,46 +58,39 @@ class ApplicationController < ActionController::Base
       return false
     end
     
-    def track_activity
-      if request.env["REQUEST_METHOD"] == "GET"
-        if ((visitor_session = get_visitor_session))
-          visitor_session.pageviews = visitor_session.pageviews + 1
-          visitor_session.save
-          puts "pageview + 1"
-        end
-      # evtl. das ganze Tracken hier übernehmen
-      # elsif request.env["REQUEST_METHOD"] == "POST"
-      #   puts "this is a post"
-      #   puts @to_track.to_yaml
-      end
-    end
-
     def create_visitor_or_load_existing
-      if params[:controller] == "stories" and params[:action] == "index"
-        if !(has_cookie?) #wenn er kein cookie hat -> NEUER VISITOR eingestiegen über STARTSEITE
-          puts "no cookie"
-          new_visitor = Visitor.create_new
+      puts "============================================================="
+      puts "============create_visitor_or_load_existing=================="
+      if !(robot?(request.user_agent)) and request.env["REQUEST_METHOD"] == "GET" #if no robot
+        if !(has_cookie?) and params[:controller] == "stories" and params[:action] == "index" #kein cookie & STARTSEITE
+          puts "==== -> New first visitor"
+          new_visitor = Visitor.create_new(request)
           new_visitor.create_visitor_session(request)
-          session[:visitor_id] = new_visitor.id
-          session[:visitor_session_id] = new_visitor.visitor_sessions.last.session_id
-          puts "-> create_visitor"
-          puts "-> create_first_session"
+          store_session_variables(new_visitor.id, new_visitor.visitor_sessions.last.session_id)
           cookies[:vcode] = { :value => new_visitor.vcode, :expires => Time.now.next_year}
-        else #wenn er cookie hat
-          puts "has cookie"
-          if !(session[:visitor_id]) #wenn er cookie hat aber keine session, dann ist er ein returning visitor
-            puts "-> create_new_session"
-            
-            if (returning_visitor = Visitor.find_by_vcode(cookies[:vcode])) #visitor laden
-              returning_visitor.logins = returning_visitor.logins + 1
-              returning_visitor.create_visitor_session(request) #neue session
-              returning_visitor.save
-              session[:visitor_id] = returning_visitor.id
-              session[:visitor_session_id] = returning_visitor.visitor_sessions.last.session_id
-            end
+        elsif (has_cookie? and !(has_session?)) #wenn er cookie hat aber keine session
+          puts "==== -> Returning visitor"
+          if (returning_visitor = Visitor.find_by_vcode(cookies[:vcode])) #visitor laden
+            returning_visitor.logins = returning_visitor.logins + 1
+            returning_visitor.create_visitor_session(request) #neue session
+            returning_visitor.save
+            store_session_variables(returning_visitor.id, returning_visitor.visitor_sessions.last.session_id)
+          end
+        elsif (has_cookie? and has_session?) 
+          puts "==== -> Session continuation"
+          if ((visitor_session = get_visitor_session))
+            visitor_session.pageviews = visitor_session.pageviews + 1
+            visitor_session.save
+            puts "pageview + 1"
           end
         end
       end
+      puts "============================================================="
+    end
+
+    def store_session_variables(visitor_id, last_session_id)
+      session[:visitor_id] = visitor_id
+      session[:visitor_session_id] = last_session_id
     end
 
     def has_session?
@@ -116,12 +109,18 @@ class ApplicationController < ActionController::Base
         return true
       end
     end
+   
+    
+    # def valid_referer?
+    #   puts "referer"
+    #   puts request.env["HTTP_REFERER"].to_s
+    #   return true
+    # end
+  
+   
     
     def robot?(user_agent)
       user_agent =~ /(Baidu|bot|Google|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg)/i
     end
-
-
-
 
 end

@@ -6,7 +6,6 @@ class StoriesController < ApplicationController
 
   protect_from_forgery :only => [:create, :update, :destroy] 
   before_filter :prepare_stuff, :only => [:vote_top, :vote_flop] 
-  before_filter :create_visitor_or_load_existing, :only => [:index]
 
   def tag
     @stories = Story.find_tagged_with(params[:id], :match_all => true).paginate(:page => params[:page], :per_page => STORIES_PER_PAGE)
