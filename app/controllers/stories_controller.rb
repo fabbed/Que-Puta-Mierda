@@ -26,6 +26,8 @@ class StoriesController < ApplicationController
     @story.rated_top = @story.rated_top + 1
     @story.save
 
+    new_rating
+
     respond_to do |wants|
       wants.html do
         redirect_to root_path
@@ -36,10 +38,23 @@ class StoriesController < ApplicationController
     end
   end
 
+  def new_rating
+    #Track: New Comment
+    if (visitor_session = get_visitor_session)
+      visitor_session.ratings << @story.id
+      visitor_session.save
+      puts "Track: New Rating"
+    else
+      puts "error in track: new rating"        
+    end
+  end
+
   def vote_flop
     session[:flop_votes] << params[:id].to_i
     @story.rated_flop = @story.rated_flop + 1
     @story.save
+
+    new_rating
     
     respond_to do |wants|
       wants.html do
@@ -159,6 +174,17 @@ class StoriesController < ApplicationController
     respond_to do |format|
       if @story.save
         flash[:success] = '¡Muy bien!<br/> Ahora tu historia se encuentra en la página de inicio donde también puedes votar otras historias.'
+
+      #Track: New Story
+      if (visitor_session = get_visitor_session)
+        visitor_session.stories << @story.id
+        visitor_session.save
+        puts "pageview + 1"
+      else
+        puts "error in trackpageview, has cookie but NO visitor_session"        
+      end
+
+
         format.html { redirect_to root_path(:param => "historia_creado") }
         format.xml  { render :xml => @story, :status => :created, :location => @story }
       else

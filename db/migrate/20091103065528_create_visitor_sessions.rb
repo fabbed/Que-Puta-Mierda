@@ -7,10 +7,12 @@ class CreateVisitorSessions < ActiveRecord::Migration
       t.string :user_agent
       t.string :referer
       t.integer :pageviews,       :default => 1
-      t.integer :stories,         :default => 0
-      t.integer :comments,        :default => 0
-      t.integer :recommendations, :default => 0
-      t.integer :ratings,         :default => 0
+      
+      t.text    :stories
+      t.text    :comments
+      t.text    :ratings
+      t.text    :recommendations
+      
       t.string     :request_method,       :limit => 7, :null => false
       t.string     :user_agent
       t.string     :http_accept_language

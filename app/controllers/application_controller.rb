@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   session :off, :if => proc { |request| robot?(request.user_agent) }
     
   before_filter :create_ratings_session
-  after_filter :track_pageview
+  after_filter :track_activity
 
   # after_filter  :record_pageview
   
@@ -48,17 +48,27 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def track_pageview
+    def get_visitor_session
       if has_cookie? and has_session?
         visitor_session = VisitorSession.find_by_session_id(session[:visitor_session_id])
         if visitor_session.visitor_id == session[:visitor_id]
-          #session vom visitor
+          return visitor_session
+        end
+      end
+      return false
+    end
+    
+    def track_activity
+      if request.env["REQUEST_METHOD"] == "GET"
+        if ((visitor_session = get_visitor_session))
           visitor_session.pageviews = visitor_session.pageviews + 1
           visitor_session.save
-          puts "track pageview"
+          puts "pageview + 1"
         end
-      else
-        puts "error in trackpageview, has cookie but NO session"
+      # evtl. das ganze Tracken hier übernehmen
+      # elsif request.env["REQUEST_METHOD"] == "POST"
+      #   puts "this is a post"
+      #   puts @to_track.to_yaml
       end
     end
 
@@ -77,12 +87,14 @@ class ApplicationController < ActionController::Base
           puts "has cookie"
           if !(session[:visitor_id]) #wenn er cookie hat aber keine session, dann ist er ein returning visitor
             puts "-> create_new_session"
-            returning_visitor = Visitor.find_by_vcode(cookies[:vcode]) #visitor laden
-            returning_visitor.logins = returning_visitor.logins + 1
-            returning_visitor.create_visitor_session(request) #neue session
-            returning_visitor.save
-            session[:visitor_id] = returning_visitor.id
-            session[:visitor_session_id] = returning_visitor.visitor_sessions.last.session_id
+            
+            if (returning_visitor = Visitor.find_by_vcode(cookies[:vcode])) #visitor laden
+              returning_visitor.logins = returning_visitor.logins + 1
+              returning_visitor.create_visitor_session(request) #neue session
+              returning_visitor.save
+              session[:visitor_id] = returning_visitor.id
+              session[:visitor_session_id] = returning_visitor.visitor_sessions.last.session_id
+            end
           end
         end
       end

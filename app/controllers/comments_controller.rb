@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
     @story = Story.find(params[:story])
     @story.add_comment(comment)
 
+    #Track: New Comment
+    if (visitor_session = get_visitor_session)
+      visitor_session.comments << comment.id
+      visitor_session.save
+      puts "Track: New Comments"
+    else
+      puts "error in track: new comment"        
+    end
+    
+
     if (@story.email.present? or @story.user_id.present?)
       UserMailer.deliver_new_comment(@story)
     end

@@ -9,7 +9,11 @@ class Visitor < ActiveRecord::Base
                                             :request_method => request.env["REQUEST_METHOD"],
                                             :referer => request.env["HTTP_REFERER"],
                                             :http_accept_language => request.env["HTTP_ACCEPT_LANGUAGE"],
-                                            :user_agent => request.env["HTTP_USER_AGENT"]
+                                            :user_agent => request.env["HTTP_USER_AGENT"],
+                                            :comments => Array.new,                                            
+                                            :stories => Array.new,                                            
+                                            :recommendations => Array.new,                                            
+                                            :ratings => Array.new
                                             )
   end
 

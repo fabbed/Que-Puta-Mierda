@@ -193,12 +193,11 @@ ActiveRecord::Schema.define(:version => 20091103065824) do
     t.string   "session_id",                                        :null => false
     t.string   "user_agent"
     t.string   "referer"
-    t.integer  "pageviews",                          :default => 0
-    t.integer  "stories",                            :default => 0
-    t.integer  "comments",                           :default => 0
-    t.integer  "recommendations",                    :default => 0
-    t.integer  "ratings",                            :default => 0
-    t.string   "request_uri",                                       :null => false
+    t.integer  "pageviews",                          :default => 1
+    t.text     "stories"
+    t.text     "comments"
+    t.text     "ratings"
+    t.text     "recommendations"
     t.string   "request_method",       :limit => 7,                 :null => false
     t.string   "http_accept_language"
     t.datetime "created_at"
