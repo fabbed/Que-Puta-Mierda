@@ -142,13 +142,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  def new2
-    @story = Story.new
-
-    render :action => :new
-  end
-
-
   # GET /stories/1/edit
   def edit
     @story = Story.find(params[:id])
