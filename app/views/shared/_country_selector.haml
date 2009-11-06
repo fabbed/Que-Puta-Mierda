@@ -1,0 +1,23 @@
+-form_tag({:controller => :stories, :action => :set_selected_country}, :method => :post) do
+  %table{:cellpadding => 2}
+    %tr
+      %td{:valign => "BOTTOM", :style => "width:#{width}px;"}=title
+      %td{:valign => "BOTTOM", :style => "width:163px;"}
+        =select_tag :country_id, options_for_select(Country.for_story_select_box, visitor_country_id_or_selected_country_id), :id => "select_country"
+        =hidden_field_tag "return_path", get_return_path(params)
+      %td{:valign => "BOTTOM"}=image_submit_tag "new/btn_refresh.png"
+    -if mode == "index"
+      %tr
+        %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
+    %tr
+      %td{:colspan => 3} &nbsp;
+
+    %tr
+      -if mode == "categories"
+        %td{:colspan => 3}=tabnav :category_filter
+      -elsif mode == "flops"
+        %td{:colspan => 3}=tabnav :time_span_flops
+      -elsif mode == "tops"
+        %td{:colspan => 3}=tabnav :time_span_tops_flops
+
+      
