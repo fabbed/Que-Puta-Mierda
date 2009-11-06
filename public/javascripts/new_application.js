@@ -22,6 +22,12 @@ function submit_form (form) {
 $(document).ready(function() { 
   round_corners();
 
+    $("#select_country").change(function() {
+      this.form.submit();
+    });
+
+
+
   $(".tooltip").tooltip({
      delay: 0,
      showURL: false

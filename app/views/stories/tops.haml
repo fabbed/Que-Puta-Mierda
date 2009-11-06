@@ -3,31 +3,12 @@
 -content_for(:sidebar) do
   =render :partial => '/shared/sidebars/sidebar_tops'
 
+
 -content_for(:top) do
   .country_selector
     .cs_content
-      -form_tag({:controller => :stories, :action => :set_selected_country}, :method => :post) do
-        %table{:cellpadding => 2}
-          %tr
-            %td.filter_indicator{:valign => "BOTTOM", :style => "width:238px;"}
-              %span Las putadas más grandes de
-            %td{:valign => "BOTTOM", :style => "width:163px;"}
-              =select_tag :country_id, options_for_select(Country.for_story_select_box, visitor_country_id_or_selected_country_id)
-              =hidden_field_tag "return_path", get_return_path(params)
-            %td{:valign => "BOTTOM"}=image_submit_tag "new/btn_refresh.png"
-          %tr
-            %td{:colspan => 3} &nbsp;
-          %tr
-            %td{:colspan => 3}=tabnav :time_span_tops_flops
-
-
-    / .cs_content
-    /   .filter_indicator
-    /     %span Las putadas más grandes de
-    /   %br      
-    /   .cl
-    /   =tabnav :time_span_tops_flops
-
+      =render :partial => "shared/country_selector", :locals => {:title => "Las <b>putadas más grandes</b> de", :mode => "tops", :width => 195}
+      
 
 -content_for(:main) do
   =render :partial => 'stories/story_new', :collection => @stories

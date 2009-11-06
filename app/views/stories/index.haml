@@ -6,16 +6,18 @@
 -content_for(:top) do
   .country_selector
     .cs_content
-      -form_tag({:controller => :stories, :action => :set_selected_country}, :method => :post) do
-        %table{:cellpadding => 2}
-          %tr
-            %td{:valign => "BOTTOM", :style => "width:128px;"} Nuevas historias de
-            %td{:valign => "BOTTOM", :style => "width:163px;"}
-              = select_tag :country_id, options_for_select(Country.for_story_select_box, visitor_country_id_or_selected_country_id)
-              =hidden_field_tag "return_path", get_return_path(params)
-            %td{:valign => "BOTTOM"}=image_submit_tag "new/btn_refresh.png"
-          %tr
-            %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
+      =render :partial => "shared/country_selector", :locals => {:title => "<b>Nuevas historias</b> de", :mode => "index", :width => 140}
+      
+      / -form_tag({:controller => :stories, :action => :set_selected_country}, :method => :post) do
+      /   %table{:cellpadding => 2}
+      /     %tr
+      /       %td{:valign => "BOTTOM", :style => "width:128px;"} Nuevas historias de
+      /       %td{:valign => "BOTTOM", :style => "width:163px;"}
+      /         =select_tag :country_id, options_for_select(Country.for_story_select_box, visitor_country_id_or_selected_country_id), :id => "select_country"
+      /         =hidden_field_tag "return_path", get_return_path(params)
+      /       %td{:valign => "BOTTOM"}=image_submit_tag "new/btn_refresh.png"
+      /     %tr
+      /       %td{:colspan => 3}= page_entries_info @stories, :entry_name => 'historias'
 
 
 -content_for(:top) do

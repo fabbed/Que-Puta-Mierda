@@ -11,6 +11,34 @@
 #RAILS_ENV=production stories:get_real_country_names
 namespace :stories do
 
+    desc "output countries"
+    task :output_countries => :environment do
+      
+      countries = []
+      
+      Story.all.each do |story|
+        countries << story.country_id if story.country_id.to_i > 0
+      end
+      
+      country_array=[]
+
+      countries.uniq.each do |country|
+        country_array << [Country.find_by_used_id(country).name, country]
+      end
+
+      countries = country_array.sort
+      
+      schtring = ""
+      
+      countries.each do |country|
+        schtring << "['#{country[0]}', #{country[1]}], "
+      end
+      
+      puts schtring
+      
+    end
+
+
     desc "delete doubles"
     task :assign_comments => :environment do
       

@@ -61,7 +61,12 @@ function round_corners () {
 
 
 $(document).ready(function() { 
-  round_corners();
+    round_corners();
+  
+    alert("hallo")
+    $("#select_country").change(function() {
+      alert("ficken");
+    });
   
   
     $.timer(2000, function (timer) {
