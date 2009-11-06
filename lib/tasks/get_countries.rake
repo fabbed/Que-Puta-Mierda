@@ -113,6 +113,34 @@ end
 
 
     desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
+    task :get_countries_for_visitors => :environment do
+        Visitor.all.each do |visitor|
+          if !visitor.ip
+            visitor.country_code = "xx"
+            visitor.save
+          elsif visitor.ip and !visitor.country_id
+            # location = GeoKit::Geocoders::IpGeocoder.geocode(story.ip)
+            location = GeoKit::Geocoders::GeoPluginGeocoder.geocode("#{visitor.ip}")            
+            if location.success
+              puts location.country_code
+              visitor.country_code = location.country_code
+             visitor.country_id = Country.find_by_iso(location.country_code).used_id
+             visitor.city = location.city if location.city
+             visitor.save
+              # location.lat
+              # location.lng
+              # location.city
+            else
+              visitor.country_id = nil
+              visitor.country_code = "xx"
+              visitor.save
+            end
+          end
+        end
+    end
+
+
+    desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
     task :get_countries => :environment do
 
       require 'geokit'
@@ -130,13 +158,13 @@ end
           if !story.ip
             story.country_code = "xx"
             story.save
-          elsif story.ip and !story.country_id
+          elsif story.ip
             # location = GeoKit::Geocoders::IpGeocoder.geocode(story.ip)
             location = GeoKit::Geocoders::GeoPluginGeocoder.geocode("#{story.ip}")            
             if location.success
               puts location.country_code
               story.country_code = location.country_code
-              story.country_id = Country.find_by_iso(location.country_code).id
+              story.country_id = Country.find_by_iso(location.country_code).used_id
               story.city = location.city if location.city
               story.save
               # location.lat

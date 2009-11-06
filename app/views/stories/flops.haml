@@ -6,11 +6,19 @@
 -content_for(:top) do
   .country_selector
     .cs_content
-      .filter_indicator
-        %span Las cagadas más grandes
-      %br      
-      .cl
-      =tabnav :time_span_flops
+      -form_tag({:controller => :stories, :action => :set_selected_country}, :method => :post) do
+        %table{:cellpadding => 2}
+          %tr
+            %td.filter_indicator{:valign => "BOTTOM", :style => "width:220px;"}
+              %span Las cagadas más grandes
+            %td{:valign => "BOTTOM", :style => "width:163px;"}
+              =select_tag :country_id, options_for_select(Country.for_story_select_box, visitor_country_id_or_selected_country_id)
+              =hidden_field_tag "return_path", get_return_path(params)
+            %td{:valign => "BOTTOM"}=image_submit_tag "new/btn_refresh.png"
+          %tr
+            %td{:colspan => 3} &nbsp;
+          %tr
+            %td{:colspan => 3}=tabnav :time_span_flops
 
 -content_for(:main) do
   =render :partial => 'stories/story_new', :collection => @stories

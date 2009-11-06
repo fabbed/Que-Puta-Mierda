@@ -1,0 +1,2 @@
+module ResourceControllerHelper
+end

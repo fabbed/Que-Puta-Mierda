@@ -7,6 +7,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :suggestions
 
+  map.resources :resources, :member => { :set_selected_country => :post }
+
+
   map.resources :stories, 
                 :collection => { :tops => :get, :flops => :get, :to_moderate => :get, :new2 => :get},
                 :member => { :vote_top => :post, :vote_flop => :post }

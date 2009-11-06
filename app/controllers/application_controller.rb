@@ -110,7 +110,6 @@ class ApplicationController < ActionController::Base
     end
      
     def geocode_visitor
-      puts "===GEOCODE"
       session[:geo_location] ||= retrieve_location_from_cookie_or_service
       cookies[:geo_location] = { :value => session[:geo_location].to_yaml, :expires => 30.days.from_now } if session[:geo_location]
     end    

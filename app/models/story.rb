@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
   validates_length_of     :title,              :within => 20..100, :message => "Al menos 20 letras, no mas que 100"    
   validates_uniqueness_of :title,              :message => "Ya existe una historia con este titulo"
   
-  validates_length_of     :body,              :within => 100..1000000, :message => "Al menos 100 letras"
+  validates_length_of     :body,              :within => 99..1000000, :message => "Al menos 100 letras"
   validates_presence_of :category_id, :message => "Elige una categoría"
 
   named_scope :moderated, :conditions => ['on_startpage = ?', true]
@@ -21,6 +21,10 @@ class Story < ActiveRecord::Base
   named_scope :flops, :order => ['rated_flop desc']
   named_scope :newest_first, :order => ['created_at desc']
   named_scope :to_moderate, :conditions => ['on_startpage = ?', true]  
+
+  named_scope :from_country, lambda { |country_id|   { :conditions => { :country_id => country_id } } }
+
+
   named_scope :for_administering, :order => "created_at desc"
 
   named_scope :date_between, lambda { |date_range|   { :conditions => { :created_at => date_range } } }
@@ -39,6 +43,11 @@ class Story < ActiveRecord::Base
     self.to_param
   end
   
+  
+  def self.country_builder(country_code)
+    builder = self.scope_builder
+    builder.from_country(country_code) if country_code
+  end
   
   def remove_long_words_in_body
         indexes = []

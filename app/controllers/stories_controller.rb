@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class StoriesController < ResourcesController
   # GET /stories
   # GET /stories.xml
 
@@ -114,7 +114,10 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.newest_first.paginate(:page => params[:page], :per_page => 8)
+    builder = Story.scope_builder
+    builder.newest_first
+    builder.from_country(session[:selected_country]) if session[:selected_country]
+    @stories = builder.paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /stories/1

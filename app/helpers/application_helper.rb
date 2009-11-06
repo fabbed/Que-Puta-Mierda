@@ -3,6 +3,21 @@ module ApplicationHelper
 
   include TagsHelper
 
+
+  def get_return_path(p)
+    return "/" if  p[:controller] == "stories" and p[:action] == "index"
+    return "/#{p[:controller]}/#{p[:action]}" unless (p[:tiempo] or p[:ordenar_por])
+    return "/#{p[:controller]}/#{p[:action]}?tiempo=#{p[:tiempo]}" unless (p[:ordenar_por])
+    return "/#{p[:controller]}/#{p[:action]}?ordenar_por=#{p[:ordenar_por]}" unless (p[:tiempo])
+  end
+
+  def visitor_country_id_or_selected_country_id
+    return session[:selected_country].to_i if session[:selected_country]
+    return "all" unless session[:geo_location]
+    
+    Country.find_by_iso(session[:geo_location].country_code.upcase).used_id.to_i
+  end
+
   def link_to_facebox(name, options = {}, html_options = {})
     link_to(name, options, html_options.merge({ :rel=> "facebox" }))
   end
