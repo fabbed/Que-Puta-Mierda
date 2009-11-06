@@ -14,9 +14,10 @@ module ApplicationHelper
 
   def visitor_country_id_or_selected_country_id
     return session[:selected_country].to_i if session[:selected_country]
-    return "all" unless session[:geo_location]
+    return "all"
     
-    Country.find_by_iso(session[:geo_location].country_code.upcase).used_id.to_i
+    #unless session[:geo_location]
+    #Country.find_by_iso(session[:geo_location].country_code.upcase).used_id.to_i
   end
 
   def link_to_facebox(name, options = {}, html_options = {})
