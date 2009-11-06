@@ -6,11 +6,8 @@ class CommentsController < ApplicationController
     comment.user_id = current_user.id if current_user
 
     location = session[:geo_location]
-    comment.ip = request.env["REMOTE_ADDR"]
 
     if location
-      comment.lat = location.lat if location.lat
-      comment.lng = location.lng if location.lng
       comment.city = location.city if location.city
       comment.country_code = location.country_code if location.country_code
       comment.country_id = Country.find_by_iso(location.country_code.upcase).used_id if location.country_code
