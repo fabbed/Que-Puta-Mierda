@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  geocode_ip_address
   
   include AuthenticatedSystem
 
@@ -13,7 +12,8 @@ class ApplicationController < ActionController::Base
     
   before_filter :create_ratings_session
   before_filter :create_visitor_or_load_existing
-
+  before_filter :geocode_visitor
+  
   # after_filter  :record_pageview
   
   
@@ -117,7 +117,20 @@ class ApplicationController < ActionController::Base
     #   return true
     # end
   
-   
+    def geocode_visitor
+      session[:geo_location] ||= retrieve_location_from_cookie_or_service
+      cookies[:geo_location] = { :value => session[:geo_location].to_yaml, :expires => 30.days.from_now } if session[:geo_location]
+    end    
+    
+    # Uses the stored location value from the cookie if it exists.  If
+    # no cookie exists, calls out to the web service to get the location. 
+    def retrieve_location_from_cookie_or_service
+      return YAML.load(cookies[:geo_location]) if cookies[:geo_location]
+      location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
+      return location.success ? location : nil
+    end
+    
+    
     
     def robot?(user_agent)
       user_agent =~ /(Baidu|bot|Google|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg|Spider|Sogou)/i
