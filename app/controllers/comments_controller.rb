@@ -5,10 +5,16 @@ class CommentsController < ApplicationController
     comment = Comment.new(params[:comment])
     comment.user_id = current_user.id if current_user
 
-    location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
-    comment.country_code = location.country_code if location.country_code
-    comment.city = location.city if location.city
-    comment.country_name = Country.find_by_iso(comment.country_code.upcase).name if comment.country_code
+    location = session[:geo_location]
+    comment.ip = request.env["REMOTE_ADDR"]
+
+    if location
+      comment.lat = location.lat if location.lat
+      comment.lng = location.lng if location.lng
+      comment.city = location.city if location.city
+      comment.country_code = location.country_code if location.country_code
+      comment.country_id = Country.find_by_iso(location.country_code.upcase).used_id if location.country_code
+    end
     
     @story = Story.find(params[:story])
     @story.add_comment(comment)

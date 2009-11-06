@@ -24,8 +24,23 @@ class Visitor < ActiveRecord::Base
 
 
 
-  def self.create_new(request)
-    new_visitor = self.create(:vcode => self.generate_vcode, :ip =>request.env["REMOTE_ADDR"], :referer => request.env["HTTP_REFERER"])
+  def self.create_new(request, location)
+    new_visitor = self.new
+    new_visitor.vcode = self.generate_vcode
+    new_visitor.referer = request.env["HTTP_REFERER"]
+    new_visitor.ip = request.env["REMOTE_ADDR"]
+    
+    if location
+      new_visitor.lat = location.lat if location.lat
+      new_visitor.lng = location.lng if location.lng
+      new_visitor.city = location.city if location.city
+      new_visitor.country_code = location.country_code if location.country_code
+      new_visitor.country_id = Country.find_by_iso(location.country_code.upcase).used_id if location.country_code
+    end
+    
+    new_visitor.user_agent = request.env["HTTP_USER_AGENT"]
+    new_visitor.save!
+    new_visitor
   end
 
 

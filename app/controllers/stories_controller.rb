@@ -154,14 +154,17 @@ class StoriesController < ApplicationController
     @story.tag_list = params[:story][:tag_list]
     @story.user = current_user if current_user
 
+    location = session[:geo_location]
     @story.ip = request.env["REMOTE_ADDR"]
-    
-    location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@story.ip)
-    @story.lat = location.lat if location.lat
-    @story.lng = location.lng if location.lng
-    @story.city = location.city if location.city
-    @story.country_code = location.country_code if location.country_code
-    @story.country_name = Country.find_by_iso(location.country_code.upcase).name if location.country_code
+
+    if location
+      @story.lat = location.lat if location.lat
+      @story.lng = location.lng if location.lng
+      @story.city = location.city if location.city
+      @story.country_code = location.country_code if location.country_code
+      @story.country_id = Country.find_by_iso(location.country_code.upcase).used_id if location.country_code
+    end
+
 
     respond_to do |format|
       if @story.save

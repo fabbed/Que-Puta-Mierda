@@ -9,10 +9,9 @@ class ApplicationController < ActionController::Base
 
 
   # session :off #, :if => proc { |request| robot?(request.user_agent) }
-    
+  before_filter :geocode_visitor
   before_filter :create_ratings_session
   before_filter :create_visitor_or_load_existing
-  before_filter :geocode_visitor
   
   # after_filter  :record_pageview
   
@@ -64,7 +63,7 @@ class ApplicationController < ActionController::Base
       if !(robot?(request.user_agent)) and request.env["REQUEST_METHOD"] == "GET" #if no robot
         if !(has_cookie?) and params[:controller] == "stories" and params[:action] == "index" #kein cookie & STARTSEITE
           puts "==== -> New first visitor"
-          new_visitor = Visitor.create_new(request)
+          new_visitor = Visitor.create_new(request, session[:geo_location])
           new_visitor.create_visitor_session(request)
           store_session_variables(new_visitor.id, new_visitor.visitor_sessions.last.session_id)
           cookies[:vcode] = { :value => new_visitor.vcode, :expires => Time.now.next_year}
@@ -109,15 +108,9 @@ class ApplicationController < ActionController::Base
         return true
       end
     end
-   
-    
-    # def valid_referer?
-    #   puts "referer"
-    #   puts request.env["HTTP_REFERER"].to_s
-    #   return true
-    # end
-  
+     
     def geocode_visitor
+      puts "===GEOCODE"
       session[:geo_location] ||= retrieve_location_from_cookie_or_service
       cookies[:geo_location] = { :value => session[:geo_location].to_yaml, :expires => 30.days.from_now } if session[:geo_location]
     end    
