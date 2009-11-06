@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091103065824) do
+ActiveRecord::Schema.define(:version => 20091106082700) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -207,10 +207,17 @@ ActiveRecord::Schema.define(:version => 20091103065824) do
   create_table "visitors", :force => true do |t|
     t.string   "email"
     t.string   "vcode"
-    t.integer  "logins",     :default => 1
+    t.integer  "logins",                     :default => 1
+    t.string   "ip",           :limit => 15,                :null => false
+    t.string   "referer"
     t.integer  "country_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "city"
+    t.float    "lng"
+    t.float    "lat"
+    t.string   "country_code"
+    t.string   "user_agent"
   end
 
 end

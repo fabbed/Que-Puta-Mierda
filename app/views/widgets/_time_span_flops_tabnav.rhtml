@@ -30,13 +30,13 @@ render_tabnav :time_span_flops, :html => { :id=>'inside_navigation'},
    t.named 'Esta semana'
    t.titled ''
    t.links_to :controller => '/stories', :action => "flops", :tiempo=>"semana"
-   t.highlights_on :controller => '/stories', :action => "flops", :tiempo => ""
   end 
 
   add_tab do |t|
    t.named 'Este mes'
    t.titled ''
    t.links_to :controller => '/stories', :action => "flops", :tiempo=>"mes"
+   t.highlights_on :controller => '/stories', :action => "flops", :tiempo => ""
   end 
 
   add_tab do |t|

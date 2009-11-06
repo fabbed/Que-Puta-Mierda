@@ -6,10 +6,11 @@ module ApplicationHelper
 
   def get_return_path(p)
     return "/" if  p[:controller] == "stories" and p[:action] == "index"
-    return "/#{p[:controller]}/#{p[:action]}" unless (p[:tiempo] or p[:ordenar_por])
-    return "/#{p[:controller]}/#{p[:action]}?tiempo=#{p[:tiempo]}" unless (p[:ordenar_por])
-    return "/#{p[:controller]}/#{p[:action]}?ordenar_por=#{p[:ordenar_por]}" unless (p[:tiempo])
-  end
+    return "/#{p[:controller]}/#{p[:action]}" unless (p[:tiempo] or p[:ordenar_por] or p[:controller] == "categories")
+    return "/#{p[:controller]}/#{p[:action]}?tiempo=#{p[:tiempo]}" if p[:tiempo]
+    return "/#{p[:controller]}/#{@category.name}?ordenar_por=#{p[:ordenar_por]}" if p[:ordenar_por]
+    return "/#{p[:controller]}/#{@category.name}"    
+    end
 
   def visitor_country_id_or_selected_country_id
     return session[:selected_country].to_i if session[:selected_country]

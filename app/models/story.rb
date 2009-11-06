@@ -23,6 +23,7 @@ class Story < ActiveRecord::Base
   named_scope :to_moderate, :conditions => ['on_startpage = ?', true]  
 
   named_scope :from_country, lambda { |country_id|   { :conditions => { :country_id => country_id } } }
+  named_scope :from_category, lambda { |category_id|   { :conditions => { :category_id => category_id } } }
 
 
   named_scope :for_administering, :order => "created_at desc"

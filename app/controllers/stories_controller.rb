@@ -69,7 +69,7 @@ class StoriesController < ResourcesController
     
     date_range=case params[:tiempo]
       when nil
-        (Date.today-7.days)..(Date.today)
+        (Date.today-30.days)..(Date.today)
       when "hoy"
         (Date.today-1.days)..Date.today
       when "ayer"
@@ -81,19 +81,20 @@ class StoriesController < ResourcesController
       when "siempre"
         "no sort"
     end
+
+    builder = Story.scope_builder
+    builder.tops
+    builder.date_between(date_range) unless date_range == "no sort"
+    builder.from_country(session[:selected_country]) if session[:selected_country]
     
-    unless date_range != "no sort"
-      @stories = Story.tops.paginate(:page => params[:page], :per_page => 8)      
-    else
-      @stories = Story.tops.date_between(date_range).paginate(:page => params[:page], :per_page => 8)            
-    end
+    @stories = builder.paginate(:page => params[:page], :per_page => 8)
 
   end
 
   def flops
     date_range=case params[:tiempo]
       when nil
-        (Date.today-7.days)..(Date.today)
+        (Date.today-30.days)..(Date.today)
       when "hoy"
         (Date.today-1.days)..Date.today
       when "ayer"
@@ -106,11 +107,12 @@ class StoriesController < ResourcesController
         "no sort"
     end
     
-    unless date_range != "no sort"
-      @stories = Story.flops.paginate(:page => params[:page], :per_page => 8)      
-    else
-      @stories = Story.flops.date_between(date_range).paginate(:page => params[:page], :per_page => 8)            
-    end
+    builder = Story.scope_builder
+    builder.flops
+    builder.date_between(date_range) unless date_range == "no sort"
+    builder.from_country(session[:selected_country]) if session[:selected_country]
+    
+    @stories = builder.paginate(:page => params[:page], :per_page => 8)
   end
 
   def index
