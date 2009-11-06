@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
    
     
     def robot?(user_agent)
-      user_agent =~ /(Baidu|bot|Google|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg)/i
+      user_agent =~ /(Baidu|bot|Google|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg|Spider|Sogou)/i
     end
 
 end
