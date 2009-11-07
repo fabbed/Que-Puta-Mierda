@@ -15,7 +15,7 @@
         =simple_format(story_new.body.strip)
     .story_footer
       .flag
-        =image_tag "new/flags/#{story_new.country_code.downcase}.png", :title => story_new.country_name, :class => "tooltip" if story_new.country_code
+        =image_tag "new/flags/#{story_new.country_code.downcase}.png", :title => story_new.country.name, :class => "tooltip" if story_new.country_id
       .text
         ="Escrito por: #{author(story_new)} el #{my_date(story_new.created_at)}"
 
