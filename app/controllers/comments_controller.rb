@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
     if location
       comment.city = location.city if location.city
+      comment.country_name = location.country_name if location.country_name
       comment.country_code = location.country_code if location.country_code
       comment.country_id = Country.find_by_iso(location.country_code.upcase).used_id if location.country_code
     end
