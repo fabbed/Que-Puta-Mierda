@@ -23,21 +23,21 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def record_pageview
-    referring_search = Squeejee::SearchSniffer::ReferringSearch.new(request.env["HTTP_REFERER"])
-    
-    Pageview.create!(:request_uri => request.env["REQUEST_URI"],
-                    :request_method => request.env["REQUEST_METHOD"],
-                    :referer => request.env["HTTP_REFERER"],
-                    :session => request.session.session_id,
-                    :ip_address => request.env["REMOTE_ADDR"],
-                    :user_agent => request.env["HTTP_USER_AGENT"],
-                    :http_accept => request.env["HTTP_ACCEPT"],
-                    :http_accept_language => request.env["HTTP_ACCEPT_LANGUAGE"],
-                    :http_accept_encoding => request.env["HTTP_ACCEPT_ENCODING"],
-                    :search_engine => referring_search.engine,
-                    :search_terms => referring_search.raw)
-  end
+  # def record_pageview
+  #   referring_search = Squeejee::SearchSniffer::ReferringSearch.new(request.env["HTTP_REFERER"])
+  #   
+  #   Pageview.create!(:request_uri => request.env["REQUEST_URI"],
+  #                   :request_method => request.env["REQUEST_METHOD"],
+  #                   :referer => request.env["HTTP_REFERER"],
+  #                   :session => request.session.session_id,
+  #                   :ip_address => request.env["REMOTE_ADDR"],
+  #                   :user_agent => request.env["HTTP_USER_AGENT"],
+  #                   :http_accept => request.env["HTTP_ACCEPT"],
+  #                   :http_accept_language => request.env["HTTP_ACCEPT_LANGUAGE"],
+  #                   :http_accept_encoding => request.env["HTTP_ACCEPT_ENCODING"],
+  #                   :search_engine => referring_search.engine,
+  #                   :search_terms => referring_search.raw)
+  # end
 
   def create_ratings_session
     session[:top_votes] = Array.new if !session[:top_votes]
@@ -109,18 +109,18 @@ class ApplicationController < ActionController::Base
       end
     end
      
-    def geocode_visitor
-      session[:geo_location] ||= retrieve_location_from_cookie_or_service
-      cookies[:geo_location] = { :value => session[:geo_location].to_yaml, :expires => 30.days.from_now } if session[:geo_location]
-    end    
+    # def geocode_visitor
+    #   session[:geo_location] ||= retrieve_location_from_cookie_or_service
+    #   cookies[:geo_location] = { :value => session[:geo_location].to_yaml, :expires => 30.days.from_now } if session[:geo_location]
+    # end    
     
     # Uses the stored location value from the cookie if it exists.  If
     # no cookie exists, calls out to the web service to get the location. 
-    def retrieve_location_from_cookie_or_service
-      return YAML.load(cookies[:geo_location]) if cookies[:geo_location]
-      location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"].to_s)
-      return location.success ? location : nil
-    end
+    # def retrieve_location_from_cookie_or_service
+    #   return YAML.load(cookies[:geo_location]) if cookies[:geo_location]
+    #   location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"].to_s)
+    #   return location.success ? location : nil
+    # end
     
     
     
