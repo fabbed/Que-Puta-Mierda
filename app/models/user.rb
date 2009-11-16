@@ -1,9 +1,6 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
 
-  has_one :location, :as => :locatable  # also works for belongs_to associations
-  acts_as_mappable :through => :location
-
   has_many :stories
   has_many :page_views  
 

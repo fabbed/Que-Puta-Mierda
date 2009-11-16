@@ -3,10 +3,6 @@ class Story < ActiveRecord::Base
   belongs_to :category
   belongs_to :country  
 
-  has_one :location, :as => :locatable  # also works for belongs_to associations
-  acts_as_mappable :through => :location
-
-
   acts_as_commentable
   acts_as_taggable
 
