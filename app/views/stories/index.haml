@@ -28,6 +28,7 @@
 
 -content_for(:main) do
   location start
+  =request.env["REMOTE_ADDR"].to_s
   =session[:geo_location].to_yaml
   location end
   =render :partial => 'stories/story_new', :collection => @stories
