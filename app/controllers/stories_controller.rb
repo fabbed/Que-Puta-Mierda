@@ -126,9 +126,9 @@ class StoriesController < ResourcesController
   # GET /stories/1.xml
   def show
 
-    story = Story.find(13)
-    story.location = session[:geo_location]
-    story.save
+    # story = Story.find(13)
+    # story.location = session[:geo_location]
+    # story.save
 
 
     @story = Story.find(params[:id])
