@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   # session :off #, :if => proc { |request| robot?(request.user_agent) }
-  before_filter :geocode_visitor
+  #before_filter :geocode_visitor
   before_filter :create_ratings_session
   before_filter :create_visitor_or_load_existing
   
