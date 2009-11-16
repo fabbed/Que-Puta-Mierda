@@ -1,6 +1,10 @@
 class Visitor < ActiveRecord::Base
   
+  has_one :location, :as => :locatable  # also works for belongs_to associations
+  acts_as_mappable :through => :location  
+  
   has_many :visitor_sessions
+  belongs_to :country
 
   def create_visitor_session(request)
     self.visitor_sessions << VisitorSession.create(

@@ -175,7 +175,7 @@ end
 
       Geokit::Geocoders::google = 'ABQIAAAAq41jgnMAVw_fZQq0XgCgOxTJQa0g3IQ9GZqIMmInSLzwtGDKaBQs02mhfURaIntuWJUEHCe7OlHgpg'
 
-      Story.all.each do |story|
+      Story.all.reverse.each do |story|
         
 
         unless true
@@ -206,11 +206,51 @@ end
           end
         end
       end
-
-
-        
-        #geocode with ip
-        #set countryid and country
-
     end
+
+
+    desc "Migrates DB to Version=0 imports geodata and universities, clones db to test_db, imports data for test_db"
+    task :get_countries_for_visitors => :environment do
+
+      require 'geokit'
+
+      Geokit::Geocoders::google = 'ABQIAAAAq41jgnMAVw_fZQq0XgCgOxTJQa0g3IQ9GZqIMmInSLzwtGDKaBQs02mhfURaIntuWJUEHCe7OlHgpg'
+
+      Visitor.all.each do |story|
+        
+
+        unless true
+          location = GeoKit::Geocoders::GeoPluginGeocoder.geocode("189.152.195.113")
+          puts location.to_yaml
+        else
+
+          if !story.ip
+            story.country_code = "xx"
+            story.save
+          elsif story.ip
+            # location = GeoKit::Geocoders::IpGeocoder.geocode(story.ip)
+            location = GeoKit::Geocoders::GeoPluginGeocoder.geocode("#{story.ip}")            
+            if location.success
+              puts location.country_code
+              story.country_code = location.country_code
+              story.country_id = Country.find_by_iso(location.country_code).used_id
+              story.city = location.city if location.city
+              story.save
+              # location.lat
+              # location.lng
+              # location.city
+            else
+              story.country_id = nil
+              story.country_code = "xx"
+              story.save
+            end
+          end
+        end
+      end
+    end
+
+
+
+
+
 end

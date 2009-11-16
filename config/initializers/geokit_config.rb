@@ -18,9 +18,6 @@ if defined? Geokit
 	Geokit::Geocoders::proxy_user = nil
 	Geokit::Geocoders::proxy_pass = nil
 
-	# This is your yahoo application key for the Yahoo Geocoder.
-	# See http://developer.yahoo.com/faq/index.html#appid
-	# and http://developer.yahoo.com/maps/rest/V1/geocode.html
 	Geokit::Geocoders::yahoo = 'qQ2owV3IkY3zY8MyaMP08jmmv4uUIkBDsQRqF_taXw--'
     
 	# This is your Google Maps geocoder key. 

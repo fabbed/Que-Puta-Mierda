@@ -3,10 +3,10 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  geocode_ip_address
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
   include AuthenticatedSystem
-
 
   # session :off #, :if => proc { |request| robot?(request.user_agent) }
   before_filter :geocode_visitor
@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
     # no cookie exists, calls out to the web service to get the location. 
     def retrieve_location_from_cookie_or_service
       return YAML.load(cookies[:geo_location]) if cookies[:geo_location]
-      location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"])
+      location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(request.env["REMOTE_ADDR"].to_s)
       return location.success ? location : nil
     end
     

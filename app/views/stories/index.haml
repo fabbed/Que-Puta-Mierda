@@ -27,6 +27,9 @@
         / %span Nuevas Historias en queputamierda.com
 
 -content_for(:main) do
+  location start
+  =session[:geo_location].to_yaml
+  location end
   =render :partial => 'stories/story_new', :collection => @stories
 
   .paginators

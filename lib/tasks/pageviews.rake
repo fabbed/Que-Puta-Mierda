@@ -17,7 +17,7 @@ namespace :pageviews do
     end
 
 
-      base_path = "/Users/fabian/Desktop/seradestino.com/R/qpm_test_data/"
+    base_path = "/Users/fabian/Desktop/seradestino.com/R/qpm_test_data/"
 
 
     def get_session_time_array(sessions)
