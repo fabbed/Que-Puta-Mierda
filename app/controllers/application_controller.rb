@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
 
   # session :off #, :if => proc { |request| robot?(request.user_agent) }
   #before_filter :geocode_visitor
+  before_filter :randomize_country_selector
   before_filter :create_ratings_session
   before_filter :create_visitor_or_load_existing
   
+    
   # after_filter  :record_pageview
   
   
@@ -46,7 +48,7 @@ class ApplicationController < ActionController::Base
       if !(robot?(request.user_agent)) and request.env["REQUEST_METHOD"] == "GET" #if no robot
         if !(has_cookie?) and params[:controller] == "stories" and params[:action] == "index" #kein cookie & STARTSEITE
           puts "==== -> New first visitor"
-          new_visitor = Visitor.create_new(request, session[:geo_location])
+          new_visitor = Visitor.create_new(request, session[:geo_location], session[:country_selector])
           new_visitor.create_visitor_session(request)
           store_session_variables(new_visitor.id, new_visitor.visitor_sessions.last.session_id)
           cookies[:vcode] = { :value => new_visitor.vcode, :expires => Time.now.next_year}
@@ -126,5 +128,10 @@ class ApplicationController < ActionController::Base
   #                   :search_terms => referring_search.raw)
   # end
     
+  
+  def randomize_country_selector
+    return if session[:country_selector]
+    session[:country_selector] = (rand(2)==0 ? "all" : "local")
+  end
   
 end
