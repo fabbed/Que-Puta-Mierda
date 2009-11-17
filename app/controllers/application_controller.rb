@@ -132,6 +132,10 @@ class ApplicationController < ActionController::Base
   def randomize_country_selector
     return if session[:country_selector]
     session[:country_selector] = (rand(2)==0 ? "all" : "local")
+
+    session[:selected_country] =Country.find_by_iso(session[:geo_location].country_code.upcase).used_id.to_i if (session[:geo_location] && session[:country_selector] == "local")
+
+
   end
   
 end
