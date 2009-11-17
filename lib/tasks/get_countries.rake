@@ -183,7 +183,7 @@ end
           puts location.to_yaml
         else
 
-          if !story.ip
+          if !story.ip and !(story.country_code.length > 1)
             story.country_code = "xx"
             story.save
           elsif story.ip
