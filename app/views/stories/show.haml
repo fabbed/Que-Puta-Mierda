@@ -1,4 +1,7 @@
--title("#{@story.browser_title} - queputamierda.com")
+-content_for :meta_desc do
+  ="¡Que mal! " + truncate(@story.body.gsub(/\r\n?/, " "), 200)
+
+-title("#{@story.browser_title}")
 
 -content_for(:sidebar) do
   =render :partial => '/shared/sidebars/sidebar', :locals => {:big => false}
